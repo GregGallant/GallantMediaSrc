@@ -1,0 +1,13 @@
+-- building with gradle
+
+ gradle wrapper --gradle-version 2.0
+ ./gradlew build && java -jar build/libs/gs-spring-boot-0.1.0.jar
+
+
+-- JDBC IllegalState on @Test (Tests)
+Adding just the JDBC jar gets spring boot to start trying to do additional configuration (which requires more jars - in this case EventListenerFactory. You should include the jdbc starter to ensure you get all the necessary dependencies for auto configuration:
+
+compile('org.springframework.boot:spring-boot-starter-jdbc:1.2.7.RELEASE')
+Replace 1.2.7 with whatever version of spring boot you are using.
+
+
