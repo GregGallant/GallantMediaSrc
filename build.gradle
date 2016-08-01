@@ -18,7 +18,7 @@ apply plugin: 'war'
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.0.3'
+	version = '0.0.4'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
