@@ -1,19 +1,10 @@
 package gallantmedia;
 
-import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Service
-public class PhotographyService
+public interface PhotographyService
 {
-    @PersistenceContext
-    private EntityManager em;
+    public List<Photography> findAll();
 
-//    @Transactional
- //   public List<Photography> getAll() {
-  //      List<Photography> result = em.createQuery("SELECT p.filename FROM photography p", Photography.class);
-   // }
+    public void savePhotography(Photography photography);
 }
