@@ -15,10 +15,9 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'spring-boot'
 apply plugin: 'war'
 
-
 war {
 	baseName = 'gallantmedia'
-	version = '0.0.13'
+	version = '0.0.14'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -40,9 +39,11 @@ dependencies {
 	compile group: 'org.apache.commons', name: 'commons-digester3', version: '3.2'
 	compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.6.2'
+	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.6.2'
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
     //compile 'javax.servlet:javax.servlet-api:3.1.0'
 }
-
 
 eclipse {
 	classpath {

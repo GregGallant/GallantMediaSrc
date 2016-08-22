@@ -20,8 +20,8 @@ public class PhotographyController
     private PhotographyRepository photographyRepository;
 
     @RequestMapping("/photography")
-    //public List<Photography> index() {
     public String index() {
-        return photographyService.findName();
+        log.info("Photography Mapped, dumping column data: " + photographyService.findName().toString());
+        return photographyService.findName().toString();
     }
 }
