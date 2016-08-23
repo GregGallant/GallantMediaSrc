@@ -8,6 +8,11 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false
-  }
+  },
+  "files": [
+  	"./typings/index.d.ts",
+  	"./src/components/",
+  	"./src/index.tsx"
+  ]
 }
 
