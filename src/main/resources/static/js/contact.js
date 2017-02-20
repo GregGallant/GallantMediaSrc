@@ -11,8 +11,12 @@
         event.preventDefault();
         console.log("Ajax post call goes here...");
 
+        var firstname = $('#firstname').val();
+        var lastname = $('#lastname').val();
+        var email = $('#email').val();
+
         var fromjava = $.post(
-            "/contact", $('#lastname')
+            "/contact", { firstname: firstname, lastname: lastname, email: email }
         );
 
         fromjava.done(function( data ) {
