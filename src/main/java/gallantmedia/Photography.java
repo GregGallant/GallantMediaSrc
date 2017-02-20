@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="photography")
@@ -29,7 +31,7 @@ public class Photography implements Serializable
    @Column(name="title")
    private String title;
 
-   @Column(name="description")
+   @Column(name="description", columnDefinition="Text")
    private String description;
 
    @Column(name="status")
@@ -39,10 +41,10 @@ public class Photography implements Serializable
    private int year;
 
    @Column(name="created_at")
-   private String created_at;
+   private Date created_at;
 
    @Column(name="updated_at")
-   private String updated_at;
+   private Date updated_at;
 
 
    public int getId() {
@@ -109,19 +111,19 @@ public class Photography implements Serializable
       this.year = year;
    }
 
-   public String getCreated_at() {
+   public Date getCreated_at() {
       return created_at;
    }
 
-   public void setCreated_at(String created_at) {
+   public void setCreated_at(Date created_at) {
       this.created_at = created_at;
    }
 
-   public String getUpdated_at() {
+   public Date getUpdated_at() {
       return updated_at;
    }
 
-   public void setUpdated_at(String updated_at) {
+   public void setUpdated_at(Date updated_at) {
       this.updated_at = updated_at;
    }
 }
