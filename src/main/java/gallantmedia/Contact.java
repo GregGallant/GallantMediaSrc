@@ -1,9 +1,6 @@
 package gallantmedia;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,13 +12,17 @@ public class Contact implements Serializable
 
    @Id
    @Column(name="id")
+   @GeneratedValue(strategy= GenerationType.AUTO)
    private int id;
+
+   @Column(name="filename")
+   private String filename;
 
    @Column(name="email")
    private String email;
 
    @Column(name="firstname")
-   private String filename;
+   private String firstname;
 
    @Column(name="lastname")
    private String lastname;
@@ -98,5 +99,13 @@ public class Contact implements Serializable
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 }

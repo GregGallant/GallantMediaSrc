@@ -14,13 +14,20 @@
         var firstname = $('#firstname').val();
         var lastname = $('#lastname').val();
         var email = $('#email').val();
+        var details = $('#details').val();
+        var company = $('#company').val();
 
         var fromjava = $.post(
-            "/contact", { firstname: firstname, lastname: lastname, email: email }
+            "/contact", { firstname: firstname,
+                            lastname: lastname,
+                            email: email,
+                            details: details,
+                            company: company
+                        }
         );
 
         fromjava.done(function( data ) {
-            $("#contactFormGroup").text(data);
+            $("#contactFormGroup").html(data);
         });
         //alert(fromjava);
 
