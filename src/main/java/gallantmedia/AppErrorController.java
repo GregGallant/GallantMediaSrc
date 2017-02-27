@@ -28,7 +28,7 @@ public class AppErrorController implements ErrorController
 
     @RequestMapping(value=PATH)
     public String error() {
-        return "Error heaven";
+        return "error";
     }
 
     @Override

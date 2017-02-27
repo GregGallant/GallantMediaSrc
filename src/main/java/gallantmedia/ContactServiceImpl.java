@@ -1,5 +1,6 @@
 package gallantmedia;
 
+import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class ContactServiceImpl implements ContactService
     }
 
     public void saveContact(Contact contact) {
-        contactRepository.save(contact);
+        try {
+            contactRepository.save(contact);
+        } catch(Exception e) {
+            // do something
+            System.out.println("Exception thrown: " + e.toString());
+        }
     }
 }

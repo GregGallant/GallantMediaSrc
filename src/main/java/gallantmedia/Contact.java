@@ -2,7 +2,11 @@ package gallantmedia;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="contact")
@@ -15,29 +19,31 @@ public class Contact implements Serializable
    @GeneratedValue(strategy= GenerationType.AUTO)
    private int id;
 
-   @Column(name="filename")
-   private String filename;
-
+   @NotNull
    @Column(name="email")
    private String email;
 
+   @NotNull
    @Column(name="firstname")
    private String firstname;
 
+   @NotNull
    @Column(name="lastname")
    private String lastname;
 
    @Column(name="website")
    private String website;
 
+   @NotNull
+   @Size(min=4,max=2500)
    @Column(name="description", columnDefinition="Text")
    private String description;
 
-   @Column(name="created_at")
-   private Date created_at;
+   @Column(name="created")
+   private Date created;
 
-   @Column(name="updated_at")
-   private Date updated_at;
+   @Column(name="updated")
+   private Date updated;
 
    public int getId() {
       return id;
@@ -55,19 +61,19 @@ public class Contact implements Serializable
       this.description = description;
    }
 
-   public Date getCreated_at() {
-      return created_at;
+   public Date getCreated() {
+      return created;
    }
 
-   public void setCreated_at(Date created_at) {
-      this.created_at = created_at;
+   public void setCreated(Date created) {
+      this.created = created;
    }
 
-   public Date getUpdated_at() {
-      return updated_at;
+   public Date getUpdated() {
+      return updated;
    }
 
-   public void setUpdated_at(Date updated_at) { this.updated_at = updated_at; }
+   public void setUpdated(Date updated) { this.updated = updated; }
 
    public String getEmail() {
        return email;
@@ -76,14 +82,6 @@ public class Contact implements Serializable
    public void setEmail(String email) {
        this.email = email;
    }
-
-   public String getFilename() {
-       return filename;
-   }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
 
     public String getLastname() {
         return lastname;

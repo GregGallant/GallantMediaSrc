@@ -4,9 +4,9 @@
  */
 (function ($) {
 
-    var $window = $(window);
-    var windowHeight = $window.height();
-    var freescroll = false;
+    const $window = $(window);
+    let windowHeight = $window.height();
+    let freescroll = false;
 
     /* Handle window height if window resized */
     $window.resize(function() {
@@ -15,9 +15,9 @@
 
     $.fn.parallax = function(divArr) {
 
-        var $this = $(this);
-        var topDiv;
-        var divmap = [];
+        let $this = $(this);
+        let topDiv;
+        let divmap = [];
 
         /* Call on each div attached to our parallax function */
         /*
@@ -43,26 +43,25 @@
          */
         function mapAllDivs(toppo, bottom, heightOfDiv, index)
         {
-            var $divElement = $(this); // each div
-            var divname = $divElement.attr('id');
-            var BOUNDS_OFFSET = 25; // Number of pixels 'hitbox' from top of div where auto scroll kicks in
+            let $divElement = $(this); // each div
+            let BOUNDS_OFFSET = 25; // Number of pixels 'hitbox' from top of div where auto scroll kicks in
 
-            var topHitBoxBounds = toppo - BOUNDS_OFFSET;
-            var bottomHitBoxBounds = bottom + BOUNDS_OFFSET;
+            let topHitBoxBounds = toppo - BOUNDS_OFFSET;
+            let bottomHitBoxBounds = bottom + BOUNDS_OFFSET;
 
             // Build dimensional obj {'top', 'bottom', 'topBound', 'bottomBound'}
             // Maybe calculate any/all extra space between divs if any
 
-            var divobj = {'top':toppo, 'bottom':bottom, 'topBound':topHitBoxBounds, 'bottomBound':bottomHitBoxBounds, 'height':heightOfDiv};
+            let divobj = {'top':toppo, 'bottom':bottom, 'topBound':topHitBoxBounds, 'bottomBound':bottomHitBoxBounds, 'height':heightOfDiv};
             divmap.push(divobj);
         }
 
         /* The update function, called by delegated handler binded to our scroll event */
         function update()
         {
-            var lastindex;
-            var speed = .1;
-            var pixels_from_top = $window.scrollTop();
+            let lastindex;
+            const speed = .1;
+            let pixels_from_top = $window.scrollTop();
 
             $.each(divArr, function(index, value) {
 

@@ -1,3 +1,8 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <head>
     <title>Gallantmedia Source</title>
@@ -33,13 +38,14 @@
             </span>
 </header>
 <a name="homescreen" />
+
 <div id="ggscreen1" class="container-fluid">
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="br"></div>
             <!-- Hed -->
             <div id="textHeader">
-                <h1>RELIABLE ENGINEERING &amp; DESIGN</h1>
+                <h1>AWESOME ENGINEERING &amp; DESIGN</h1>
                 <h3>KEEPING THE DIGITAL WORLD INNOVATIVE AND VISUALLY REMARKABLE</h3>
             </div>
             <div class="br"></div>
@@ -144,7 +150,7 @@
             <div class="formgroup">
                 <div class="label">Describe Your Project:</div>
                 <div class="cform">
-                    <textarea class="textformy" id="description" name="description" cols="60" rows="6">{!! $old_details !!}</textarea>
+                    <textarea class="textformy" id="details" name="details" cols="60" rows="6">{!! $old_details !!}</textarea>
                 </div>
                 <div class="validation" id="details_issue"></div>
             </div>
