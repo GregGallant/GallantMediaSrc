@@ -1,4 +1,6 @@
-package gallantmedia;
+package gallantmedia.services.photography;
+
+import gallantmedia.models.Photography;
 
 import java.util.List;
 

@@ -46,14 +46,21 @@
         fromjava.done(function( data ) {
 
             let error = false;
-            // if java validator returns error signal call error handler function
-            // Other wise just show the return stuffa
-            if (error) {
-                $.fn.validationHandler(data);
-            } else {
-                // success
-                $("#contactFormGroup").html(data);
-            }
+            let cd = jQuery.parseJSON(data);
+
+            $.fn.validationHandler(cd);
+
+            // success
+            //$("#contactFormGroup").html(cd);
+            $("#contactFormGroup").html("<h1>Okay...</h1>").show();
+            cd.forEach(function(cda) {
+                if (cda.field) {
+                    $("#contactFormGroup").append(cda.field + ":" + cda.defaultMessage + "<br/>");
+                } else {
+                    $("#contactFormGroup").append(cda).show();
+                }
+            });
+
         });
         //alert(fromjava);
 

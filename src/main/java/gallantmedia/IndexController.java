@@ -1,6 +1,11 @@
 package gallantmedia;
 
-import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
+import gallantmedia.models.Contact;
+import gallantmedia.services.contact.ContactRepository;
+import gallantmedia.services.contact.ContactService;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -11,14 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ggallant on 2/20/17.
@@ -36,72 +40,75 @@ public class IndexController
     @RequestMapping(value="/contact", method = RequestMethod.POST)
     public String contactForm(HttpServletRequest request, @Valid @ModelAttribute Contact contact, BindingResult bindingResult)
     {
-        String contactReturn;
-        String email;
-        String firstname;
-        String lastname;
-        String description;
-        String company;
-        String errMsg;
+        String errorJson;
 
+        ObjectMapper om = new ObjectMapper();
+
+        // Handle Errors
         if (bindingResult.hasErrors()) {
-            List allErrors = bindingResult.getAllErrors();
-            //String errMsg = "0: " + allErrors.get(0).toString();
-
-          //  String[] errMsg = bindingResult.getSuppressedFields();
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-            FieldError fe = bindingResult.getFieldError();
-            String efield = fe.getField();
 
-            return efield;
+            try {
+                errorJson = om.writeValueAsString(fieldErrors);
+                return errorJson;
+            } catch (JsonGenerationException e) {
+                e.printStackTrace();
+                System.out.println("jsme01");
+            } catch (JsonMappingException e) {
+                System.out.println("jsme");
+                e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println("jsme02");
+                e.printStackTrace();
+            }
         }
 
-        email = request.getParameter("email");
-        firstname = request.getParameter("firstname");
-        lastname = request.getParameter("lastname");
-        description = request.getParameter("description");
-        company = request.getParameter("company");
+        // Get contact map as set
+        Map<String, String[]> contactMap = request.getParameterMap();
+        Set contactSet = contactMap.entrySet();
 
+        // Build contact obj and return  Json
+        String contactJson = contact.buildContact(contactSet);
 
-        contactReturn = "Thank you for writing.  Your details are as follows:";
-        contactReturn += email + "<br/>\n" + firstname + "<br/>\n" + lastname + "<br/>\n" + description + "<br/>\n" + company;
-        contactReturn += "\n\n<div><strong>Thank you for your time.</strong></div>";
+        // Set created/updated
+        contact = this.setTimestamps(contact);
 
+        // Save
+        contactRepository.save(contact);
+
+        return(contactJson);
+    }
+
+    /**
+     * Sets created and updated timestamps
+     * @param contact
+     * @return
+     */
+    private Contact setTimestamps(Contact contact)
+    {
         ZoneId zid = ZoneId.of("America/New_York");
         ZonedDateTime timenow = ZonedDateTime.now(zid);
 
-        /*
-        timenow = LocalDateTime.parse(timenow.format(dtf));
-        */
-        //2015-03-22 00:00:00
-
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD HH:MM:SS");
         String date = timenow.toString();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); // your template here
         Date sqlnow;
+        java.util.Date dateStr = null;
 
         try {
-            java.util.Date dateStr = formatter.parse(date);
-            sqlnow = new java.sql.Date(dateStr.getTime());
-
-            // stuff into database
-            contact.setCreated(sqlnow);
-            contact.setUpdated(sqlnow);
-            contact.setEmail(email);
-            contact.setFirstname(firstname);
-            contact.setLastname(lastname);
-            contact.setDescription(description);
-            contact.setWebsite(company);
-            contactService.saveContact(contact);
-
+            dateStr = formatter.parse(date);
         } catch(ParseException pe) {
             System.out.println("ParseException: " + pe.toString());
         } catch(Exception e) {
             System.out.println("Exception: " + e.toString());
         }
 
-        //contactRepository.save(contact);
+        if (dateStr != null) {
+            sqlnow = new java.sql.Date(dateStr.getTime());
+            contact.setCreated(sqlnow);
+            contact.setUpdated(sqlnow);
+        }
 
-        return(contactReturn);
+        return contact;
     }
+
 }

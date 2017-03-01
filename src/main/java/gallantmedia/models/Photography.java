@@ -1,4 +1,4 @@
-package gallantmedia;
+package gallantmedia.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

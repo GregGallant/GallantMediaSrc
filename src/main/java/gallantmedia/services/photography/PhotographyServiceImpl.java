@@ -1,12 +1,9 @@
-package gallantmedia;
+package gallantmedia.services.photography;
 
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import gallantmedia.models.Photography;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.persistence.Query;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;

@@ -1,4 +1,6 @@
-package gallantmedia;
+package gallantmedia.services.contact;
+
+import gallantmedia.models.Contact;
 
 import java.util.List;
 

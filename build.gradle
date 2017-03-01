@@ -17,7 +17,7 @@ apply plugin: 'war'
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.2.4'
+	version = '0.2.5'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -39,6 +39,7 @@ dependencies {
 	compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile("org.hibernate:hibernate-validator")
+    compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
     //compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     //compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
     //compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.1.Final'

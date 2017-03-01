@@ -1,6 +1,6 @@
-package gallantmedia;
+package gallantmedia.services.contact;
 
-import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
+import gallantmedia.models.Contact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
