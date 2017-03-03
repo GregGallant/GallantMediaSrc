@@ -15,7 +15,10 @@
         let okemail = $.fn.validateEmail(email);
 
         if (!okemail) {
-            alert("Invalid email - turn on class etc.");
+            $('#email-group').addClass('has-warning');
+        } else {
+            $('#email-group').removeClass('has-warning');
+            $('#email-group').addClass('has-success');
         }
 
     });
@@ -45,25 +48,25 @@
 
         fromjava.done(function( data ) {
 
-            let error = false;
             let cd = jQuery.parseJSON(data);
 
             $.fn.validationHandler(cd);
 
             // success
-            //$("#contactFormGroup").html(cd);
-            $("#contactFormGroup").html("<h1>Okay...</h1>").show();
             cd.forEach(function(cda) {
                 if (cda.field) {
+                    // ERROR HANDLER
+                    $('#'+cda.field+"-group").addClass('has-error');
+                    $('#' + cda.field + '_issue').html(cda.defaultMessage);
                     $("#contactFormGroup").append(cda.field + ":" + cda.defaultMessage + "<br/>");
                 } else {
+                    // SUCCESS
+                    $("#contactFormGroup").html("<h1>Okay...</h1>").show();
                     $("#contactFormGroup").append(cda).show();
                 }
             });
 
         });
-        //alert(fromjava);
-
     });
 
 

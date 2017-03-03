@@ -9,14 +9,15 @@ html h1, body h1 {
     font-size: 5.0em;
     font-weight: normal;
     letter-spacing: .08em;
-    color: #ffffbb;
+    /*color: #ffffbb;*/
+    color: #306063;
     margin: 0 0 10px 0; }
 html h3, body h3 {
     font-family: Arvil,sans-serif;
     font-size: 2.3em;
     font-weight: normal;
     letter-spacing: .08em;
-    color: #d8bb9e;
+    color: #08907e;
     margin: 0 0 0 0; }
 html h6, body h6 {
     font-family: Helvetica,Arial,sans-serif;
@@ -27,7 +28,17 @@ html h6, body h6 {
     color: #d8bb9e; }
 
 div {
-    margin: 0 0 0 0; }
+    .validation {
+        font-size: .8em;
+        color: #ff3c33;
+        text-align: right;
+        width: 100%;
+        font-family: Tahoma, Arial, sans-serif;
+        height: 10px;
+    }
+
+    margin: 0 0 0 0;
+}
 
 .form_error {
     font-size: 8pt;
@@ -75,12 +86,11 @@ div {
     overflow: hidden; }
 
 #ggscreen2 {
-    background-color: #cfcfcf;
-    height: 150%;
-    padding: 0;
+    background-image: url("../images/gg_sunset.png");
+    height: 100%;
     color: #ffffff;
     z-index: 0;
-    margin: auto;
+    margin: auto auto 35px auto;
     overflow: hidden; }
 
 #ggscreen3 {
@@ -96,10 +106,9 @@ div {
     max-height: 100%; }
 
 #cc_image_holder {
-    background-image: url("../images/cc_screen.jpg");
     background-size: 100% 100%;
     width: 100%;
-    height: 35%; }
+    height: 100%; }
 
 .cc_text {
     margin-left: 90px;
@@ -107,7 +116,7 @@ div {
     margin-top: 120px;
     text-align: right; }
 .cc_text h3 {
-    color: #202020;
+    color: #f0c020;
     margin-top: 20px;
     margin-bottom: 20px; }
 
@@ -115,20 +124,20 @@ div {
     text-align: left;
     font-family: Comfortaa, Tahoma, Arial, sans-serif;
     font-size: 2.0em;
-    color: #343330;
+    color: #c4f3f0;
     font-weight: bold;
     margin-top: 4px;
     margin-bottom: 4px;
     padding-top: 4px;
     padding-bottom: 4px;
-    border-bottom: 1px solid #3f3f3f; }
+    border-bottom: 1px solid #333f33; }
 
 .skills {
     text-align: left;
     font-family: Comfortaa, Tahoma, Arial, sans-serif;
     font-size: 1.2em;
     font-weight: bold;
-    color: #303430;
+    color: #f0f4f0;
     margin-top: 4px;
     margin-bottom: 4px;
     padding-top: 4px;
@@ -196,18 +205,33 @@ div {
     margin-right: 45px; }
 
 /* Forms */
-.formgroup .label {
-    width: 40%;
+label.control-label {
     text-align: left;
     font-family: Tahoma, Arial, sans-serif;
     font-size: 1.0em;
-    color: #434343;
-    letter-spacing: .09em; }
+    color: #335333;
+    letter-spacing: .1em;
+    display: block;
+}
+
+
+label#email_label.control-label {
+    display: block;
+}
+
+#email-group {
+    .has-warning {
+        color:#ff5333;
+    }
+}
+#email {
+    width: 100%;
+}
 
 .formgroup .inlabel .label {
     font-family: Tahoma, Arial, sans-serif;
     font-size: 1.0em;
-    color: #434343; }
+    color: #f3e3a3; }
 
 .inlabel {
     display: inline-block;
@@ -223,45 +247,53 @@ div {
     display: inline-block; }
 
 .formgroup {
+    padding: 5px 0 5px 0;
     margin-bottom: 20px; }
 
 .formsubmit {
     text-align: right;
     margin-top: 10px;
-    width: 100%; }
+    width: 50%;
+}
 
 /* Form Styles */
-.formy {
-    height: 36px;
+input.formy {
+    display: block;
+    height: 54px;
     padding-left: 8px;
     padding-right: 8px;
     border-radius: 6px;
     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
     font-family: Trebuchet, Tahoma, Arial, sans-serif;
-    font-size: 1.2em; }
+    font-size: 1.35em;
+
+}
+
+.form-control {
+    width: 90%;
+}
 
 .textformy {
-    padding: 8px;
+    min-width: 100%;
+    padding: 15px;
     border-radius: 6px;
     font-family: Trebuchet, Tahoma, Arial, sans-serif;
-    font-size: 1.2em;
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15); }
+    font-size: 1.35em;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
 
-.formbutton {
-    background-color: #cfffff;
+.btn-primary {
     padding: 8px;
-    width: 120px;
-    height: 50px;
-    font-size: 1.2em;
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15); }
-
-.validation {
-    font-size: 1em;
-    color: #ff3c33;
-    text-align: right;
-    width: 75%;
-    font-family: Tahoma, Arial, sans-serif;
-    height: 10px; }
+    width: 140px;
+    height: 60px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    background-color:#379e5f !important;
+    span {
+        font-weight:500;
+        font-size: 1.35em;
+        background-color:#379e5f;
+    }
+}
 
 #email_issue {
     margin-left: -120px; }
@@ -307,19 +339,23 @@ div {
     overflow: auto; }
 #textHeader {
     margin-top: 100px;
+    padding:70px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15px;
     text-align: center;
-    font-family: Arvil, Arial, sans-serif; }
+    font-family: Arvil, Arial, sans-serif;
+}
 #textContent {
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+    min-width: 100%;
     text-align: justify;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
+    color:#222232;
     letter-spacing: .05em;
-    line-height: 1.8em; }
+    line-height: 1.8em;
+    display: block;
+}
 #textContent2 {
     margin-left: auto;
     margin-right: auto;
@@ -331,13 +367,15 @@ div {
     line-height: 1.8em;
     color: #000000; }
 
+.narrows {
+    width: 50%;
+    margin: 0 auto 0 auto;
+}
 #contactFormGroup {
-    background-color: #ffffff;
     height: 100%;
-    padding: 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    max-width: 50%;
     text-align: justify;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 1em;
@@ -347,17 +385,24 @@ div {
 
     h1 {
         font-size: 3.5em;
-        color: #5f5f5f;
+        color: #33333f;
         padding-bottom: 10px;
     }
 
     h3 {
-        color: #9f7f7f;
-        padding-top: 10px;
+        color: #1f1f3f;
+        padding-top: 0px;
         padding-bottom: 10px;
         line-height: 1.4em;
         font-family: Helvetica, Arial, sans-serif;
         font-size: 1.2em;
+
+        div {
+            color: #379e5f;
+            margin:10px 0 10px 0;
+            font-size: .9em;
+            line-height: 1.3em;
+        }
     }
 
 }
@@ -382,3 +427,50 @@ div {
     margin-bottom: 40px;
     margin-left: auto;
     margin-right: auto; }
+
+.icon_left {
+    display: inline-block;
+    background-color: #fff;
+    border:1px solid #939393;
+    width: 85px;
+    height: 85px;
+    border:1px solid #939393;
+}
+
+.icon_vert {
+    display: inline-block;
+    border-bottom:1px solid #939393;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    text-align: left;
+    margin-bottom:30px;
+    p {
+        font-size:1.2em;
+    }
+    img {
+        margin:15px;
+    }
+}
+
+.icon_vert_2 {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    text-align: left;
+    margin-bottom:30px;
+    p {
+        font-size:1.2em;
+    }
+    img {
+        margin:15px;
+    }
+}
+
+.text_vert {
+    display:block;
+   float: left;
+   font-size:.9em;
+    font-family:Helvetica, Arial,sans-serif;
+}

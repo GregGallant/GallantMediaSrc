@@ -237,7 +237,7 @@ div {
 
 /* Form Styles */
 .formy {
-  height: 36px;
+  height: 46px;
   padding-left: 8px;
   padding-right: 8px;
   border-radius: 6px;
@@ -336,7 +336,6 @@ div {
   color: #000000; }
 
 #contactFormGroup {
-  background-color: #ffffff;
   height: 100%;
   padding: 10px;
   margin-left: auto;
