@@ -7,7 +7,7 @@
     let windowHeight = $window.height();
 
 
-    // Email address
+    // Email address Pre-Validation
     $('#email').on('focusout', function(event)
     {
         let email = $('#email').val();
@@ -15,15 +15,58 @@
         let okemail = $.fn.validateEmail(email);
 
         if (!okemail) {
-            $('#email-group').addClass('has-warning');
+            $('div#email-group').addClass('has-warning');
         } else {
-            $('#email-group').removeClass('has-warning');
-            $('#email-group').addClass('has-success');
+            $('#email-group').removeClass("has-warning");
+            $('#email-group').attr("class", "col-sm-12 form-group has-success");
+            $('div#email_issue').html("");
         }
 
     });
 
-    //$.fn.submitContact = function() {
+    // Description
+    $('#description').on('focusout', function(event) {
+
+        let description = $('#description').val();
+
+        if (description.length > 4) {
+            $('div#description-group').attr("class", "col-sm-12 form-group formgroup has-success");
+            $('div#description_issue').html("");
+        }  else {
+            $('div#description-group').addClass('has-warning');
+        }
+
+    });
+
+    // firstname
+    $('#firstname').on('focusout', function(event) {
+
+        let firstname = $('#firstname').val();
+
+        if (firstname.length > 4) {
+            $('div#firstname-group').attr("class", "col-sm-6 form-group inlabel has-success");
+            $('div#firstname_issue').html("");
+        }  else {
+            $('div#firstname-group').addClass('has-warning');
+        }
+
+    });
+
+    // lastname
+    $('#lastname').on('focusout', function(event) {
+
+        let lastname = $('#lastname').val();
+
+        if (lastname.length > 4) {
+            $('div#lastname-group').attr("class", "col-sm-6 form-group inlabel has-success");
+            $('div#lastname_issue').html("");
+        }  else {
+            $('div#lastname-group').addClass('has-warning');
+        }
+
+    });
+
+        //$.fn.submitContact = function() {
     $('#submitButton').on('click', function(event) {
         event.preventDefault();
         console.log("Ajax post call goes here...");
@@ -58,11 +101,11 @@
                     // ERROR HANDLER
                     $('#'+cda.field+"-group").addClass('has-error');
                     $('#' + cda.field + '_issue').html(cda.defaultMessage);
-                    $("#contactFormGroup").append(cda.field + ":" + cda.defaultMessage + "<br/>");
+                    //$("#contactFormGroup").append(cda.field + ":" + cda.defaultMessage + "<br/>");
                 } else {
                     // SUCCESS
-                    $("#contactFormGroup").html("<h1>Okay...</h1>").show();
-                    $("#contactFormGroup").append(cda).show();
+                    $("#contactFormGroup").html("<h1>Thank you for your interest and your time!  </h1>").show();
+                    $("#contactFormGroup").append("We will contact you in 1-5 days. GallantOne.com will do our best to help bring your ideas to life.");
                 }
             });
 

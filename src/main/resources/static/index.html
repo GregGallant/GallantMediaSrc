@@ -8,7 +8,7 @@
 
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="./js/gallantvision.js"></script>
-
+    <link rel="SHORTCUT ICON" HREF="icons/favicon.ico">
     <!-- Vue Core library -->
     <script type="text/javascript">
         $(document).ready(function() {
@@ -19,18 +19,24 @@
 <body>
 <div><img src="./images/photo_wbgg.jpg" id="center_image" /></div>
 <header id="fixed_header">
-            <span id="fixed_logo">
+
+    <div class="container-fluid narrows">
+        <div class="row">
+            <div class="col-sm-3 " id="fixed_logo">
                 <img width="175px" height="24px" src="./images/gallantone_logo_175w.png" />
-            </span>
-    <span id="fixed_menu">
+            </div>
+            <div class="col-sm-3 fixed_menu">
                 <a href="contact/#homescreen">Home</a>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="col-sm-3 fixed_menu">
                 <a href="#requestaproject">Request a Project</a>
-                    &nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="col-sm-3 fixed_menu">
                 <a target="linkedin" href="http://www.linkedin.com/in/greggallant">Linked-In</a>
-            </span>
+            </div>
+                </span>
+            </div>
+    </div>
 </header>
 <a name="homescreen" />
 <div id="ggscreen1" class="container-fluid">
@@ -43,42 +49,24 @@
             </div>
         </div>
             <!-- Body -->
-        <div class="row">
-            <div class="col-sm-10 center-block" id="textContent">
-                <div class="narrows">
-                    <div class="row center-block">
-                        <div class="col-sm-12">
-                            <div class="icon_vert">
-                                <img src="icons/spring.png" align="left"/>
-                            <p>Web and mobile apps built around the verbose, but solid, type-safe, architecture of Java Spring are the best suited
-                            for getting the job down with minimal maintenance, this site being one of those built around the Spring / JPA Hibernate architecture.  Gradle and Spring Boot allows for
-                               quick scaffolding and deployments.  Fully developed Android apps compliment a solid web presence.</p>
-                            </div>
-                            <div class="icon_vert">
-                                <img src="icons/laravel.png" align="left"/>
-                            <p> PHP builds companies, its loose structure is sometimes derided, but this remains PHP's major strength when
-                                it comes to technological idea building.
-                                PHP when used properly can get a small business up and running with incredibly fast turnarounds.
-                                With composer builds and PHP 7's speed-centric focus, the Laravel framework has risen above some of the
-                                other professionally used frameworks.  With a Symphony backbone, Laravel allows for quick deployments and very
-                                fast updating on enterprise levels.
-                            </p>
-                            </div>
-                            <div class="icon_vert_2">
-                                <img src="icons/python.png" align="left"/>
-                            <p>
-                                Python and SqlAlchemy make for great AWS scripting and parsing, deployment scripts and pretty much everything
-                                else you need done behind the scenes.
-                            </p>
-                            </div>
+        <div class="narrows">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="subheader01">What's Happening</div>
+                    <div class="whatsnew">
+                        <div class="newstuff">
+                            <img align="left" class="whatsnewimage" src="images/features/gnyc-preview.jpg" />
+                            <span class="hed">Greg Gallant Photography website</span>
+                        <em>Tools: Spring Boot, Gradle, Vue.js</em>
+                        <div class="stuffstuff">10 plus years of New York City photography. Stay tuned.</div>
+                        </div>
 
-                        </div>
                     </div>
-                    <div class="row center-block">
-                        <div class="col-sm-6">
-                        </div>
-                        <div class="col-sm-6">
-                        </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="subheader01">Exquisite Linkage</div>
+                    <div class="linkage">
+                        <a target="new01" href="http://coolors.co">coolors.co</a> - Translate color schemes within a beautifully designed site.
                     </div>
                 </div>
             </div>
@@ -88,46 +76,51 @@
 
 <div id="ggscreen2" class="container-fluid">
     <div class="row">
-        <div class="col-lg-12 col-md-12">
-    <div class="br_cc"></div>
-    <div id="cc_image_holder">
-        &nbsp;
-        <div class="cc_text">
-            <div class="skills_header">
-                Full-stack technologies and frameworks
-            </div>
-            <div class="skills_left">
-                <div class="skills">Java 8 Spring / Spring Boot / Gradle / JPA Hibernate (This site!)</div>
-                <div class="skills">Laravel Framework / Lumen Microframework</div>
-                <div class="skills">Python 3.5</div>
-                <div class="skills">Android</div>
-                <div class="skills">Zend Framework / Zend Framework 2</div>
-            </div>
-            <div class="skills_right">
-                <div class="skills">AWS EC2 / S3 / SQS / Boto3 Python Integration </div>
-                <div class="skills">API Development</div>
-                <div class="skills">Akamai Luna Control Center Caching</div>
-                <div class="skills">MySQL / PostgreSQL database normalization</div>
-                <div class="skills">Wordpress Module programming and Integration</div>
-            </div>
+        <div class="col-sm-12 center-block">
+            <div class="subheader02">Technologies</div>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-            <img src="./images/jira_logo.png" />
-        </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-                <img src="./images/github_logo.png" />
+        <div class="col-sm-12 center-block" id="textContent">
+            <div class="row center-block">
+                <div class="col-sm-12">
+                    <div class="icon_vert">
+                        <img src="icons/spring.png" align="left"/>
+                        <p>Web and mobile apps built around the verbose, but solid, type-safe, architecture of Java Spring are the best suited
+                            for getting the job down with minimal maintenance, this site being one of those built around the Spring / JPA Hibernate architecture.  Gradle and Spring Boot allows for
+                            quick scaffolding and deployments.  Fully developed Android apps compliment a solid web presence.</p>
+                    </div>
+                    <div class="icon_vert">
+                        <img src="icons/laravel.png" align="left"/>
+                        <p> PHP builds companies, its loose structure is sometimes derided, but this remains PHP's major strength when
+                            it comes to technological idea building.
+                            PHP when used properly can get a small business up and running with incredibly fast turnarounds.
+                            With composer builds and PHP 7's speed-centric focus, the Laravel framework has risen above some of the
+                            other professionally used frameworks.  With a Symphony backbone, Laravel allows for quick deployments and very
+                            fast updating on enterprise levels.
+                        </p>
+                    </div>
+                    <div class="icon_vert">
+                        <img src="icons/javascript.png" align="left"/>
+                        <p> PHP builds companies, its loose structure is sometimes derided, but this remains PHP's major strength when
+                            it comes to technological idea building.
+                            PHP when used properly can get a small business up and running with incredibly fast turnarounds.
+                            With composer builds and PHP 7's speed-centric focus, the Laravel framework has risen above some of the
+                            other professionally used frameworks.  With a Symphony backbone, Laravel allows for quick deployments and very
+                            fast updating on enterprise levels.
+                        </p>
+                    </div>
+                    <div class="icon_vert_2">
+                        <img src="icons/python.png" align="left"/>
+                        <p>
+                            Python and SqlAlchemy make for great AWS scripting and parsing, deployment scripts and pretty much everything
+                            else you need done behind the scenes.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div id="jirapara">
-        <p>
-            Agile Planning &amp; Jira Sprints as well as Github controlled code reviews ensures secure &amp; controlled development.
-        </p>
-    </div>
-    &nbsp;
-    </div></div>
 </div>
 <a name="requestaproject"/>
 <div id="ggscreen3" class="container-fluid">
@@ -159,8 +152,8 @@
                             <!-- Description -->
                             <div id="description-group" class="col-sm-12 form-group formgroup">
                                 <label class="control-label" for="description">Describe Your Project</label>
-                                    <textarea class="form-control textformy" id="description" name="description"  rows="6"></textarea>
-                                <div class="validation" id="details_issue"></div>
+                                <textarea class="form-control textformy" id="description" name="description"  rows="6"></textarea>
+                                <div class="validation" id="description_issue"></div>
                             </div>
 
                             <!-- First / Last Name -->
@@ -203,6 +196,9 @@
         </div>
     </div>
 </div>
+<footer>
+    GallantOne.com - Copyright 2017 Greg A. Gallant - greg@gallantone.com - Github: http://www.github.com/GregGallant
+</footer>
 <!-- Main -->
 <script type="text/javascript" src="./js/contact.js"></script>
 </body>

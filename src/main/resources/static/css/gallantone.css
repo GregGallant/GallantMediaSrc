@@ -7,7 +7,7 @@ html, body {
 
 html h1, body h1 {
   font-family: Arvil,sans-serif;
-  font-size: 5.0em;
+  font-size: 6.2em;
   font-weight: normal;
   letter-spacing: .08em;
   /*color: #ffffbb;*/
@@ -16,9 +16,9 @@ html h1, body h1 {
 
 html h3, body h3 {
   font-family: Arvil,sans-serif;
-  font-size: 2.3em;
+  font-size: 2.85em;
   font-weight: normal;
-  letter-spacing: .08em;
+  letter-spacing: .084em;
   color: #08907e;
   margin: 0 0 0 0; }
 
@@ -59,27 +59,27 @@ div {
   display: inline-block;
   z-index: 100;
   margin-top: 25px;
-  width: 64%;
-  float: left; }
+  text-align: left; }
 
-#fixed_menu {
+.fixed_menu {
+  text-align: right;
+  margin-top: 25px;
   z-index: 100;
   display: inline-block;
-  float: right;
   font-size: 1.1em;
-  margin-top: -16px;
-  margin-right: 50px;
-  font-family: Arial, sans-serif;
-  width: 64%; }
-
-#fixed_menu a {
-  color: #ffeee0;
-  font-weight: bold;
-  text-decoration: none; }
+  font-family: Arial, sans-serif; }
+  .fixed_menu a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #013933; }
+  .fixed_menu a:hover {
+    color: #011936; }
+  .fixed_menu a:visited {
+    color: #012933; }
 
 /* plax divs */
 #ggscreen1 {
-  height: 150%;
+  height: 100%;
   padding: 0;
   color: #ffffff;
   z-index: 0;
@@ -284,9 +284,6 @@ input.formy {
     font-size: 1.35em;
     background-color: #379e5f; }
 
-#email_issue {
-  margin-left: -120px; }
-
 /* global fonts */
 @font-face {
   font-style: normal;
@@ -325,7 +322,7 @@ input.formy {
 
 #textHeader {
   margin-top: 100px;
-  padding: 70px;
+  padding: 70px 70px 50px 70px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 15px;
@@ -354,7 +351,7 @@ input.formy {
   color: #000000; }
 
 .narrows {
-  width: 50%;
+  width: 69%;
   margin: 0 auto 0 auto; }
 
 #contactFormGroup {
@@ -371,6 +368,7 @@ input.formy {
   #contactFormGroup h1 {
     font-size: 3.5em;
     color: #33333f;
+    padding-top: 35px;
     padding-bottom: 10px; }
   #contactFormGroup h3 {
     color: #1f1f3f;
@@ -416,6 +414,15 @@ input.formy {
   height: 85px;
   border: 1px solid #939393; }
 
+.subheader02 {
+  font-family: Lowvetica, Helvetica, Arial, sans-serif;
+  font-size: 2.3em;
+  color: #E4DACF;
+  font-weight: 100;
+  letter-spacing: .1em;
+  margin: 24px 10px 24px 5px;
+  padding: 14px 0 0 0; }
+
 .icon_vert {
   display: inline-block;
   border-bottom: 1px solid #939393;
@@ -423,11 +430,14 @@ input.formy {
   height: auto;
   vertical-align: middle;
   text-align: left;
-  margin-bottom: 30px; }
+  margin-bottom: 40px; }
   .icon_vert p {
-    font-size: 1.2em; }
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.0em;
+    color: #ffffff;
+    line-height: 2.1em; }
   .icon_vert img {
-    margin: 15px; }
+    margin: 0 15px 15px 0; }
 
 .icon_vert_2 {
   display: inline-block;
@@ -435,16 +445,90 @@ input.formy {
   height: auto;
   vertical-align: middle;
   text-align: left;
-  margin-bottom: 30px; }
+  margin-bottom: 40px; }
   .icon_vert_2 p {
-    font-size: 1.2em; }
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.0em;
+    color: #ffffff;
+    line-height: 2.1em; }
   .icon_vert_2 img {
-    margin: 15px; }
+    margin: 0 15px 15px 0; }
 
 .text_vert {
   display: block;
   float: left;
   font-size: .9em;
   font-family: Helvetica, Arial,sans-serif; }
+
+.subheader01 {
+  display: block;
+  font-family: Lowvetica, Helvetica, sans-serif;
+  font-size: 1.1em;
+  background-color: #258EA6;
+  color: #fff;
+  padding: 10px 10px 7px 15px;
+  margin: 0 0 10px 0; }
+
+.whatsnew {
+  display: block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .9em;
+  color: #011936; }
+  .whatsnew div.newstuff {
+    display: inline-block;
+    margin: 5px 0 0 0; }
+    .whatsnew div.newstuff span.hed {
+      display: inline-block;
+      font-weight: 500;
+      font-size: 1.4em; }
+    .whatsnew div.newstuff img {
+      display: inline-block; }
+    .whatsnew div.newstuff em {
+      display: block;
+      text-align: right;
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 10px; }
+    .whatsnew div.newstuff div.stuffstuff {
+      display: block;
+      margin: 5px 0 0 0;
+      font-size: 1.1em; }
+
+.linkage {
+  display: block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-style: oblique;
+  font-weight: 100;
+  color: #303030; }
+  .linkage a {
+    color: #1A936F; }
+  .linkage a:hover {
+    color: #011936; }
+  .linkage div {
+    vertical-align: top;
+    margin: 0 0 0 0;
+    color: #011936;
+    width: 100%; }
+
+.whatsnewimage {
+  display: inline-block;
+  font-size: .9em;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  -moz-box-shadow: 3px 3px 4px #333;
+  -webkit-box-shadow: 3px 3px 4px #333;
+  box-shadow: 3px 3px 4px #333;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+  border: 1px solid #258EA6;
+  margin: 0 14px 14px 0; }
+
+footer {
+  text-align: center;
+  background-color: #999999;
+  color: #e3e3ee;
+  font-size: .8em;
+  font-family: Arial,sans-serif; }
 
 /*# sourceMappingURL=gallantone.css.map */

@@ -6,7 +6,7 @@ html, body {
     font-size: 0.9em; }
 html h1, body h1 {
     font-family: Arvil,sans-serif;
-    font-size: 5.0em;
+    font-size: 6.2em;
     font-weight: normal;
     letter-spacing: .08em;
     /*color: #ffffbb;*/
@@ -14,9 +14,9 @@ html h1, body h1 {
     margin: 0 0 10px 0; }
 html h3, body h3 {
     font-family: Arvil,sans-serif;
-    font-size: 2.3em;
+    font-size: 2.85em;
     font-weight: normal;
-    letter-spacing: .08em;
+    letter-spacing: .084em;
     color: #08907e;
     margin: 0 0 0 0; }
 html h6, body h6 {
@@ -59,26 +59,36 @@ div {
     display: inline-block;
     z-index: 100;
     margin-top: 25px;
-    width: 64%;
-    float: left; }
+    text-align:left;
+}
 
-#fixed_menu {
+
+.fixed_menu {
+    text-align:right;
+    margin-top: 25px;
     z-index: 100;
     display: inline-block;
-    float: right;
     font-size: 1.1em;
-    margin-top: -16px;
-    margin-right: 50px;
     font-family: Arial, sans-serif;
-    width: 64%; }
-#fixed_menu a {
-    color: #ffeee0;
-    font-weight: bold;
-    text-decoration: none; }
+
+    a {
+        font-weight: bold;
+        text-decoration: none;
+        color: #013933;
+    }
+
+    a:hover {
+        color: #011936;
+    }
+
+    a:visited {
+        color: #012933;
+    }
+}
 
 /* plax divs */
 #ggscreen1 {
-    height: 150%;
+    height: 100%;
     padding: 0;
     color: #ffffff;
     z-index: 0;
@@ -295,9 +305,6 @@ input.formy {
     }
 }
 
-#email_issue {
-    margin-left: -120px; }
-
 /* global fonts */
 @font-face {
     font-style: normal;
@@ -336,10 +343,11 @@ input.formy {
     max-width: 100%;
     max-height: 100%;
     margin: auto;
-    overflow: auto; }
+    overflow: auto;
+}
 #textHeader {
     margin-top: 100px;
-    padding:70px;
+    padding:70px 70px 50px 70px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
@@ -368,7 +376,7 @@ input.formy {
     color: #000000; }
 
 .narrows {
-    width: 50%;
+    width: 69%;
     margin: 0 auto 0 auto;
 }
 #contactFormGroup {
@@ -386,6 +394,7 @@ input.formy {
     h1 {
         font-size: 3.5em;
         color: #33333f;
+        padding-top: 35px;
         padding-bottom: 10px;
     }
 
@@ -437,6 +446,16 @@ input.formy {
     border:1px solid #939393;
 }
 
+.subheader02 {
+    font-family: Lowvetica, Helvetica, Arial, sans-serif;
+    font-size: 2.3em;
+    color: #E4DACF;
+    font-weight: 100;
+    letter-spacing:.1em;
+    margin: 24px 10px 24px 5px;
+    padding: 14px 0 0 0;
+}
+
 .icon_vert {
     display: inline-block;
     border-bottom:1px solid #939393;
@@ -444,12 +463,15 @@ input.formy {
     height: auto;
     vertical-align: middle;
     text-align: left;
-    margin-bottom:30px;
+    margin-bottom:40px;
     p {
-        font-size:1.2em;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size:1.0em;
+        color:#ffffff;
+        line-height: 2.1em;
     }
     img {
-        margin:15px;
+        margin:0 15px 15px 0;
     }
 }
 
@@ -459,18 +481,118 @@ input.formy {
     height: auto;
     vertical-align: middle;
     text-align: left;
-    margin-bottom:30px;
+    margin-bottom: 40px;
+
     p {
-        font-size:1.2em;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 1.0em;
+        color:#ffffff;
+        line-height: 2.1em;
     }
+
     img {
-        margin:15px;
+        margin: 0 15px 15px 0;
     }
 }
 
 .text_vert {
-    display:block;
+    display: block;
    float: left;
-   font-size:.9em;
-    font-family:Helvetica, Arial,sans-serif;
+   font-size: .9em;
+    font-family: Helvetica, Arial,sans-serif;
 }
+
+.subheader01 {
+    display: block;
+    font-family: Lowvetica, Helvetica, sans-serif;
+    font-size: 1.1em;
+    background-color: #258EA6;
+    color:#fff;
+    padding: 10px 10px 7px 15px;
+    margin: 0 0 10px 0;
+}
+
+.whatsnew {
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size:.9em;
+    color: #011936;
+
+    div.newstuff {
+        display: inline-block;
+        margin: 5px 0 0 0;
+
+        span.hed {
+            display: inline-block;
+            font-weight:500;
+            font-size:1.4em;
+        }
+
+        img {
+            display: inline-block;
+        }
+
+      em {
+          display:block;
+          text-align:right;
+          width: 100%;
+          margin-top: 5px;
+          margin-bottom: 10px;
+      }
+
+
+      div.stuffstuff {
+          display: block;
+          margin: 5px 0 0 0;
+          font-size:1.1em;
+      }
+    }
+}
+
+.linkage {
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size:1em;
+    font-style: oblique;
+    font-weight: 100;
+    color:#303030;
+
+    a {
+        color: #1A936F;
+    }
+
+    a:hover {
+        color: #011936;
+    }
+
+
+    div {
+        vertical-align:top;
+        margin: 0 0 0 0;
+        color: #011936;
+        width: 100%;
+    }
+}
+
+.whatsnewimage {
+    display: inline-block;
+    font-size: .9em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    -moz-box-shadow: 3px 3px 4px #333;
+    -webkit-box-shadow: 3px 3px 4px #333;
+    box-shadow: 3px 3px 4px #333;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+    border: 1px solid #258EA6;
+    margin: 0 14px 14px 0;
+}
+
+footer {
+    text-align:center;
+    background-color:#999999;
+    color:#e3e3ee;
+    font-size:.8em;
+    font-family:Arial,sans-serif;
+}
+
