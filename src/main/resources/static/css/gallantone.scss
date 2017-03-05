@@ -101,7 +101,8 @@ div {
     color: #ffffff;
     z-index: 0;
     margin: auto auto 35px auto;
-    overflow: hidden; }
+    overflow: hidden;
+}
 
 #ggscreen3 {
     height: 150%;
@@ -238,10 +239,12 @@ label#email_label.control-label {
     width: 100%;
 }
 
-.formgroup .inlabel .label {
+.formgroup .label {
     font-family: Tahoma, Arial, sans-serif;
     font-size: 1.0em;
-    color: #f3e3a3; }
+    color: #f3e3a3;
+}
+
 
 .inlabel {
     display: inline-block;
@@ -517,6 +520,7 @@ input.formy {
     font-family: Helvetica, Arial, sans-serif;
     font-size:.9em;
     color: #011936;
+    margin-bottom:15px;
 
     div.newstuff {
         display: inline-block;
@@ -596,3 +600,163 @@ footer {
     font-family:Arial,sans-serif;
 }
 
+#mobilehide01 {
+    display: block;
+}
+
+#mobilehide02 {
+    display: block;
+}
+
+@media screen and (max-width:480px) {
+
+    html h1, body h1 {
+        font-family: Arvil, sans-serif;
+        font-size: 2.4em;
+        font-weight: normal;
+        letter-spacing: .06em;
+        /*color: #ffffbb;*/
+        color: #306063;
+        width: 100%;
+    }
+
+    html h3, body h3 {
+        font-family: Arvil,sans-serif;
+        font-size: 1.45em;
+        font-weight: normal;
+        letter-spacing: .064em;
+        color: #08907e;
+        margin: 0 0 0 0;
+        width: 100%;
+    }
+
+    #textHeader {
+        margin-top: 100px;
+        padding:10px 10px 10px 10px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+        text-align: center;
+        font-family: Arvil, Arial, sans-serif;
+    }
+
+    #fixed_logo {
+        display: block;
+        z-index: 100;
+        margin-top: 15px;
+        text-align:left;
+    }
+
+    .fixed_menu {
+        text-align:right;
+        margin-top: 15px;
+        z-index: 100;
+        display: inline-block;
+        font-size: 0.8em;
+        font-family: Arial, sans-serif;
+
+        a {
+            font-weight: bold;
+            text-decoration: none;
+            color: #013933;
+        }
+
+        a:hover {
+            color: #011936;
+        }
+
+        a:visited {
+            color: #012933;
+        }
+    }
+
+    .narrows {
+        display:block;
+        width: 90%;
+        margin: 0 auto 0 auto;
+    }
+
+    .whatsnewimage {
+        display:block;
+    }
+
+    .icon_vert {
+        margin-bottom:10px;
+        p {
+            font-size:.7em;
+        }
+    }
+
+    .icon_vert_2 {
+        margin-bottom:10px;
+        p {
+            font-size:.7em;
+        }
+    }
+
+    #ggscreen1 {
+        height: 110%;
+    }
+    #ggscreen2 {
+        height: 130%;
+    }
+
+    #contactFormGroup {
+        max-width: 90%;
+        h1 {
+            font-size: 2.2em;
+            color: #33333f;
+            padding-top: 15px;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+           font-size: 1em;
+        }
+    }
+
+
+    /* Form Styles */
+    input.formy {
+        display: block;
+        height: 34px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 6px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        font-family: Trebuchet, Tahoma, Arial, sans-serif;
+        font-size: 1.15em;
+
+    }
+
+    .form-control {
+        width: 90%;
+    }
+
+    .textformy {
+        min-width: 100%;
+        padding: 7px;
+        border-radius: 6px;
+        font-family: Trebuchet, Tahoma, Arial, sans-serif;
+        font-size: 1.15em;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .subheader02 {
+        font-family: Lowvetica, Helvetica, Arial, sans-serif;
+        font-size: 1.3em;
+        color: #E4DACF;
+        font-weight: 100;
+        letter-spacing:.1em;
+        margin: 14px 10px 14px 5px;
+        padding: 4px 0 0 0;
+    }
+
+    #mobilehide01 {
+        display: none;
+    }
+
+    #mobilehide02 {
+        display: none;
+    }
+}
