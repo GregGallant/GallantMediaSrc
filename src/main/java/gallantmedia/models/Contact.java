@@ -25,7 +25,7 @@ public class Contact implements Serializable
 
    @Id
    @Column(name="id")
-   @GeneratedValue(strategy= GenerationType.AUTO)
+   @GeneratedValue(strategy= GenerationType.IDENTITY)
    private int id;
 
    @NotNull
@@ -53,6 +53,10 @@ public class Contact implements Serializable
    @Column(name="company")
    @Size(min=1,max=250)
    private String company;
+
+   @Column(name="phone")
+   @Size(min=7,max=9)
+   private String phone;
 
    @NotNull
    @Size(min=4,max=2500)
@@ -108,6 +112,9 @@ public class Contact implements Serializable
                case("description"):
                    this.setDescription(cval);
                    break;
+               case("phone"):
+                   this.setPhone(cval);
+                   break;
                case("website"):
                    this.setWebsite(cval);
                    break;
@@ -131,10 +138,10 @@ public class Contact implements Serializable
         }
 
         return contactReturn;
-   }
+    }
 
-   public Contact buildContactReflexive(Set cs)
-   {
+    public Contact buildContactReflexive(Set cs)
+    {
        String key;
        String[] value;
 
@@ -210,72 +217,64 @@ public class Contact implements Serializable
 
        }
         return this;
-   }
+    }
 
-   public int getId() {
-      return id;
-   }
+    public int getId() {
+                             return id;
+                                       }
 
-   public void setId(int id) {
-      this.id = id;
-   }
+    public void setId(int id) {
+                                    this.id = id;
+                                                 }
 
-   public String getDescription() {
-      return description;
-   }
+    public String getDescription() {
+                                         return description;
+                                                            }
+    public void setDescription(String description) {
+                                                         this.description = description;
+                                                                                        }
 
-   public void setDescription(String description) {
-      this.description = description;
-   }
+    public Date getCreated() {
+                                   return created;
+                                                  }
+    public void setCreated(Date created) {
+                                               this.created = created;
+                                                                      }
 
-   public Date getCreated() {
-      return created;
-   }
+    public Date getUpdated() {
+                                   return updated;
+                                                  }
+    public void setUpdated(Date updated) { this.updated = updated; }
 
-   public void setCreated(Date created) {
-      this.created = created;
-   }
-
-   public Date getUpdated() {
-      return updated;
-   }
-
-   public void setUpdated(Date updated) { this.updated = updated; }
-
-   public String getEmail() {
-       return email;
-   }
-
-   public void setEmail(String email) {
-       this.email = email;
-   }
+    public String getEmail() {
+                                   return email;
+                                                }
+    public void setEmail(String email) {
+                                             this.email = email;
+                                                                }
 
     public String getLastname() {
-        return lastname;
-    }
-
+                                      return lastname;
+                                                      }
     public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
+                                                   this.lastname = lastname;
+                                                                            }
 
     public String getWebsite() {
-        return website;
-    }
-
+                                     return website;
+                                                    }
     public void setWebsite(String website) {
-        this.website = website;
-    }
+                                                 this.website = website;
+                                                                        }
 
     public String getCompany() { return company; }
-
     public void setCompany(String company) { this.company = company; }
 
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
-    public String getFirstname() {
-        return firstname;
-    }
+    public String getFirstname() { return firstname; }
+    public void setFirstname(String firstname) { this.firstname = firstname; }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+
 }

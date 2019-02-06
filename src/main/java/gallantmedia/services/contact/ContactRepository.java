@@ -10,7 +10,7 @@ public interface ContactRepository extends CrudRepository<Contact, Long>
 {
     List<Contact> findAll();
 
-    @Query(value="SELECT c.email FROM Contact c WHERE c.id = 1")
+    @Query(value="SELECT c.email FROM Contact c WHERE c.id = 22")
     public String findName();
 
 }

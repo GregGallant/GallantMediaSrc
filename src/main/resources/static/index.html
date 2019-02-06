@@ -71,6 +71,7 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allnight">
             <div class="textHeader">
                 <h1>Reliable Engineering &amp; Design</h1>
+                <h3>For those who appreciate such things...</h3>
             </div>
         </div>
     </div>
@@ -92,11 +93,11 @@
             <p>Refactor your code and organize your data with minimal headaches and zero breakage.</p>
         </div>
     </div>
-    <form id="contactForm">
-    <div class="row no-gutter contactimg">
-        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+    <div id="contactFormGroup" class="row no-gutter contactimg">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <h2 id="contactHeader">Get a quote for your project</h2></div>
+        <div  class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 
-            <h2 style="margin-left:28px;">Get a quote for your project</h2>
+            <form id="contactForm">
 
             <!-- Email -->
             <div id="email-group" class="form-group">
@@ -137,29 +138,33 @@
 
         </div>
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-            <h2>&nbsp;</h2>
-
             <!-- Website Group -->
+            <div id="website-group" class="form-group">
+                <label for="website" class="control-label"></label>
+                <input class="form-control formwide" id="website" name="website" type="text" value="" placeholder="Website URL or Domain Lookup" />
+                <div class="validation-rt" id="website_issue"></div>
+            </div>
+
+            <!-- Company Group -->
             <div id="company-group" class="form-group">
                 <label for="company" class="control-label"></label>
-                <input class="form-control formwide" id="company" name="company" type="text" value="" placeholder="Website or Company Name" />
-                <div class="validation" id="company_issue"></div>
+                <input class="form-control formwide" id="company" name="company" type="text" value="" placeholder="Company Name" />
+                <div class="validation-rt" id="company_issue"></div>
             </div>
 
             <!-- Description -->
                 <label class="control-label" for="description"></label>
                 <textarea class="form-control textformy" cols="140" rows="8" id="description" name="description"  placeholder="Describe your Project..."></textarea>
-                <div class="validation" id="description_issue"></div>
+                <div class="validation-rt" id="description_issue"></div>
 
             <div class="contactSubmitRow">
                 <Button id="submitButton" class="contactSubmit btn btn-large" type="submit" value="Submit Request"> Submit Project Request </Button>
             </div>
+            </form>
         </div>
     </div>
-    </form>
-    <div id="ggscreen2" class="row no-gutter centered">
+    <div id="ggscreen2" class="row no-gutter centered blahdiv">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <!-- Hed -->
             <div class="textHeader">
                 <h3>KEEPING THE DIGITAL WORLD INNOVATIVE AND VISUALLY REMARKABLE</h3>
                 <h5>Your design should be better... and <strong>Brighter!</strong></h5>
@@ -206,7 +211,7 @@
                 <div class="fhead">Programming, Design & Photography</div>
                 <div class="fname">Greg Gallant </div>
                 <div class="femail">ggallant2017@gmail.com </div>
-                <div class="femail">Powered by: <a style="font-family:Arial,Helvetica,sans-serif; color:#ffff4f;" href="https://symfony.com">Symfony 4</a> </div>
+                <div class="femail">Powered by: <a style="font-family:Arial,Helvetica,sans-serif; color:#ffff4f;" href="https://spring.io">Spring Boot 2.1.2</a> </div>
             </div>
         </div>
     </div>

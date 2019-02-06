@@ -18,10 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.*;
 
 /**
@@ -92,16 +92,15 @@ public class IndexController
      */
     private Contact setTimestamps(Contact contact)
     {
-        ZoneId zid = ZoneId.of("America/New_York");
-        ZonedDateTime timenow = ZonedDateTime.now(zid);
-
-        String date = timenow.toString();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"); // your template here
         Date sqlnow;
         java.util.Date dateStr = null;
+        Instant instant = Instant.now();
+        Timestamp timestamp = Timestamp.from(instant);
+        SimpleDateFormat sformatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
 
         try {
-            dateStr = formatter.parse(date);
+            dateStr = sformatter.parse(timestamp.toString());
         } catch(ParseException pe) {
             System.out.println("ParseException: " + pe.toString());
         } catch(Exception e) {

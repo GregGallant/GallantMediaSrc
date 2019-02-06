@@ -65,7 +65,7 @@
     });
 
 
-    // lastname
+    // Company
     $('#company').on('focusout', function(event) {
 
         let company = $('#company').val();
@@ -79,15 +79,35 @@
 
     });
 
+    // Website
+    $('#website').on('focusout', function(event) {
+
+        let website = $('#website').val();
+
+        if (website.length > 4) {
+            $('div#website-group').attr("class", "form-group inlabel has-success");
+            $('div#website_issue').html("");
+        }  else {
+            $('div#website-group').addClass('has-warning');
+        }
+
+    });
+
+    // Phone
+    $('#phone').on('focusout', function(event) {
+        let phone = $('#phone').val();
+    });
+
         //$.fn.submitContact = function() {
     $('#submitButton').on('click', function(event) {
         event.preventDefault();
-        console.log("Ajax post call goes here...");
+        //console.log("Ajax post call goes here...");
 
         let firstname = $('#firstname').val();
         let lastname = $('#lastname').val();
         let email = $('#email').val();
         let description = $('#description').val();
+        let phone = $('#phone').val();
         let company = $('#company').val();
         let website = $('#website').val();
 
@@ -97,6 +117,7 @@
             email: email,
             description: description,
             company: company,
+            phone: phone,
             website: website
         };
 
@@ -120,7 +141,7 @@
                 } else {
                     // SUCCESS
                     $("#contactFormGroup").html("<h1>Thank you for your interest and your time!  </h1>").show();
-                    $("#contactFormGroup").append("We will contact you in 1-5 days. GallantOne.com will do our best to help bring your ideas to life.");
+                    $("#contactFormGroup").append("<h3>We will contact you in 1-5 days. GallantOne.com will do our best to help bring your ideas to life.</h3>");
                 }
             });
 
