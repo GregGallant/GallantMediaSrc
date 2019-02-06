@@ -44,8 +44,15 @@ public class Contact implements Serializable
    @Column(name="lastname")
    private String lastname;
 
+   @NotNull
    @Column(name="website")
+   @Size(min=1,max=250)
    private String website;
+
+   @NotNull
+   @Column(name="company")
+   @Size(min=1,max=250)
+   private String company;
 
    @NotNull
    @Size(min=4,max=2500)
@@ -101,8 +108,11 @@ public class Contact implements Serializable
                case("description"):
                    this.setDescription(cval);
                    break;
-               case("company"):
+               case("website"):
                    this.setWebsite(cval);
+                   break;
+               case("company"):
+                   this.setCompany(cval);
                    break;
            }
        }
@@ -255,6 +265,11 @@ public class Contact implements Serializable
     public void setWebsite(String website) {
         this.website = website;
     }
+
+    public String getCompany() { return company; }
+
+    public void setCompany(String company) { this.company = company; }
+
 
     public String getFirstname() {
         return firstname;

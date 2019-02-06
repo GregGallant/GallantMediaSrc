@@ -45,7 +45,7 @@
             $('div#firstname-group').attr("class", "form-group inlabel has-success");
             $('div#firstname_issue').html("");
         }  else {
-            $('div#firstname-group').addClass('has-warning');
+            $('div#firstname_issue').addClass('has-warning');
         }
 
     });
@@ -56,10 +56,25 @@
         let lastname = $('#lastname').val();
 
         if (lastname.length > 4) {
-            $('div#lastname-group').attr("class", "col-sm-6 form-group inlabel has-success");
+            $('div#lastname-group').attr("class", "form-group inlabel has-success");
             $('div#lastname_issue').html("");
         }  else {
             $('div#lastname-group').addClass('has-warning');
+        }
+
+    });
+
+
+    // lastname
+    $('#company').on('focusout', function(event) {
+
+        let company = $('#company').val();
+
+        if (company.length > 4) {
+            $('div#company-group').attr("class", "form-group inlabel has-success");
+            $('div#company_issue').html("");
+        }  else {
+            $('div#company-group').addClass('has-warning');
         }
 
     });
@@ -74,13 +89,15 @@
         let email = $('#email').val();
         let description = $('#description').val();
         let company = $('#company').val();
+        let website = $('#website').val();
 
         let contact_form_data = {
             firstname: firstname,
             lastname: lastname,
             email: email,
             description: description,
-            company: company
+            company: company,
+            website: website
         };
 
         let fromjava = $.post(

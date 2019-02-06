@@ -36,27 +36,35 @@ body {
   margin: 5px 0 5px 0;
 }
 
-#textHeader {
+.textHeader {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   font-family: Arvil, Arial, sans-serif;
 }
-#textHeader h1 {
+.textHeader h1 {
   font-family: Arvil, sans-serif;
-  font-size: 6.2em;
+  font-size: 1.8em;
   font-weight: normal;
   letter-spacing: 0.08em;
   /*color: #ffffbb;*/
   color: #306063;
   margin: 0 0 10px 0;
 }
-#textHeader h3 {
+.textHeader h3 {
   font-family: Arvil, sans-serif;
-  font-size: 2.85em;
+  font-size: 1.25em;
   font-weight: normal;
   letter-spacing: 0.084em;
   color: #08907e;
+  margin: 0 0 0 0;
+}
+.textHeader h5 {
+  font-family: Arvil, sans-serif;
+  font-size: 0.75em;
+  font-weight: normal;
+  letter-spacing: 0.084em;
+  color: #08403e;
   margin: 0 0 0 0;
 }
 
@@ -261,6 +269,10 @@ form button.btn-right {
   float: right;
 }
 
+.contactimg {
+  background: url("../images/photo_central.jpg") 100% 100% no-repeat;
+}
+
 .contactSubmitRow {
   margin: 0 0 20px 0;
   text-align: right;
@@ -277,14 +289,14 @@ form button.btn-right {
 input.formy {
   display: block;
   width: 360px;
-  height: 34px;
+  height: 44px;
   padding: 0 5px 0 5px;
-  border-radius: 6px;
+  border-radius: 4px;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
 }
 
 .formwide {
-  width: 500px;
+  width: 100%;
 }
 
 .textformy {
@@ -298,7 +310,37 @@ input.formy {
 }
 
 .validation {
-  max-height: 30px;
+  position: relative;
+  display: inline;
+  left: 350px;
+  bottom: 50px;
+  min-width: 0px;
+  padding: 11px 11px 11px 11px;
+  font-size: 1.3em;
+  font-weight: normal;
+  text-align: right;
+  background-color: #ffecbf;
+  border: 1px solid #c3a190;
+  border-radius: 3px;
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.validation-rt {
+  position: relative;
+  display: inline;
+  bottom: 50px;
+  min-width: 0;
+  padding: 11px 11px 11px 11px;
+  font-size: 1.3em;
+  font-weight: normal;
+  text-align: right;
+  background-color: #ffecbf;
+  border: 1px solid #c3a190;
+  border-radius: 3px;
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  float: right;
 }
 
 .has-warning {
