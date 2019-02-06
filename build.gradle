@@ -8,7 +8,7 @@ plugins {
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.3.0'
+	version = '0.3.1'
 	archiveName = "gallantmedia-${version}.war"
 	enabled = true
 }
@@ -31,13 +31,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-test'
 
-	compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.3'
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
 	compile group: 'org.apache.commons', name: 'commons-digester3', version: '3.2'
 	compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
     compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
-
-    //compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.1.Final'
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
+	compile group: 'org.hibernate', name: 'hibernate-validator', version: '4.2.0.Final'
 	//compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.6.2'
 	//compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.6.2'
     //compile 'javax.servlet:javax.servlet-api:3.1.0'
