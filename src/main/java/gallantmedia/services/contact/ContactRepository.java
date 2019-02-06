@@ -3,7 +3,6 @@ package gallantmedia.services.contact;
 import gallantmedia.models.Contact;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import sun.misc.Signal;
 
 import java.util.List;
 

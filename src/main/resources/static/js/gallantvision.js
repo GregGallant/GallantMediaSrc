@@ -1,5 +1,5 @@
 /*
- Plugin: Auto-motion Parallax for PrivCo Mobile (jquery 3.x compat)
+ Plugin: Auto-motion Parallax for Gallantmedia (jquery 3.x compat)
  Version 1.0
  */
 (function ($) {

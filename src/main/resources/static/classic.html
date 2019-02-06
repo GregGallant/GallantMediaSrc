@@ -1,0 +1,205 @@
+<!doctype html>
+<head>
+    <title>Gallantmedia Source</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="./css/gallantone.css" />
+    <link type="text/css" rel="stylesheet" href="./css/bootstrap.css" />
+
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/gallantvision.js"></script>
+    <link rel="SHORTCUT ICON" HREF="icons/favicon.ico">
+    <!-- Vue Core library -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.fn.parallax(['#ggscreen1', '#ggscreen2']);
+        })
+    </script>
+</head>
+<body>
+<div><img src="./images/photo_wbgg.jpg" id="center_image" /></div>
+<header id="fixed_header">
+
+    <div class="container-fluid narrows">
+        <div class="row">
+            <div class="col-sm-3 " id="fixed_logo">
+                <img width="175px" height="24px" src="./images/gallantone_logo_175w.png" />
+            </div>
+            <div class="col-sm-3 fixed_menu">
+                <a href="contact/#homescreen">Home</a>
+            </div>
+            <div class="col-sm-3 fixed_menu">
+                <a href="#requestaproject">Request a Project</a>
+            </div>
+            <div class="col-sm-3 fixed_menu">
+                <a target="linkedin" href="http://www.linkedin.com/in/greggallant">Linked-In</a>
+            </div>
+                </span>
+            </div>
+    </div>
+</header>
+<a name="homescreen" />
+<div id="ggscreen1" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Hed -->
+            <div id="textHeader">
+                <h1>RELIABLE ENGINEERING &amp; DESIGN</h1>
+                <h3>KEEPING THE DIGITAL WORLD INNOVATIVE AND VISUALLY REMARKABLE</h3>
+            </div>
+        </div>
+            <!-- Body -->
+        <div class="narrows">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="subheader01">What's Happening</div>
+                    <div class="whatsnew">
+                        <div class="newstuff">
+                            <img align="left" class="whatsnewimage" src="images/features/gnyc-preview.jpg" />
+                            <span class="hed">Greg Gallant Photography website</span>
+                        <em>Tools: Spring Boot, Gradle, Vue.js</em>
+                        <div class="stuffstuff">10 plus years of New York City photography. Stay tuned.</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="subheader01">Exquisite Linkage</div>
+                    <div class="linkage">
+                        <a target="new01" href="http://coolors.co">coolors.co</a> - Translate color schemes within a beautifully designed site.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ggscreen2" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 center-block">
+            <div class="subheader02">Technologies</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 center-block" id="textContent">
+            <div class="row center-block">
+                <div class="col-sm-12">
+                    <div class="icon_vert">
+                        <img src="icons/spring.png" align="left"/>
+                        <p>Web and mobile apps built around the verbose, but solid, type-safe, architecture of Java Spring are the best suited
+                            for getting the job down with minimal maintenance, this site being one of those built around the Spring / JPA Hibernate architecture.  Gradle and Spring Boot allows for
+                            quick scaffolding and deployments.  Fully developed Android apps compliment a solid web presence.</p>
+                    </div>
+                    <div class="icon_vert">
+                        <img src="icons/laravel.png" align="left"/>
+                        <p> PHP builds companies, its loose structure is sometimes derided, but this remains PHP's major strength when
+                            it comes to technological idea building.
+                            PHP when used properly can get a small business up and running with incredibly fast turnarounds.
+                            With composer builds and PHP 7's speed-centric focus, the Laravel framework has risen above some of the
+                            other professionally used frameworks.  With a Symphony backbone, Laravel allows for quick deployments and very
+                            fast updating on enterprise levels.
+                        </p>
+                    </div>
+                    <div class="icon_vert" id="mobilehide01">
+                        <img src="icons/javascript.png" align="left"/>
+                        <p> PHP builds companies, its loose structure is sometimes derided, but this remains PHP's major strength when
+                            it comes to technological idea building.
+                            PHP when used properly can get a small business up and running with incredibly fast turnarounds.
+                            With composer builds and PHP 7's speed-centric focus, the Laravel framework has risen above some of the
+                            other professionally used frameworks.  With a Symphony backbone, Laravel allows for quick deployments and very
+                            fast updating on enterprise levels.
+                        </p>
+                    </div>
+                    <div class="icon_vert_2" id="mobilehide02">
+                        <img src="icons/python.png" align="left"/>
+                        <p>
+                            Python and SqlAlchemy make for great AWS scripting and parsing, deployment scripts and pretty much everything
+                            else you need done behind the scenes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a name="requestaproject"/>
+<div id="ggscreen3" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div id="contactFormGroup">
+                <form id="contactForm">
+                   <div class="container-fluid">
+                       <div class="row">
+                           <div class="col-sm-12">
+                               <!-- Contact Form -->
+                               <h1>Request a Project</h1>
+                               <h3>
+                                   <div>
+                                       Have a project or an idea?
+                                   </div>
+                                   <div>
+                                       Send a brief description of the services you or your business needs.
+                                   </div>
+                               </h3>
+                           </div>
+                            <!-- Email -->
+                            <div id="email-group" class="col-sm-12 form-group">
+                                <label class="control-label" for="email" id="email_label">Email</label>
+                                <input class="form-control formy" id="email" name="email" type="text" value="" />
+                                <div class="validation" id="email_issue"></div>
+                            </div>
+
+                            <!-- Description -->
+                            <div id="description-group" class="col-sm-12 form-group formgroup">
+                                <label class="control-label" for="description">Describe Your Project</label>
+                                <textarea class="form-control textformy" id="description" name="description"  rows="6"></textarea>
+                                <div class="validation" id="description_issue"></div>
+                            </div>
+
+                            <!-- First / Last Name -->
+                            <div id="firstname-group" class="col-sm-6 form-group">
+                                <label class="control-label" for="firstname">First Name</label>
+                                <input class="form-control formy" id="firstname" name="firstname" type="text" value="" />
+                                <div class="validation" id="firstname_issue"></div>
+                            </div>
+                            <div id="lastname-group" class="col-sm-6 form-group">
+                                <label class="control-label" for="lastname">Last Name</label>
+                                <input class="form-control formy" id="lastname" name="lastname" type="text" value="" />
+                                <div class="validation" id="lastname_issue"></div>
+                            </div>
+
+                            <!-- Company -->
+                            <div id="company-group" class="col-sm-12 form-group formgroup">
+                                <label class="control-label">Website URL or Company Name</label>
+                                <input class="form-control formy" id="company" name="company" type="text" value="" />
+                                <div class="validation" id="company_issue"></div>
+                            </div>
+
+                            <div class="col-sm-12 form-group formgroup">
+                                <!--
+                                <div class="form_error">
+                                    @if (!is_null($errors->first('captcha')))
+                                    Invalid captcha
+                                    @endif
+                                </div>
+                                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                {!! app('captcha')->display(); !!}
+                                -->
+                            </div>
+                            <div class="col-sm-12 formsubmit">
+                                <button id="submitButton" class="formbutton btn btn-primary"><span>Submit</span></button>
+                            </div>
+                       </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    GallantOne.com - Copyright 2017 Greg A. Gallant - greg@gallantone.com - Github: http://www.github.com/GregGallant
+</footer>
+<!-- Main -->
+<script type="text/javascript" src="./js/contact.js"></script>
+</body>
+</html>

@@ -37,6 +37,12 @@ public class IndexController
     @Autowired
     private ContactRepository contactRepository;
 
+    @RequestMapping(value="/contact", method = RequestMethod.GET)
+    public String contactInit(HttpServletRequest request) {
+        return ("{error: jsp}");
+    }
+
+
     @RequestMapping(value="/contact", method = RequestMethod.POST)
     public String contactForm(HttpServletRequest request, @Valid @ModelAttribute Contact contact, BindingResult bindingResult)
     {

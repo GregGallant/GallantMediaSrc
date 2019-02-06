@@ -1,11 +1,9 @@
 /*
- Plugin: Auto-motion Parallax for PrivCo Mobile (jquery 3.x compat)
+ Plugin: Beautiful forms
  Version 1.0
  */
-
     const $window = $(window);
     let windowHeight = $window.height();
-
 
     // Email address Pre-Validation
     $('#email').on('focusout', function(event)
