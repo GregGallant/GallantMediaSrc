@@ -61,7 +61,6 @@ body {
 
 
 #textHeader {
-    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -146,6 +145,16 @@ body {
     border:1px solid #939393;
 }
 
+.subheader01 {
+    display: block;
+    font-family: Lowvetica, Helvetica, sans-serif;
+    font-size: 1.1em;
+    background-color: #258EA6;
+    color:#fff;
+    padding: 10px 10px 7px 15px;
+    margin: 0 0 10px 0;
+}
+
 .subheader02 {
     font-family: Lowvetica, Helvetica, Arial, sans-serif;
     font-size: 2.3em;
@@ -202,14 +211,8 @@ body {
     font-family: Helvetica, Arial,sans-serif;
 }
 
-.subheader01 {
-    display: block;
-    font-family: Lowvetica, Helvetica, sans-serif;
-    font-size: 1.1em;
-    background-color: #258EA6;
-    color:#fff;
-    padding: 10px 10px 7px 15px;
-    margin: 0 0 10px 0;
+div.whatsup {
+    margin: 0 0 15px 0;
 }
 
 .whatsnew {
@@ -221,7 +224,7 @@ body {
 
     div.newstuff {
         display: inline-block;
-        margin: 5px 0 0 0;
+        margin: 5px 0 10px 0;
 
         span.hed {
             display: inline-block;
@@ -305,6 +308,55 @@ form {
     }
 }
 
+// Contact Submission form elements ////
+.contactSubmitRow {
+    margin: 0 0 20px 0;
+    text-align:right;
+}
+
+.contactSubmit {
+    background-color:#1f3f83;
+    color:#ffffff;
+    font-size:1.4em;
+    font-weight:normal;
+    width:100%;
+}
+
+input.formy {
+    display: block;
+    width: 360px;
+    height: 34px;
+    padding: 0 5px 0 5px;
+    border-radius: 6px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.formwide {
+    width: 500px;
+}
+
+.textformy {
+    padding: 7px;
+    border-radius: 6px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.form-group {
+    max-height:40px;
+}
+
+.validation {
+    max-height:30px;
+}
+
+.has-warning {
+    color:#ff5333;
+}
+
+.has-success {
+    color:#1A936F;
+}
+
 .ficons {
     font-size: 60px;
     margin: 0 0 10px 0;
@@ -359,10 +411,8 @@ header {
       &.burgerhead {
           position:relative;
           margin-top:30px;
-          padding:5px 0 0 0;
+          padding:20px 20px 0 0;
           float:right;
-          clear:both;
-          text-align:right;
 
           ul#burgermenu {
               position:inherit;
@@ -379,8 +429,8 @@ header {
               background-color: $body-back;
               padding: 0 0 0 0;
               img {
-                  width:30px;
-                  height:22px;
+                  width:24px;
+                  height:18px;
               }
           }
       }
@@ -687,9 +737,6 @@ p {
               display:none;
           }
 
-          &.logohead {
-              padding:45px 0 2px 9px;
-          }
         }
 
     }
@@ -761,6 +808,15 @@ p {
     }
 }
 
+@media screen and (min-width: 800px) and (max-width: 1300px) {
+    header {
+        div {
+            &.logohead {
+                padding:45px 0 2px 20px;
+            }
+        }
+    }
+}
 
 @media screen and (min-width:501px) and (max-width: 800px) {
 

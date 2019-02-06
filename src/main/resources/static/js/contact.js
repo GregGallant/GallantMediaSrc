@@ -16,7 +16,7 @@
             $('div#email-group').addClass('has-warning');
         } else {
             $('#email-group').removeClass("has-warning");
-            $('#email-group').attr("class", "col-sm-12 form-group has-success");
+            $('#email-group').attr("class", "form-group has-success");
             $('div#email_issue').html("");
         }
 
@@ -28,7 +28,7 @@
         let description = $('#description').val();
 
         if (description.length > 4) {
-            $('div#description-group').attr("class", "col-sm-12 form-group formgroup has-success");
+            $('div#description-group').attr("class", "form-group has-success");
             $('div#description_issue').html("");
         }  else {
             $('div#description-group').addClass('has-warning');
@@ -42,7 +42,7 @@
         let firstname = $('#firstname').val();
 
         if (firstname.length > 4) {
-            $('div#firstname-group').attr("class", "col-sm-6 form-group inlabel has-success");
+            $('div#firstname-group').attr("class", "form-group inlabel has-success");
             $('div#firstname_issue').html("");
         }  else {
             $('div#firstname-group').addClass('has-warning');

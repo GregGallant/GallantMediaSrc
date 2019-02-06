@@ -37,7 +37,6 @@ body {
 }
 
 #textHeader {
-  margin-top: 100px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -115,6 +114,16 @@ body {
   border: 1px solid #939393;
 }
 
+.subheader01 {
+  display: block;
+  font-family: Lowvetica, Helvetica, sans-serif;
+  font-size: 1.1em;
+  background-color: #258EA6;
+  color: #fff;
+  padding: 10px 10px 7px 15px;
+  margin: 0 0 10px 0;
+}
+
 .subheader02 {
   font-family: Lowvetica, Helvetica, Arial, sans-serif;
   font-size: 2.3em;
@@ -169,14 +178,8 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.subheader01 {
-  display: block;
-  font-family: Lowvetica, Helvetica, sans-serif;
-  font-size: 1.1em;
-  background-color: #258EA6;
-  color: #fff;
-  padding: 10px 10px 7px 15px;
-  margin: 0 0 10px 0;
+div.whatsup {
+  margin: 0 0 15px 0;
 }
 
 .whatsnew {
@@ -188,7 +191,7 @@ body {
 }
 .whatsnew div.newstuff {
   display: inline-block;
-  margin: 5px 0 0 0;
+  margin: 5px 0 10px 0;
 }
 .whatsnew div.newstuff span.hed {
   display: inline-block;
@@ -258,6 +261,54 @@ form button.btn-right {
   float: right;
 }
 
+.contactSubmitRow {
+  margin: 0 0 20px 0;
+  text-align: right;
+}
+
+.contactSubmit {
+  background-color: #1f3f83;
+  color: #ffffff;
+  font-size: 1.4em;
+  font-weight: normal;
+  width: 100%;
+}
+
+input.formy {
+  display: block;
+  width: 360px;
+  height: 34px;
+  padding: 0 5px 0 5px;
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.formwide {
+  width: 500px;
+}
+
+.textformy {
+  padding: 7px;
+  border-radius: 6px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.form-group {
+  max-height: 40px;
+}
+
+.validation {
+  max-height: 30px;
+}
+
+.has-warning {
+  color: #ff5333;
+}
+
+.has-success {
+  color: #1A936F;
+}
+
 .ficons {
   font-size: 60px;
   margin: 0 0 10px 0;
@@ -304,10 +355,8 @@ header div.menuhead ul li a:visited {
 header div.burgerhead {
   position: relative;
   margin-top: 30px;
-  padding: 5px 0 0 0;
+  padding: 20px 20px 0 0;
   float: right;
-  clear: both;
-  text-align: right;
 }
 header div.burgerhead ul#burgermenu {
   position: inherit;
@@ -324,8 +373,8 @@ header div.burgerhead button {
   padding: 0 0 0 0;
 }
 header div.burgerhead button img {
-  width: 30px;
-  height: 22px;
+  width: 24px;
+  height: 18px;
 }
 header div.dropdown-menu {
   background: none;
@@ -569,9 +618,6 @@ p {
   header div.burgerhead {
     display: none;
   }
-  header div.logohead {
-    padding: 45px 0 2px 9px;
-  }
 
   div.hed {
     width: 100%;
@@ -626,6 +672,11 @@ p {
     font-family: Anton, sans-serif;
     font-size: 1.3em;
     line-height: 24px;
+  }
+}
+@media screen and (min-width: 800px) and (max-width: 1300px) {
+  header div.logohead {
+    padding: 45px 0 2px 20px;
   }
 }
 @media screen and (min-width: 501px) and (max-width: 800px) {

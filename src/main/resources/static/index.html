@@ -6,11 +6,11 @@
 
     <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="./js/popper.min.js"></script>
-    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/gallantvision.js"></script>
 
 <!--    <link type="text/css" rel="stylesheet" href="./css/gallantone.css" /> -->
-    <link type="text/css" rel="stylesheet" href="./css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
     <link type="text/css" rel="stylesheet" href="./css/gm.css" />
 
     <link rel="icon" HREF="icons/favicon.ico" size="16x16">
@@ -51,7 +51,6 @@
         </div>
     </div>
 </header>
-<a name="homescreen" />
 <div id="ggscreen1" class="container-fluid">
     <div class="row no-gutter">
         <div class="col-lg-12 col-md-12 col-sm-12 hed">
@@ -69,7 +68,12 @@
         </div>
     </div>
     <div class="row no-gutter centered verbox">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allnight">Your design should be better... and <strong>Brighter!</strong></div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 allnight">
+            <div id="textHeader">
+                <h1>Reliable Engineering &amp; Design</h1>
+                <h3>KEEPING THE DIGITAL WORLD INNOVATIVE AND VISUALLY REMARKABLE</h3>
+            </div>
+        </div>
     </div>
     <div class="row no-gutter centered verbox">
 
@@ -93,134 +97,91 @@
         <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 
             <h2 style="margin-left:28px;">Get a quote for your project</h2>
-                <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" value="" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
 
-                <label for="inputFname" class="sr-only">First Name</label>
-                <input type="fname" value="" name="fname" id="inputFname" class="form-control" placeholder="First Name" required >
+            <!-- Email -->
+            <div id="email-group" class="form-group">
+                <label class="control-label" for="email" id="email_label"></label>
+                <input type="email" value="" name="email" id="email" class="form-control formy" placeholder="Email" autofocus>
+                <div class="validation" id="email_issue"></div>
+            </div>
 
-                <label for="inputLname" class="sr-only">Last Name</label>
-                <input type="lname" value="" name="lname" id="inputLname" class="form-control" placeholder="Last Name" required >
-                <label for="inputPhone" class="sr-only">Phone Number</label>
-                <input type="phone" value="" name="phone" id="inputPhone" class="form-control" placeholder="Phone Number" >
+            <!-- First Name -->
+            <div id="firstname-group" class="form-group">
+                <label class="control-label" for="firstname"></label>
+                <input type="fname" class="form-control formy" id="firstname" name="firstname" type="text" value="" placeholder="First Name" />
+                <div class="validation" id="firstname_issue"></div>
+            </div>
+
+            <!-- Last Name -->
+            <div id="lastname-group" class="form-group">
+                <label class="control-label" for="lastname"></label>
+                <input type="lname" class="form-control formy" id="lastname" name="lastname" type="text" value="" placeholder="Last Name" />
+                <div class="validation" id="lastname_issue"></div>
+            </div>
+
+            <!-- Phone -->
+            <div id="phone-group" class="form-group">
+                <label for="phone" class="control-label"></label>
+                <input type="phone" value="" name="phone" id="phone" class="form-control formy" type="text" placeholder="Phone Number" >
+            </div>
+
+                <!--
+                <div class="form_error">
+                    @if (!is_null($errors->first('captcha')))
+                    Invalid captcha
+                    @endif
+                </div>
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                {!! app('captcha')->display(); !!}
+                -->
+
         </div>
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
             <h2>&nbsp;</h2>
-            <label for="inputWebsite" class="sr-only">Website or Documentation</label>
-            <input type="website" value="" name="website" id="inputWebsite" class="form-control" placeholder="Website" >
-            <label for="inputSummary" class="sr-only">Project Summary</label>
-            <input type="summary" value="" name="summary" id="inputSummary" class="form-control" placeholder="Project Summary" required >
-            <label for="inputDesc" class="sr-only">Project Details</label>
-            <textarea name="projectdesc" class="form-control" id="inputDesc" cols="140" rows="8" placeholder="Project Details"></textarea>
-            <div style="margin: 0 0 20px 0; text-align:right;">
-                <Button class="btn btn-large" style="background-color:#1f3f83; color:#ffffff; font-size:1.4em; font-weight:normal; width:100%;" type="submit" value="Submit Request"> Submit Project Request </Button>
+
+            <!-- Website Group -->
+            <div id="company-group" class="form-group">
+                <label for="company" class="control-label"></label>
+                <input class="form-control formwide" id="company" name="company" type="text" value="" placeholder="Website or Company Name" />
+                <div class="validation" id="company_issue"></div>
+            </div>
+
+            <!-- Description -->
+                <label class="control-label" for="description"></label>
+                <textarea class="form-control textformy" cols="140" rows="8" id="description" name="description"  placeholder="Describe your Project..."></textarea>
+                <div class="validation" id="description_issue"></div>
+
+            <div class="contactSubmitRow">
+                <Button id="submitButton" class="contactSubmit btn btn-large" type="submit" value="Submit Request"> Submit Project Request </Button>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
+    <div id="ggscreen2" class="row no-gutter centered">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <!-- Hed -->
-            <div id="textHeader">
-                <h1>WAR HAS BEEN ENABLED</h1>
-                <h3>KEEPING THE DIGITAL WORLD INNOVATIVE AND VISUALLY REMARKABLE</h3>
+            <div>
+                Your design should be better... and <strong>Brighter!</strong>
             </div>
         </div>
-            <!-- Body -->
-        <div class="narrows">
-            <div class="row">
-                <div class="col-sm-8">
-                    <div class="subheader01">What's Happening</div>
-                    <div class="whatsnew">
-                        <div class="newstuff">
-                            <img align="left" class="whatsnewimage" src="images/features/gnyc-preview.jpg" />
-                            <span class="hed">Greg Gallant Photography website</span>
-                        <em>Tools: Spring Boot, Gradle, Vue.js</em>
-                        <div class="stuffstuff">10 plus years of New York City photography. Stay tuned.</div>
-                        </div>
+        <!-- Body -->
+        <div class="row no-gutter centered whatsup">
+            <div class="col-sm-8">
+                <div class="subheader01">What's Happening</div>
+                <div class="whatsnew">
+                    <div class="newstuff">
+                        <img align="left" class="whatsnewimage" src="images/features/gnyc-preview.jpg" />
+                        <span class="hed">Greg Gallant Photography website</span>
+                    <em>Tools: Spring Boot, Gradle, Vue.js</em>
+                    <div class="stuffstuff">10 plus years of New York City photography. Stay tuned.</div>
+                    </div>
 
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="subheader01">Exquisite Linkage</div>
-                    <div class="linkage">
-                        <a target="new01" href="http://coolors.co">coolors.co</a> - Translate color schemes within a beautifully designed site.
-                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<a name="requestaproject"/>
-<div id="ggscreen2" class="container-fluid">
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-            <div id="contactFormGroup">
-                <form id="contactForm">
-                   <div class="container-fluid">
-                       <div class="row">
-                           <div class="col-sm-12">
-                               <!-- Contact Form -->
-                               <h1>Request a Project</h1>
-                               <h3>
-                                   <div>
-                                       Have a project or an idea?
-                                   </div>
-                                   <div>
-                                       Send a brief description of the services you or your business needs.
-                                   </div>
-                               </h3>
-                           </div>
-                            <!-- Email -->
-                            <div id="email-group" class="col-sm-12 form-group">
-                                <label class="control-label" for="email" id="email_label">Email</label>
-                                <input class="form-control formy" id="email" name="email" type="text" value="" />
-                                <div class="validation" id="email_issue"></div>
-                            </div>
-
-                            <!-- Description -->
-                            <div id="description-group" class="col-sm-12 form-group formgroup">
-                                <label class="control-label" for="description">Describe Your Project</label>
-                                <textarea class="form-control textformy" id="description" name="description"  rows="6"></textarea>
-                                <div class="validation" id="description_issue"></div>
-                            </div>
-
-                            <!-- First / Last Name -->
-                            <div id="firstname-group" class="col-sm-6 form-group">
-                                <label class="control-label" for="firstname">First Name</label>
-                                <input class="form-control formy" id="firstname" name="firstname" type="text" value="" />
-                                <div class="validation" id="firstname_issue"></div>
-                            </div>
-                            <div id="lastname-group" class="col-sm-6 form-group">
-                                <label class="control-label" for="lastname">Last Name</label>
-                                <input class="form-control formy" id="lastname" name="lastname" type="text" value="" />
-                                <div class="validation" id="lastname_issue"></div>
-                            </div>
-
-                            <!-- Company -->
-                            <div id="company-group" class="col-sm-12 form-group formgroup">
-                                <label class="control-label">Website URL or Company Name</label>
-                                <input class="form-control formy" id="company" name="company" type="text" value="" />
-                                <div class="validation" id="company_issue"></div>
-                            </div>
-
-                            <div class="col-sm-12 form-group formgroup">
-                                <!--
-                                <div class="form_error">
-                                    @if (!is_null($errors->first('captcha')))
-                                    Invalid captcha
-                                    @endif
-                                </div>
-                                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                                {!! app('captcha')->display(); !!}
-                                -->
-                            </div>
-                            <div class="col-sm-12 formsubmit">
-                                <button id="submitButton" class="formbutton btn btn-primary"><span>Submit</span></button>
-                            </div>
-                       </div>
-                    </div>
-                </form>
+            <div class="col-sm-4">
+                <div class="subheader01">Exquisite Linkage</div>
+                <div class="linkage">
+                    <a target="new01" href="http://coolors.co">coolors.co</a> - Translate color schemes within a beautifully designed site.
+                </div>
             </div>
         </div>
     </div>
@@ -229,7 +190,7 @@
     <div class="row no-gutter">
         <div class="col-lg-12 col-md-12 col-sm-12 footer">&nbsp;
             <div class="foot_place_1">
-                <img src="./images/gmedia_logo_w.png" border="0" />
+                &nbsp;<img src="./images/gmedia_logo_w.png" border="0" />
                 <div>
                     <ul class="mini_footy">
                         <li><a target="github" href="http://www.github.com/GregGallant">GitHub</a></li>
