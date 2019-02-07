@@ -1052,7 +1052,7 @@ p {
 @media screen and (min-width: 371px) and (max-width: 500px) {
   input.formy {
     display: block;
-    width: 280px;
+    width: 400px;
     height: 44px;
     padding: 0 5px 0 5px;
     border-radius: 4px;
@@ -1061,15 +1061,61 @@ p {
 
   input.formwide {
     display: block;
-    width: 280px;
+    width: 400px;
     height: 44px;
     padding: 0 5px 0 5px;
     border-radius: 4px;
     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   }
 
+  .textformy {
+    padding: 7px;
+    border-radius: 6px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    width: 400px;
+  }
+
   h2#contactHeader {
     color: #101010;
+  }
+
+  .textHeader {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Arvil, Arial, sans-serif;
+  }
+  .textHeader h1 {
+    font-family: Arvil, sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    color: #306063;
+    margin: 0 0 0 0;
+  }
+  .textHeader h3 {
+    font-family: Arvil, sans-serif;
+    font-size: 1.7em;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    color: #08907e;
+    margin: 0 0 0 0;
+  }
+  .textHeader h4 {
+    font-family: Arvil, sans-serif;
+    font-size: 0.75em;
+    font-weight: normal;
+    letter-spacing: 0.075em;
+    color: #08907e;
+    margin: 20px 0 0 0;
+  }
+  .textHeader h5 {
+    font-family: Arvil, sans-serif;
+    font-size: 1.25em;
+    font-weight: normal;
+    letter-spacing: 0.084em;
+    color: #08403e;
+    margin: 0 0 0 0;
   }
 
   .validation {
@@ -1303,6 +1349,7 @@ p {
   }
 
   h2#contactHeader {
+    padding-top: 11px;
     color: #101010;
     font-weight: bold;
   }
@@ -1349,7 +1396,7 @@ p {
   .validation {
     position: static;
     display: inline;
-    margin: -50px 0 0 420px;
+    margin: -50px 0 0 70px;
     white-space: nowrap;
     min-width: 0;
     padding: 11px 11px 11px 11px;
@@ -1366,7 +1413,7 @@ p {
   .validation-rt {
     position: static;
     display: inline;
-    margin: -50px 0 0 420px;
+    margin: -50px 0 0 70px;
     white-space: nowrap;
     min-width: 0;
     padding: 11px 11px 11px 11px;
@@ -1427,7 +1474,7 @@ p {
     position: absolute;
     display: block;
     left: -95px;
-    margin: 0 0 0 0;
+    margin: 0 0 0 -10px;
     padding: 0 0 0 0;
     border: 2px outset #53939d;
     background-color: #afd0ea;
