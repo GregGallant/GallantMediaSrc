@@ -130,13 +130,18 @@
             let cd = jQuery.parseJSON(data);
 
             $.fn.validationHandler(cd);
+            let error_string = "";
 
             // success
             cd.forEach(function(cda) {
+
+                error_string = error_string + "<div class=\"cfmesg\">" + cda.defaultMessage + "</div>";
+
                 if (cda.field) {
-                    // ERROR HANDLER
-                    $('#'+cda.field+"-group").addClass('has-error');
-                    $('#' + cda.field + '_issue').html(cda.defaultMessage);
+                    // ERROR HANDLER - One window message style
+                    $('#email_issue').addClass('has-error');
+                    $('#email_issue').addClass('fadeIn');
+                    $('#email_issue').html(error_string);
                     //$("#contactFormGroup").append(cda.field + ":" + cda.defaultMessage + "<br/>");
                 } else {
                     // SUCCESS
