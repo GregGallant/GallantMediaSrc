@@ -35,18 +35,18 @@ public class Contact implements Serializable
    private String email;
 
    @NotNull
-   @Size(min=1,max=250)
+   @Size(min=2,max=250)
    @Column(name="firstname")
    private String firstname;
 
    @NotNull
-   @Size(min=1,max=250)
+   @Size(min=2,max=250)
    @Column(name="lastname")
    private String lastname;
 
    @NotNull
    @Column(name="website")
-   @Size(min=1,max=250)
+   @Size(min=2,max=250)
    private String website;
 
    @NotNull
@@ -55,7 +55,7 @@ public class Contact implements Serializable
    private String company;
 
    @Column(name="phone")
-   @Size(min=7,max=9)
+   @Size(min=5,max=22)
    private String phone;
 
    @NotNull

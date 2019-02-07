@@ -130,12 +130,12 @@
             let cd = jQuery.parseJSON(data);
 
             $.fn.validationHandler(cd);
-            let error_string = "";
+            let error_string = "<div class=\"cfhead\"><strong>Please fix the following:</strong></div><br/>";
 
             // success
             cd.forEach(function(cda) {
 
-                error_string = error_string + "<div class=\"cfgroup\">" +
+                error_string = error_string + "<div class=\"cfgroup\"> " +
                     "<div class=\"cffield\">On the " + cda.field + " field</div><div class=\"cfmesg\">" + cda.defaultMessage + "</div></div>";
 
                 if (cda.field) {
@@ -143,7 +143,7 @@
                     $('input#'+cda.field).addClass('has-warning');
 
                     $('#email_issue').addClass('has-error');
-                    $('#email_issue').addClass('fadeIn');
+                    $('#email_issue').addClass('fadeInOut');
                     $('#email_issue').html(error_string);
                     //$("#contactFormGroup").append(cda.field + ":" + cda.defaultMessage + "<br/>");
                 } else {
