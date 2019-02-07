@@ -15,8 +15,8 @@
         if (!okemail) {
             //$('div#email-group').addClass('has-warning'); TODO
         } else {
-            $('#email-group').removeClass("has-warning");
-            $('#email-group').attr("class", "form-group has-success");
+//            $('#email-group').removeClass("has-warning");
+ //           $('#email-group').attr("class", "form-group has-success");
             $('div#email_issue').html("");
         }
 
@@ -28,10 +28,13 @@
         let description = $('#description').val();
 
         if (description.length > 4) {
-            $('div#description-group').attr("class", "form-group has-success");
+            //$('div#description-group').attr("class", "form-group has-success");
             $('div#description_issue').html("");
+            $('input#description').addClass('has-success');
+            $.fn.closeValidation();
         }  else {
-            $('div#description-group').addClass('has-warning');
+            //$('div#description-group').addClass('has-warning');
+            $('input#description').addClass('has-warning');
         }
 
     });
@@ -42,10 +45,12 @@
         let firstname = $('#firstname').val();
 
         if (firstname.length > 4) {
-            $('div#firstname-group').attr("class", "form-group inlabel has-success");
+            //$('div#firstname-group').attr("class", "form-group inlabel has-success");
+            $('input#firstname').addClass('has-success');
             $('div#firstname_issue').html("");
+            $.fn.closeValidation();
         }  else {
-            $('div#firstname_issue').addClass('has-warning');
+            $('input#firstname').addClass('has-warning');
         }
 
     });
@@ -58,8 +63,11 @@
         if (lastname.length > 4) {
             $('div#lastname-group').attr("class", "form-group inlabel has-success");
             $('div#lastname_issue').html("");
+            $('input#lastname').addClass('has-success');
+            $.fn.closeValidation();
         }  else {
-            $('div#lastname-group').addClass('has-warning');
+            //$('div#lastname-group').addClass('has-warning');
+            $('input#lastname').addClass('has-warning');
         }
 
     });
@@ -71,10 +79,13 @@
         let company = $('#company').val();
 
         if (company.length > 4) {
-            $('div#company-group').attr("class", "form-group inlabel has-success");
+            //$('div#company-group').attr("class", "form-group inlabel has-success");
             $('div#company_issue').html("");
+            $('input#company').addClass('has-success');
+            $.fn.closeValidation();
         }  else {
-            $('div#company-group').addClass('has-warning');
+            //$('div#company-group').addClass('has-warning');
+            $('input#company').addClass('has-warning');
         }
 
     });
@@ -85,10 +96,13 @@
         let website = $('#website').val();
 
         if (website.length > 4) {
-            $('div#website-group').attr("class", "form-group inlabel has-success");
+            //$('div#website-group').attr("class", "form-group inlabel has-success");
             $('div#website_issue').html("");
+            $('input#website').addClass('has-success');
+            $.fn.closeValidation();
         }  else {
-            $('div#website-group').addClass('has-warning');
+            //$('div#website-group').addClass('has-warning');
+            $('input#website').addClass('has-warning');
         }
 
     });
@@ -96,6 +110,12 @@
     // Phone
     $('#phone').on('focusout', function(event) {
         let phone = $('#phone').val();
+        $('input#phone').addClass('has-success');
+    });
+
+
+    $('.validation').on('click', function(event) {
+        $.fn.closeValidation();
     });
 
         //$.fn.submitContact = function() {
@@ -142,6 +162,7 @@
                     // ERROR HANDLER - One window message style
                     $('input#'+cda.field).addClass('has-warning');
 
+                    $('#email_issue').css('visibility', 'visible');
                     $('#email_issue').addClass('has-error');
                     $('#email_issue').addClass('fadeInOut');
                     $('#email_issue').html(error_string);
@@ -182,6 +203,13 @@
         }
 
         return false;
+    }
+
+    $.fn.closeValidation = function()
+    {
+        $('#email_issue').removeClass('has-error fadeInOut');
+        //$('#email_issue').removeClass('fadeInOut');
+        $('#email_issue').css('visibility', 'hidden');
     }
 
 })(jQuery);
