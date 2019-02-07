@@ -13,7 +13,7 @@
         let okemail = $.fn.validateEmail(email);
 
         if (!okemail) {
-            $('div#email-group').addClass('has-warning');
+            //$('div#email-group').addClass('has-warning'); TODO
         } else {
             $('#email-group').removeClass("has-warning");
             $('#email-group').attr("class", "form-group has-success");
@@ -135,10 +135,13 @@
             // success
             cd.forEach(function(cda) {
 
-                error_string = error_string + "<div class=\"cfmesg\">" + cda.defaultMessage + "</div>";
+                error_string = error_string + "<div class=\"cfgroup\">" +
+                    "<div class=\"cffield\">On the " + cda.field + " field</div><div class=\"cfmesg\">" + cda.defaultMessage + "</div></div>";
 
                 if (cda.field) {
                     // ERROR HANDLER - One window message style
+                    $('input#'+cda.field).addClass('has-warning');
+
                     $('#email_issue').addClass('has-error');
                     $('#email_issue').addClass('fadeIn');
                     $('#email_issue').html(error_string);
