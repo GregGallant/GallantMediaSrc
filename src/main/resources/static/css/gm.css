@@ -354,7 +354,7 @@ form#contactForm {
 }
 
 form {
-  width: 500px;
+  max-width: 350px;
   margin: 10px 0 0 25px;
 }
 form h2 {
@@ -1028,7 +1028,7 @@ p {
 @media screen and (min-width: 501px) and (max-width: 800px) {
   input.formy {
     display: block;
-    width: 464px;
+    width: 300px;
     height: 44px;
     padding: 0 5px 0 5px;
     border-radius: 4px;
@@ -1052,7 +1052,7 @@ p {
   }
 
   h2#contactHeader {
-    color: #101010;
+    color: #53939d;
   }
 
   .validation {
@@ -1336,7 +1336,7 @@ p {
   header div.burgerhead ul#burgermenu {
     position: absolute;
     display: block;
-    left: -135px;
+    left: -45px;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     border: 2px outset #53939d;
@@ -1547,6 +1547,13 @@ p {
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
   }
 
+  #fixed_header {
+    max-width: 369px;
+  }
+
+  header {
+    max-width: 369px;
+  }
   header div.superhead {
     margin: 0 0 0 0;
   }
@@ -1591,7 +1598,6 @@ p {
   header div.burgerhead ul#burgermenu {
     position: absolute;
     display: block;
-    left: -95px;
     margin: 0 0 0 -10px;
     padding: 0 0 0 0;
     border: 2px outset #53939d;
