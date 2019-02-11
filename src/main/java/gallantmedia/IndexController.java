@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -37,12 +39,13 @@ public class IndexController
     @Autowired
     private ContactRepository contactRepository;
 
+    @CrossOrigin(origins = "http://staging.gallantone.com")
     @RequestMapping(value="/contact", method = RequestMethod.GET)
     public String contactInit(HttpServletRequest request) {
         return ("{error: jsp}");
     }
 
-
+    @CrossOrigin(origins = "http://staging.gallantone.com")
     @RequestMapping(value="/contact", method = RequestMethod.POST)
     public String contactForm(HttpServletRequest request, @Valid @ModelAttribute Contact contact, BindingResult bindingResult)
     {

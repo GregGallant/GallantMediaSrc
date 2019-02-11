@@ -1,34 +1,3 @@
-@font-face {
-  font-family: Arvil;
-  src: url("../fonts/Arvil/Arvil_Sans.ttf"), url("../fonts/Arvil/Arvil_Sans.woff");
-}
-@font-face {
-  font-style: normal;
-  font-family: Anton;
-  src: url("../fonts/Anton/Anton-Regular.ttf"), url("../fonts/Anton/Anton-Regular.woff");
-}
-@font-face {
-  font-family: Lora;
-  src: url("../fonts/Lora/Lora-Regular.ttf"), url("../fonts/Lora/Lora-Regular.woff");
-}
-@font-face {
-  font-style: normal;
-  font-weight: normal;
-  font-family: Lowvetica;
-  src: url("../fonts/Lowvetica/Lowvetica.eot");
-}
-@font-face {
-  font-style: normal;
-  font-weight: normal;
-  font-family: Lowvetica;
-  src: url("../fonts/Lowvetica/Lowvetica.ttf") format("opentype");
-}
-body {
-  background-color: #eeeeee;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-}
-
 @keyframes fadeInOut {
   0% {
     opacity: 0;
@@ -121,6 +90,122 @@ body {
   color: #101010;
 }
 
+.validation {
+  position: absolute;
+  display: block;
+  visibility: hidden;
+  margin: -50px 0 0 420px;
+  white-space: nowrap;
+  top: 0;
+  width: 340px;
+  max-height: 420px;
+  padding: 11px 11px 11px 11px;
+  font-size: 1.1em;
+  font-weight: normal;
+  text-align: right;
+  background-color: #ffecbf;
+  border: 5px solid #53939d;
+  border-radius: 3px;
+  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  -webkit-animation-duration: 15s;
+  animation-duration: 15s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+header div.superhead {
+  height: 76px;
+  padding: 0 0 0 12px;
+}
+header div.logohead {
+  padding: 45px 0 2px 9px;
+}
+header div.menuhead ul {
+  display: inline;
+  height: 70px;
+  width: auto;
+  padding: 50px 0 0 0;
+  margin: 0px 5px 0 0;
+  float: right;
+  clear: both;
+}
+header div.menuhead ul li {
+  display: inline;
+  font-family: Lora, Helvetica, Arial, sans-serif;
+  font-size: 1.12em;
+  padding: 0 40px 0 0;
+  text-decoration: none;
+}
+header div.menuhead ul li a {
+  color: #101010;
+}
+header div.menuhead ul li a:hover {
+  color: #2274a5;
+}
+header div.menuhead ul li a:visited {
+  color: #101010;
+}
+header div.burgerhead {
+  position: relative;
+  margin-top: 30px;
+  padding: 17px 20px 0 0;
+  float: right;
+}
+header div.burgerhead ul#burgermenu {
+  position: inherit;
+  margin: 0 30px 0 0;
+  border: 2px outset #53939d;
+  background-color: #2d8691;
+  width: 350px;
+  height: 300px;
+  z-index: 10;
+}
+header div.burgerhead button {
+  border: none;
+  background-color: #eeeeee;
+  padding: 0 0 0 0;
+}
+header div.burgerhead button img {
+  width: 24px;
+  height: 18px;
+}
+header div.dropdown-menu {
+  background: none;
+  border: none;
+}
+
+@font-face {
+  font-family: Arvil;
+  src: url("../fonts/Arvil/Arvil_Sans.ttf"), url("../fonts/Arvil/Arvil_Sans.woff");
+}
+@font-face {
+  font-style: normal;
+  font-family: Anton;
+  src: url("../fonts/Anton/Anton-Regular.ttf"), url("../fonts/Anton/Anton-Regular.woff");
+}
+@font-face {
+  font-family: Lora;
+  src: url("../fonts/Lora/Lora-Regular.ttf"), url("../fonts/Lora/Lora-Regular.woff");
+}
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: Lowvetica;
+  src: url("../fonts/Lowvetica/Lowvetica.eot");
+}
+@font-face {
+  font-style: normal;
+  font-weight: normal;
+  font-family: Lowvetica;
+  src: url("../fonts/Lowvetica/Lowvetica.ttf") format("opentype");
+}
+body {
+  background-color: #eeeeee;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
 .form-control {
   width: 100%;
   font-family: Helvetica, Arial, sans-serif;
@@ -193,6 +278,7 @@ form#contactForm {
   padding-bottom: 10px;
 }
 #contactFormGroup h1 {
+  display: block;
   padding: 25px 35px 25px 35px;
   margin: auto auto;
   font-family: Arvil, Helvetica, Arial, sans-serif;
@@ -202,6 +288,7 @@ form#contactForm {
   color: #f4e8c1;
 }
 #contactFormGroup h3 {
+  display: block;
   text-align: center;
   padding: 10px 20px 10px 20px;
   color: #101010;
@@ -409,34 +496,8 @@ input.formwide {
 }
 
 .form-group {
-  max-height: 40px;
-  max-width: 100px;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-}
-
-.validation {
-  position: absolute;
-  display: block;
-  visibility: hidden;
-  margin: -50px 0 0 420px;
-  white-space: nowrap;
-  top: 0;
-  width: 340px;
-  max-height: 420px;
-  padding: 11px 11px 11px 11px;
-  font-size: 1.1em;
-  font-weight: normal;
-  text-align: right;
-  background-color: #ffecbf;
-  border: 5px solid #53939d;
-  border-radius: 3px;
-  box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
-  z-index: 5;
-  -webkit-animation-duration: 15s;
-  animation-duration: 15s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
 }
 
 #submitButton {
@@ -451,6 +512,7 @@ input.formwide {
 
 .has-success {
   color: #1A936F;
+  border: 1px solid #4f7cac;
 }
 
 .has-error {
@@ -473,67 +535,6 @@ h2#contactHeader {
   display: block;
   position: relative;
   top: 76px;
-}
-
-header div.superhead {
-  height: 76px;
-  padding: 0 0 0 12px;
-}
-header div.logohead {
-  padding: 45px 0 2px 9px;
-}
-header div.menuhead ul {
-  display: inline;
-  height: 70px;
-  width: auto;
-  padding: 50px 0 0 0;
-  margin: 0px 5px 0 0;
-  float: right;
-  clear: both;
-}
-header div.menuhead ul li {
-  display: inline;
-  font-family: Lora, Helvetica, Arial, sans-serif;
-  font-size: 1.12em;
-  padding: 0 40px 0 0;
-  text-decoration: none;
-}
-header div.menuhead ul li a {
-  color: #101010;
-}
-header div.menuhead ul li a:hover {
-  color: #2274a5;
-}
-header div.menuhead ul li a:visited {
-  color: #101010;
-}
-header div.burgerhead {
-  position: relative;
-  margin-top: 30px;
-  padding: 17px 20px 0 0;
-  float: right;
-}
-header div.burgerhead ul#burgermenu {
-  position: inherit;
-  margin: 0 30px 0 0;
-  border: 2px outset #53939d;
-  background-color: #2d8691;
-  width: 350px;
-  height: 300px;
-  z-index: 10;
-}
-header div.burgerhead button {
-  border: none;
-  background-color: #eeeeee;
-  padding: 0 0 0 0;
-}
-header div.burgerhead button img {
-  width: 24px;
-  height: 18px;
-}
-header div.dropdown-menu {
-  background: none;
-  border: none;
 }
 
 div.hed {
@@ -734,7 +735,7 @@ p {
   }
   .textHeader h1 {
     font-family: Arvil, sans-serif;
-    font-size: 1em;
+    font-size: 1.65em;
     font-weight: normal;
     letter-spacing: 0.08em;
     color: #306063;
@@ -750,7 +751,7 @@ p {
   }
   .textHeader h4 {
     font-family: Arvil, sans-serif;
-    font-size: 0.65em;
+    font-size: 1em;
     font-weight: normal;
     letter-spacing: 0.075em;
     color: #08907e;
@@ -827,8 +828,8 @@ p {
     width: 444px;
   }
   div.subhed {
-    font-size: 0.4em;
     margin-top: -10px;
+    font-size: 1.4em;
   }
   div.subhed span {
     line-height: 65px;
@@ -850,7 +851,7 @@ p {
     line-height: 24px;
   }
 }
-@media screen and (min-width: 800px) and (max-width: 1300px) {
+@media screen and (min-width: 900px) and (max-width: 1300px) {
   input.formy {
     display: block;
     width: 350px;
@@ -945,87 +946,7 @@ p {
     display: none;
   }
 }
-/*
-@media screen and (max-width:820px) and (min-width:490px) {
-
-    input.formy {
-        display: block;
-        width: 460px;
-        height: 44px;
-        padding: 0 5px 0 5px;
-        border-radius: 4px;
-        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    }
-
-    input.formwide {
-        display: block;
-        width: 800px;
-        height: 44px;
-        padding: 0 5px 0 5px;
-        border-radius: 4px;
-        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    }
-
-    header {
-        div {
-            &.menuhead {
-                ul {
-                    display: none;
-                    height:70px;
-                    width:auto;
-                    padding:50px 0 0 0;
-                    margin:0px 5px 0 0;
-                    float:right;
-                    clear:both;
-                    li {
-                        display: inline;
-                        font-family:Lora,Helvetica,Arial,sans-serif;
-                        font-size:1.12em;
-                        padding:0 40px 0 0;
-                        text-decoration:none;
-                        a {
-                            color: $dark-grey;
-                            &:hover {
-                                color: $lapis-lazuli;
-                            }
-                            &:visited {
-                                color: $dark-grey;
-                            }
-                        }
-                    }
-                }
-            }
-
-            &.burgerhead {
-                display:inline;
-            }
-        }
-    }
-
-    div {
-        &.hed {
-            font-size:1em;
-        }
-        &.subhed {
-            line-height:22px;
-            font-size:.5em;
-            font-family:Arvil,sans-serif;
-        }
-
-        &.hline1 {
-            text-align:right;
-            display: block;
-            padding: 5px 9px 5px 9px;
-            margin: 1px 5px 1px 5px;
-            //background-color:$lemon-meri;
-            font-size:5em;
-            font-family:Lora,serif;
-        }
-
-    }
-}
-*/
-@media screen and (min-width: 501px) and (max-width: 800px) {
+@media screen and (min-width: 501px) and (max-width: 900px) {
   input.formy {
     display: block;
     width: 300px;

@@ -1,0 +1,443 @@
+
+header {
+
+  div {
+    &.superhead {
+      height:76px;
+      padding: 0 0 0 12px;
+    }
+
+    &.logohead {
+      padding:45px 0 2px 9px;
+    }
+
+    &.menuhead {
+      ul {
+        display: inline;
+        height:70px;
+        width:auto;
+        padding:50px 0 0 0;
+        margin:0px 5px 0 0;
+        float:right;
+        clear:both;
+        li {
+          display: inline;
+          font-family:Lora,Helvetica,Arial,sans-serif;
+          font-size:1.12em;
+          padding:0 40px 0 0;
+          text-decoration:none;
+          a {
+            color: $dark-grey;
+            &:hover {
+              color: $lapis-lazuli;
+            }
+            &:visited {
+              color: $dark-grey;
+            }
+          }
+        }
+      }
+    }
+
+    &.burgerhead {
+      position:relative;
+      margin-top:30px;
+      padding:17px 20px 0 0;
+      float:right;
+
+      ul#burgermenu {
+        position:inherit;
+        margin:0 30px 0 0;
+        border:2px outset $cadet-blue;
+        background-color:$celadon-green;
+        width:350px;
+        height:300px;
+        z-index:10;
+      }
+
+      button {
+        border: none;
+        background-color: $body-back;
+        padding: 0 0 0 0;
+        img {
+          width:24px;
+          height:18px;
+        }
+      }
+    }
+
+
+    &.dropdown-menu {
+      background:none;
+      border: none;
+    }
+  }
+}
+
+// Mobile
+
+@mixin header-mobile() {
+
+  header{
+    max-width:369px;
+    div {
+      &.superhead {
+        margin: 0 0 0 0;
+      }
+
+      &.logohead {
+        width:85%;
+        text-align:left;
+      }
+
+
+      &.menuhead {
+        width:42%;
+        ul {
+          display: none;
+          height:70px;
+          width:auto;
+          padding:50px 0 0 0;
+          margin:0px 5px 0 0;
+          float:right;
+          clear:both;
+          li {
+            display: inline;
+            font-family:Lora,Helvetica,Arial,sans-serif;
+            font-size:1.12em;
+            padding:0 40px 0 0;
+            text-decoration:none;
+            a {
+              color: $dark-grey;
+              &:hover {
+                color: $lapis-lazuli;
+              }
+              &:visited {
+                color: $dark-grey;
+              }
+            }
+          }
+        }
+      }
+
+
+      &.burgerhead {
+        display:inline;
+        text-align:right;
+        padding: 0 0 0 0;
+        margin: -30px 0 0 0;
+
+        ul#burgermenu {
+          position:absolute;
+          display:block;
+          margin:0 0 0 -10px;
+          padding:0 0 0 0;
+          border:2px outset $cadet-blue;
+          background-color:$tea-blue;
+          width:140px;
+          height:auto;
+
+          li {
+            display: block;
+            color: $dark-grey;
+            padding:12px 10px 12px 10px;
+            font-family:Helvetica,Arial,serif;
+            font-size:.9em;
+            border-bottom: 2px inset $cadet-blue;
+            text-decoration: none;
+            text-align:center;
+
+            &:hover {
+              background-color:$celadon-green;
+              cursor: pointer;
+              color:$lemon-meri;
+              a { color:$lemon-meri; }
+            }
+
+            a {
+              color: $dark-grey;
+              text-decoration: none;
+              &:hover {
+                color:$lemon-meri;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+
+      &.dropdown-menu {
+        background:none;
+        border: none;
+      }
+    }
+  }
+
+}
+
+// Tablets
+
+@mixin header-smtab() {
+
+  header {
+    div {
+      &.logohead {
+        padding:50px 0 2px 9px;
+        min-width:100px;
+        max-width:140px;
+      }
+
+
+      &.menuhead {
+        min-width:100px;
+        width:50%;
+        ul {
+          display: none;
+          height:70px;
+          width:auto;
+          padding:50px 0 0 0;
+          margin:0px 5px 0 0;
+          float:right;
+          clear:both;
+          li {
+            display: inline;
+            font-family:Lora,Helvetica,Arial,sans-serif;
+            font-size:1.12em;
+            padding:0 40px 0 0;
+            text-decoration:none;
+            a {
+              color: $dark-grey;
+              &:hover {
+                color: $lapis-lazuli;
+              }
+              &:visited {
+                color: $dark-grey;
+              }
+            }
+          }
+        }
+      }
+
+      &.burgerhead {
+        display:inline;
+        width:10%;
+        text-align:right;
+
+        ul#burgermenu {
+          position:absolute;
+          display:block;
+          left:-45px;
+          margin:0 0 0 0;
+          padding:0 0 0 0;
+          border:2px outset $cadet-blue;
+          background-color:$tea-blue;
+          width:180px;
+          height:auto;
+
+          li {
+            display: block;
+            color: $dark-grey;
+            padding:12px 10px 12px 10px;
+            font-family:Helvetica,Arial,serif;
+            font-size:1.1em;
+            border-bottom: 2px inset $cadet-blue;
+            text-decoration: none;
+            text-align:center;
+
+            &:hover {
+              background-color:$celadon-green;
+              cursor: pointer;
+              color:$lemon-meri;
+              a { color:$lemon-meri; }
+            }
+
+            a {
+              color: $dark-grey;
+              text-decoration: none;
+              &:hover {
+                color:$lemon-meri;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@mixin header-mdtab() {
+
+  header{
+    div {
+
+      &.logohead {
+        width:50%;
+      }
+
+      &.menuhead {
+        width:35%;
+        ul {
+          display: none;
+          height:70px;
+          width:auto;
+          padding:50px 0 0 0;
+          margin:0px 5px 0 0;
+          float:right;
+          clear:both;
+          li {
+            display: inline;
+            font-family:Lora,Helvetica,Arial,sans-serif;
+            font-size:1.02em;
+            padding:0 20px 0 0;
+            text-decoration:none;
+            a {
+              color: $dark-grey;
+              &:hover {
+                color: $lapis-lazuli;
+              }
+              &:visited {
+                color: $dark-grey;
+              }
+            }
+          }
+        }
+      }
+
+      &.burgerhead {
+        display:inline;
+        text-align:right;
+        width:auto;
+
+        ul#burgermenu {
+
+          position:absolute;
+          display:block;
+          left:-135px;
+          margin:0 0 0 0;
+          padding:0 0 0 0;
+          border:2px outset $cadet-blue;
+          background-color:$tea-blue;
+          width:180px;
+          height:auto;
+
+          li {
+            display: block;
+            color: $dark-grey;
+            padding:12px 10px 12px 10px;
+            font-family:Helvetica,Arial,serif;
+            font-size:1.1em;
+            border-bottom: 2px inset $cadet-blue;
+            text-decoration: none;
+            text-align:center;
+
+            &:hover {
+              background-color:$celadon-green;
+              cursor: pointer;
+              color:$lemon-meri;
+              a { color:$lemon-meri; }
+            }
+
+            a {
+              color: $dark-grey;
+              text-decoration: none;
+              &:hover {
+                color:$lemon-meri;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+@mixin header-lgtab() {
+  header {
+    div {
+
+      &.menuhead {
+        ul {
+          display: inline;
+          height:70px;
+          width:auto;
+          padding:50px 0 0 0;
+          margin:0 5px 0 0;
+          float:right;
+          clear:both;
+          li {
+            display: inline;
+            font-family:Lora,Helvetica,Arial,sans-serif;
+            font-size:1.02em;
+            padding:0 20px 0 0;
+            text-decoration:none;
+            a {
+              display:inline;
+              color: $dark-grey;
+              &:hover {
+                color: $lapis-lazuli;
+              }
+              &:visited {
+                color: $dark-grey;
+              }
+            }
+          }
+        }
+      }
+
+      &.burgerhead {
+        display:none;
+      }
+
+    }
+
+  }
+}
+
+// DESKTOP
+
+@mixin header-large() {
+  header {
+    div {
+
+      &.menuhead {
+        ul {
+          display: inline;
+          height:70px;
+          width:auto;
+          padding:50px 0 0 0;
+          margin:0 5px 0 0;
+          float:right;
+          clear:both;
+          li {
+            display: inline;
+            font-family:Lora,Helvetica,Arial,sans-serif;
+            font-size:1.02em;
+            padding:0 20px 0 0;
+            text-decoration:none;
+            a {
+              display:inline;
+              color: $dark-grey;
+              &:hover {
+                color: $lapis-lazuli;
+              }
+              &:visited {
+                color: $dark-grey;
+              }
+            }
+          }
+        }
+      }
+
+      &.burgerhead {
+        display:none;
+      }
+
+    }
+
+  }
+}

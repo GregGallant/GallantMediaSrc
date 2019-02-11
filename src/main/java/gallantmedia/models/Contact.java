@@ -13,9 +13,14 @@ import java.lang.reflect.Method;
 import java.sql.Date;
 import java.util.*;
 
+import javax.validation.Constraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+
+import gallantmedia.services.validator.PhoneFormat;
 
 @Entity
 @Table(name="contact")
@@ -28,39 +33,32 @@ public class Contact implements Serializable
    @GeneratedValue(strategy= GenerationType.IDENTITY)
    private int id;
 
-   @NotNull
-   @Email
-   @Size(min=4,max=500)
    @Column(name="email")
+   @Email
+   @NotBlank(message="Your e-mail address is required.")
    private String email;
 
-   @NotNull
-   @Size(min=2,max=250)
    @Column(name="firstname")
+   @NotBlank(message="Please provide your first name.")
    private String firstname;
 
-   @NotNull
-   @Size(min=2,max=250)
    @Column(name="lastname")
+   @NotBlank(message="Please provide your last name.")
    private String lastname;
 
-   @NotNull
    @Column(name="website")
-   @Size(min=2,max=250)
    private String website;
 
-   @NotNull
    @Column(name="company")
-   @Size(min=1,max=250)
    private String company;
 
    @Column(name="phone")
-   @Size(min=5,max=22)
+   @PhoneFormat
    private String phone;
 
+   @Column(name="description", columnDefinition="Text")
    @NotNull
    @Size(min=4,max=2500)
-   @Column(name="description", columnDefinition="Text")
    private String description;
 
    @Column(name="created")
@@ -68,6 +66,10 @@ public class Contact implements Serializable
 
    @Column(name="updated")
    private Date updated;
+
+
+
+  // @Constraint(validatedBy = PhoneValidator.class)
 
 
     /**
