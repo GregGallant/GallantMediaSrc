@@ -39,13 +39,13 @@ public class IndexController
     @Autowired
     private ContactRepository contactRepository;
 
-    @CrossOrigin(origins = "http://staging.gallantone.com")
+    @CrossOrigin(origins = "http://www.gallantone.com")
     @RequestMapping(value="/contact", method = RequestMethod.GET)
     public String contactInit(HttpServletRequest request) {
         return ("{error: jsp}");
     }
 
-    @CrossOrigin(origins = "http://staging.gallantone.com")
+    @CrossOrigin(origins = "http://www.gallantone.com")
     @RequestMapping(value="/contact", method = RequestMethod.POST)
     public String contactForm(HttpServletRequest request, @Valid @ModelAttribute Contact contact, BindingResult bindingResult)
     {
