@@ -23,13 +23,15 @@ import java.io.FileReader;
 import org.json.JSONArray;
 import org.json.JSONTokener;
 import org.json.JSONObject;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
 import org.json.JSONException;
 import com.google.gson.GsonBuilder;
 import com.google.gson.Gson;
 
 public class Goodnews
 {
-
     private JsonElement techNews;
 
     private JsonElement generalNews;
@@ -145,7 +147,15 @@ public class Goodnews
     {
         FileReader fread;
         Object newsObj = new Object();
+
+        // TODO: This can be simplified I'm sure, two Jsonparsers?
         JSONParser jParse = new JSONParser();
+        JsonParser jParser;
+
+        JsonToken toke;
+
+        String bigNewsString = "";
+
         String newsContent = "/opt/news/tech.news";
         ArrayList<String> newsitem = new ArrayList<>();
 
@@ -160,26 +170,36 @@ public class Goodnews
             newsitem.add("No news files json parsed:" + pe.toString());
         }
 
-        //Read JSON file
-        //JSONArray newsList = (JSONArray) newsObj;
-        //JSONArray newsList = objectToJSONArray(newsObj);
-
+        // Parse through the String file of news
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonObject = gson.toJson(newsObj);
+        String newsJsonString = gson.toJson(newsObj);
 
-        /*
-        int newsSize = newsList.length();
+        JsonFactory jFactory = new JsonFactory();
+        try {
+            jParser = jFactory.createParser(newsJsonString);
+        } catch(IOException ioe) {
+            return "No news from input/output: "+ioe.getMessage();
+        }
 
-        for(int i=0; i <= newsSize; i++) {
+        while(!jParser.isClosed()) {
+
             try {
-                newsitem.add(newsList.getString(i));
-            } catch(JSONException jsoe) {
-                break;
+                toke = jParser.nextToken();
+
+                if(JsonToken.FIELD_NAME.equals(toke)) {
+                    String newsField = jParser.getCurrentName();
+                    bigNewsString += "<div style=\"border:1px inset #999999; padding:5px; \"><h3>" + newsField + "</h3>";
+                    toke = jParser.nextToken();
+                    bigNewsString += jParser.getValueAsString();
+                    bigNewsString += "</div>";
+                }
+
+            } catch(IOException ioe) {
+                return "No news from token input/output: "+ioe.getMessage();
             }
         }
-        */
 
-        return jsonObject;
+        return bigNewsString;
     }
 
     /**
