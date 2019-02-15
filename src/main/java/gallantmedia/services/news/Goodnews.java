@@ -148,6 +148,10 @@ public class Goodnews
         FileReader fread;
         Object newsObj = new Object();
 
+
+        Map<String, Map<String,String>> newsOrg = new HashMap<>();
+        Map<String, String> newsArticle = new HashMap<>();
+
         // TODO: This can be simplified I'm sure, two Jsonparsers?
         JSONParser jParse = new JSONParser();
         JsonParser jParser;
@@ -193,35 +197,51 @@ public class Goodnews
 
                     if (newsField.equals("title")) {
                         toke = jParser.nextToken();
-                        bigNewsString += "<h3>" + jParser.getValueAsString() + "</h3>";
+                        // Search for duplicates first
+                        //newsOrg.put(jParser.getValueAsString(), newsArticle);
+                        newsArticle.put("title", jParser.getValueAsString());
+                        //bigNewsString += "<h3>" + jParser.getValueAsString() + "</h3>";
                     }
 
                     if (newsField.equals("author")) {
                         toke = jParser.nextToken();
-                        bigNewsString += "<div style=\"font-size:8pt;\"><em>"+jParser.getValueAsString()+"</em></div>";
+                        newsArticle.put("author", jParser.getValueAsString());
+                        //bigNewsString += "<div style=\"font-size:8pt;\"><em>"+jParser.getValueAsString()+"</em></div>";
                     }
 
                     if (newsField.equals("published")) {
                         toke = jParser.nextToken();
-                        bigNewsString += "<div style=\"font-size:8pt;\"><em>"+jParser.getValueAsString()+"</em></div>";
+                        newsArticle.put("published", jParser.getValueAsString());
+                        //bigNewsString += "<div style=\"font-size:8pt;\"><em>"+jParser.getValueAsString()+"</em></div>";
                     }
 
                     if (newsField.equals("url")) {
                         toke = jParser.nextToken();
-                        bigNewsString += "<div style=\"font-size:8pt;\"><em><a href=\""+jParser.getValueAsString()+"\" target=\"newssource\" >source</a></em></div>";
+                        String sourceUrl = "<a href=\""+jParser.getValueAsString()+"\" target=\"newssource\" >source</a>";
+                        newsArticle.put("sourceUrl", sourceUrl);
+                        newsArticle.put("url", jParser.getValueAsString());
+                        //bigNewsString += "<div style=\"font-size:8pt;\"><em><a href=\""+jParser.getValueAsString()+"\" target=\"newssource\" >source</a></em></div>";
                     }
 
                     if (newsField.equals("text")) {
                         toke = jParser.nextToken();
-                        bigNewsString += "<div>"+jParser.getValueAsString()+"</div>";
+                        String newsText = jParser.getValueAsString();
+                        newsArticle.put("text", newsText);
+                        //bigNewsString += "<div>"+jParser.getValueAsString()+"</div>";
                     }
 
                     if (newsField.equals("main_image")) {
                         toke = jParser.nextToken();
-                        bigNewsString += "<img width=\"350px\" height=\"225px\" align=\"left\" style=\"margin:5px;\" border=\"1\" src=\""+jParser.getValueAsString()+"\" >";
+                        String sizedImage = "<img width=\"350px\" height=\"225px\" align=\"left\" style=\"margin:5px;\" border=\"1\" src=\""+jParser.getValueAsString()+"\" >";
+                        newsArticle.put("sizedImage", sizedImage);
+                        newsArticle.put("hedImage", jParser.getValueAsString());
+                        //bigNewsString += "<img width=\"350px\" height=\"225px\" align=\"left\" style=\"margin:5px;\" border=\"1\" src=\""+jParser.getValueAsString()+"\" >";
                     }
 
-                    //bigNewsString += "</div>";
+                    // Check if text size is reasonable and article title is not a duplicate
+                    if(newsArticle.get("text").length() > 250 && !newsOrg.containsKey(newsArticle.get("title"))) {
+                        newsOrg.put(newsArticle.get("title"), newsArticle);
+                    }
                 }
 
             } catch(IOException ioe) {
@@ -229,8 +249,36 @@ public class Goodnews
             }
         }
 
+        bigNewsString = newsWebView(newsOrg);
         return bigNewsString;
     }
+
+
+    private String newsWebView(Map<String, Map<String,String>> newsOrg)
+    {
+        String bigNews = "";
+        String title;
+        Map<String, String> newsArt;
+        Map.Entry<String, Map<String,String>> newsRow;
+
+        Iterator it = newsOrg.entrySet().iterator();
+        while (it.hasNext()) {
+            newsRow = (Map.Entry) it.next();
+            title = newsRow.getKey();
+            newsArt = newsRow.getValue();
+
+            //bigNews = "<a href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
+            bigNews += "<div><h3>"+newsArt.get("title")+"</h3></div>";
+            bigNews += "<div>";
+            bigNews += "<div style=\"font-size:8pt;\"><em>"+newsArt.get("author") + " -- " +newsArt.get("published")+"</em></div>";
+            bigNews += newsArt.get("sizedImage");
+            bigNews += newsArt.get("text");
+            bigNews += "</div>";
+        }
+
+        return bigNews;
+    }
+
 
     /**
      * Writes the news content to file
