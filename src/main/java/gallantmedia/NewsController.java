@@ -9,7 +9,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.net.URISyntaxException;
 import java.io.IOException;
-
+import gallantmedia.services.news.Goodnews;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Date;
 
 /**
  * A kind of vue controller
@@ -17,9 +19,34 @@ import java.io.IOException;
 @RestController
 public class NewsController {
 
-    @RequestMapping(value="/news", method=RequestMethod.GET)
-    public String frameworkIntro() {
+    private Goodnews goodnews;
 
+    @RequestMapping(value="/news", method=RequestMethod.GET)
+    public String newsScoop()
+    {
+
+        Goodnews goodnews = new Goodnews();
+        String newTechNews = goodnews.getLatestNews();
+
+        /* Check latest timestamps */
+       // Date newsdate = goodnews.checkLatestNews();
+
+        // Check if its old news
+        //if (newsdate.getTime() > 0f) {
+            // old news
+            //String newGeneralNews = goodnews.getLatestGeneralNews();
+        //} else {
+            // Still fresh news
+            // Read from r/w news templates in static
+
+            // open general.news, tech.news
+
+            // return the news as json string
+
+        //}
+
+
+/*
         JsonElement result;
 
         // Create a WebhoseIOClient instance
@@ -30,7 +57,7 @@ public class NewsController {
         queries.put("q", "performance_score:>0 (title:\"United States\" OR title:US)");
         queries.put("sort", "crawled");
 
-// Fetch query result
+        // Fetch query result
         try {
             result = webhoseClient.query("filterWebContent", queries);
         } catch(URISyntaxException uri) {
@@ -44,14 +71,7 @@ public class NewsController {
             System.out.println(result.getAsJsonObject().get("totalResults"));     // Print posts count
             return result.getAsJsonObject().toString();
         }
-
-        return "No News is good news";
-    }
-/*
-
-    @RequestMapping(value="/news", method=RequestMethod.POST)
-    public String frameworkSubmit() {
-        return "";
-    }
 */
+        return newTechNews;
+    }
 }
