@@ -13,10 +13,19 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.io.FileOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import org.json.simple.parser.JSONParser;
+import java.io.FileReader;
+import org.json.JSONArray;
+import org.json.JSONTokener;
+import org.json.JSONObject;
+import org.json.JSONException;
+import com.google.gson.GsonBuilder;
+import com.google.gson.Gson;
 
 public class Goodnews
 {
@@ -62,8 +71,8 @@ public class Goodnews
         try {
             newsfiledate = sdf.parse(sdate);
         } catch(ParseException pe) {
-            newsResults += "...Parse error detected...";
-            return false; // assume old news
+            newsResults += "...Parse error detected " + pe.getMessage() + "...";
+            return true; // assume old news
         }
 
         // Calculate date differences between now and pre-renderd news if news even exists
@@ -82,8 +91,12 @@ public class Goodnews
         return true;
     }
 
-
-    public String getLatestNews() {
+    /**
+     * Renders latest news from webhose.io
+     * In future will use whatever api we include
+     * @return
+     */
+    public String renderLatestNews() {
 
         JsonElement result;
 
@@ -126,6 +139,69 @@ public class Goodnews
         return newsResults + "The news has been written...";
 
     }
+
+    // Getting specific news values for now
+    public String getLatestTechNews()
+    {
+        FileReader fread;
+        Object newsObj = new Object();
+        JSONParser jParse = new JSONParser();
+        String newsContent = "/opt/news/tech.news";
+        ArrayList<String> newsitem = new ArrayList<>();
+
+        try {
+            fread = new FileReader(newsContent);
+            newsObj = jParse.parse(fread);
+        } catch(FileNotFoundException fnfe) {
+            newsitem.add("No news files present:" + fnfe.toString());
+        } catch(IOException ioe) {
+            newsitem.add("No news files read:" + ioe.toString());
+        } catch(org.json.simple.parser.ParseException pe) {
+            newsitem.add("No news files json parsed:" + pe.toString());
+        }
+
+        //Read JSON file
+        //JSONArray newsList = (JSONArray) newsObj;
+        //JSONArray newsList = objectToJSONArray(newsObj);
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonObject = gson.toJson(newsObj);
+
+        /*
+        int newsSize = newsList.length();
+
+        for(int i=0; i <= newsSize; i++) {
+            try {
+                newsitem.add(newsList.getString(i));
+            } catch(JSONException jsoe) {
+                break;
+            }
+        }
+        */
+
+        return jsonObject;
+    }
+
+    /**
+     * Run of the mill object to JsonArray function
+     * @param object
+     * @return
+     */
+    private static JSONArray objectToJSONArray(Object object){
+        Object json = null;
+        JSONArray jsonArray = null;
+        try {
+            json = new JSONTokener(object.toString()).nextValue();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (json instanceof JSONArray) {
+            jsonArray = (JSONArray) json;
+        }
+        return jsonArray;
+    }
+
+
 
     private void writeNewsTemplate( JsonElement templateContent, String templateName )
     {
