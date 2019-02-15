@@ -214,7 +214,7 @@ public class Goodnews
                     //bigNewsString += "<div style=\"border:1px inset #999999; padding:8px; \">";
 
                     if(newsField.equals("ord_in_thread")) {
-                        if(newsArticle.get("text").length() < 250) {
+                        if (newsArticle.get("title_full") != null) {
                             newsOrg.put(newsArticle.get("title_full"), newsArticle);
                         }
                         toke = jParser.nextToken();
@@ -230,7 +230,7 @@ public class Goodnews
                         toke = jParser.nextToken();
                         // Search for duplicates first
                         //newsOrg.put(jParser.getValueAsString(), newsArticle);
-                        newsArticle.put("title", end_ob_count +":"+jParser.getValueAsString());
+                        newsArticle.put("title", jParser.getValueAsString());
                         //newsOrg.put(newsArticle.get("title"), newsArticle); // check
 
                         //bigNewsString += "<h3>" + jParser.getValueAsString() + "</h3>";
@@ -258,7 +258,7 @@ public class Goodnews
 
                     if (newsField.equals("text")) {
                         toke = jParser.nextToken();
-                        String newsText = end_ar_count +":"+jParser.getValueAsString();
+                        String newsText = jParser.getValueAsString();
                         newsArticle.put("text", newsText);
                         //bigNewsString += "<div>"+jParser.getValueAsString()+"</div>";
                     }
@@ -315,9 +315,12 @@ public class Goodnews
 
         Iterator it = newsOrg.entrySet().iterator();
         while (it.hasNext()) {
+
             newsRow = (Map.Entry) it.next();
             title = newsRow.getKey();
             newsArt = newsRow.getValue();
+
+            if (newsArt.get("text").length() > 400) {
 
                 //bigNews = "<a href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
                 bigNews += "<div><h3>" + newsArt.get("title") + "</h3></div>";
@@ -326,6 +329,7 @@ public class Goodnews
                 bigNews += newsArt.get("sizedImage");
                 bigNews += newsArt.get("text");
                 bigNews += "</div>";
+            }
 
             it.remove();
         }
