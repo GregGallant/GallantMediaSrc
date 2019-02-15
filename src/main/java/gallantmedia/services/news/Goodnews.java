@@ -188,10 +188,40 @@ public class Goodnews
 
                 if(JsonToken.FIELD_NAME.equals(toke)) {
                     String newsField = jParser.getCurrentName();
-                    bigNewsString += "<div style=\"border:1px inset #999999; padding:5px; \"><h3>" + newsField + "</h3>";
-                    toke = jParser.nextToken();
-                    bigNewsString += jParser.getValueAsString();
-                    bigNewsString += "</div>";
+                    //bigNewsString += "<h6>" + newsField + "</h6>";
+                    //bigNewsString += "<div style=\"border:1px inset #999999; padding:8px; \">";
+
+                    if (newsField.equals("title")) {
+                        toke = jParser.nextToken();
+                        bigNewsString += "<h3>" + jParser.getValueAsString() + "</h3>";
+                    }
+
+                    if (newsField.equals("author")) {
+                        toke = jParser.nextToken();
+                        bigNewsString += "<div style=\"font-size:8pt;\"><em>"+jParser.getValueAsString()+"</em></div>";
+                    }
+
+                    if (newsField.equals("published")) {
+                        toke = jParser.nextToken();
+                        bigNewsString += "<div style=\"font-size:8pt;\"><em>"+jParser.getValueAsString()+"</em></div>";
+                    }
+
+                    if (newsField.equals("url")) {
+                        toke = jParser.nextToken();
+                        bigNewsString += "<div style=\"font-size:8pt;\"><em><a href=\""+jParser.getValueAsString()+"\" target=\"newssource\" >source</a></em></div>";
+                    }
+
+                    if (newsField.equals("text")) {
+                        toke = jParser.nextToken();
+                        bigNewsString += "<div>"+jParser.getValueAsString()+"</div>";
+                    }
+
+                    if (newsField.equals("main_image")) {
+                        toke = jParser.nextToken();
+                        bigNewsString += "<img width=\"350px\" height=\"225px\" align=\"left\" style=\"margin:5px;\" border=\"1\" src=\""+jParser.getValueAsString()+"\" >";
+                    }
+
+                    //bigNewsString += "</div>";
                 }
 
             } catch(IOException ioe) {
@@ -203,26 +233,10 @@ public class Goodnews
     }
 
     /**
-     * Run of the mill object to JsonArray function
-     * @param object
-     * @return
+     * Writes the news content to file
+     * @param templateContent
+     * @param templateName
      */
-    private static JSONArray objectToJSONArray(Object object){
-        Object json = null;
-        JSONArray jsonArray = null;
-        try {
-            json = new JSONTokener(object.toString()).nextValue();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (json instanceof JSONArray) {
-            jsonArray = (JSONArray) json;
-        }
-        return jsonArray;
-    }
-
-
-
     private void writeNewsTemplate( JsonElement templateContent, String templateName )
     {
         FileOutputStream outputStream = null;
