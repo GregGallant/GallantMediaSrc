@@ -1,5 +1,8 @@
 package gallantmedia.services.news;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.JsonElement;
 import com.webhoseio.sdk.WebhoseIOClient;
 import java.net.URISyntaxException;
@@ -102,6 +105,7 @@ public class Goodnews
 
         JsonElement result;
 
+
         buildNewsFilters();
 
         // Create a WebhoseIOClient instance
@@ -148,9 +152,10 @@ public class Goodnews
         FileReader fread;
         Object newsObj = new Object();
 
+        String nextTitle = "";
 
         Map<String, Map<String,String>> newsOrg = new HashMap<>();
-        Map<String, String> newsArticle = new HashMap<>();
+//        Map<String, String> newsArticle = new HashMap<>();
 
         // TODO: This can be simplified I'm sure, two Jsonparsers?
         JSONParser jParse = new JSONParser();
@@ -178,6 +183,9 @@ public class Goodnews
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String newsJsonString = gson.toJson(newsObj);
 
+        Logger logger = LoggerFactory.getLogger(Goodnews.class);
+        logger.info(newsJsonString);
+
         JsonFactory jFactory = new JsonFactory();
         try {
             jParser = jFactory.createParser(newsJsonString);
@@ -185,21 +193,46 @@ public class Goodnews
             return "No news from input/output: "+ioe.getMessage();
         }
 
+        Map<String, String> newsArticle = new HashMap<>();
+        int end_ob_count = 0;
+        int end_ar_count = 0;
+
         while(!jParser.isClosed()) {
 
             try {
+
                 toke = jParser.nextToken();
+
+                /*
+                if(JsonToken.START_OBJECT.equals(toke)) { }
+                if(JsonToken.START_ARRAY.equals(toke)) { end_ar_count++; }
+                */
 
                 if(JsonToken.FIELD_NAME.equals(toke)) {
                     String newsField = jParser.getCurrentName();
                     //bigNewsString += "<h6>" + newsField + "</h6>";
                     //bigNewsString += "<div style=\"border:1px inset #999999; padding:8px; \">";
 
+                    if(newsField.equals("ord_in_thread")) {
+                        if(newsArticle.get("text").length() < 250) {
+                            newsOrg.put(newsArticle.get("title_full"), newsArticle);
+                        }
+                        toke = jParser.nextToken();
+                        newsArticle = new HashMap<>();
+                    }
+
+                    if (newsField.equals("title_full")) {
+                        toke = jParser.nextToken();
+                        newsArticle.put("title_full", jParser.getValueAsString());
+                    }
+
                     if (newsField.equals("title")) {
                         toke = jParser.nextToken();
                         // Search for duplicates first
                         //newsOrg.put(jParser.getValueAsString(), newsArticle);
-                        newsArticle.put("title", jParser.getValueAsString());
+                        newsArticle.put("title", end_ob_count +":"+jParser.getValueAsString());
+                        //newsOrg.put(newsArticle.get("title"), newsArticle); // check
+
                         //bigNewsString += "<h3>" + jParser.getValueAsString() + "</h3>";
                     }
 
@@ -225,7 +258,7 @@ public class Goodnews
 
                     if (newsField.equals("text")) {
                         toke = jParser.nextToken();
-                        String newsText = jParser.getValueAsString();
+                        String newsText = end_ar_count +":"+jParser.getValueAsString();
                         newsArticle.put("text", newsText);
                         //bigNewsString += "<div>"+jParser.getValueAsString()+"</div>";
                     }
@@ -238,15 +271,33 @@ public class Goodnews
                         //bigNewsString += "<img width=\"350px\" height=\"225px\" align=\"left\" style=\"margin:5px;\" border=\"1\" src=\""+jParser.getValueAsString()+"\" >";
                     }
 
-                    // Check if text size is reasonable and article title is not a duplicate
-                    if(newsArticle.get("text").length() > 250 && !newsOrg.containsKey(newsArticle.get("title"))) {
-                        newsOrg.put(newsArticle.get("title"), newsArticle);
-                    }
+
                 }
+/*
+                if(JsonToken.END_OBJECT.equals(toke)) {
+                    toke = jParser.nextToken();
+                    end_ob_count++;
+                }
+
+
+                if(JsonToken.END_ARRAY.equals(toke)) {
+                    toke = jParser.nextToken();
+                    //     newsArticle = new HashMap<>();
+                }
+*/
+                //newsArticle.clear();
+                //toke = jParser.nextToken();
+
+                // Check if text size is reasonable and article title is not a duplicate
+                //if(newsArticle.get("text").length() > 250 && !newsOrg.containsKey(newsArticle.get("title"))) {
+                //if(!newsOrg.containsKey(newsArticle.get("title_full"))) {
+                //}
 
             } catch(IOException ioe) {
                 return "No news from token input/output: "+ioe.getMessage();
             }
+
+
         }
 
         bigNewsString = newsWebView(newsOrg);
@@ -260,6 +311,7 @@ public class Goodnews
         String title;
         Map<String, String> newsArt;
         Map.Entry<String, Map<String,String>> newsRow;
+        Map.Entry<String,String> artRow;
 
         Iterator it = newsOrg.entrySet().iterator();
         while (it.hasNext()) {
@@ -267,13 +319,15 @@ public class Goodnews
             title = newsRow.getKey();
             newsArt = newsRow.getValue();
 
-            //bigNews = "<a href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
-            bigNews += "<div><h3>"+newsArt.get("title")+"</h3></div>";
-            bigNews += "<div>";
-            bigNews += "<div style=\"font-size:8pt;\"><em>"+newsArt.get("author") + " -- " +newsArt.get("published")+"</em></div>";
-            bigNews += newsArt.get("sizedImage");
-            bigNews += newsArt.get("text");
-            bigNews += "</div>";
+                //bigNews = "<a href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
+                bigNews += "<div><h3>" + newsArt.get("title") + "</h3></div>";
+                bigNews += "<div>";
+                bigNews += "<div style=\"font-size:8pt;\"><em>" + newsArt.get("author") + " -- " + newsArt.get("published") + "</em></div>";
+                bigNews += newsArt.get("sizedImage");
+                bigNews += newsArt.get("text");
+                bigNews += "</div>";
+
+            it.remove();
         }
 
         return bigNews;
