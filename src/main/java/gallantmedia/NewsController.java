@@ -18,8 +18,11 @@ public class NewsController {
     public String newsScoop()
     {
         Goodnews goodnews = new Goodnews();
-        String newTechNews = goodnews.renderLatestNews();
-        return newTechNews;
+        if (goodnews.renderLatestNews()) {
+            return "News rendered.";
+        }
+
+        return "No news rendering necessary.";
     }
 
     @CrossOrigin(origins = "http://www.gallantone.com")
@@ -28,7 +31,7 @@ public class NewsController {
     {
         String bignews = "";
         Goodnews goodnews = new Goodnews();
-        bignews = goodnews.getLatestTechNews("full");
+        bignews = goodnews.getLatestNews("tech", "full");
 
         return bignews;
     }
@@ -39,8 +42,21 @@ public class NewsController {
     {
         String bignews;
         Goodnews goodnews = new Goodnews();
-        bignews = goodnews.getLatestTechNews("links");
+        bignews = goodnews.getLatestNews("tech", "links");
 
         return bignews;
     }
+
+    /* TODO: Return JSON only
+    CrossOrigin(origins = "http://www.gallantone.com")
+    RequestMapping(value="/newsjson", method=RequestMethod.GET)
+    public String showNewsJson() {
+        String bignews;
+        Goodnews goodnews = new Goodnews();
+        bignews = goodnews.getLatestTechNews("links");
+
+        return bignews;
+
+    }
+    */
 }

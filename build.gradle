@@ -8,7 +8,7 @@ plugins {
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.5.11'
+	version = '0.5.5'
 	archiveName = "gallantmedia-${version}.war"
 	enabled = true
 }
@@ -43,9 +43,6 @@ dependencies {
 	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.7'
 	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
-	//compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.6.2'
-	//compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.6.2'
-    //compile 'javax.servlet:javax.servlet-api:3.1.0'
 }
 
 //eclipse {

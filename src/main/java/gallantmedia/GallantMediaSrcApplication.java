@@ -25,17 +25,9 @@ public class GallantMediaSrcApplication extends SpringBootServletInitializer
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(GallantMediaSrcApplication.class, args);
-
-		System.out.println("Spring beans again.  Rename beans.");
-
-        log.info("Gallantmedia Application Running");
-
-		String[] beanNames = ctx.getBeanDefinitionNames();
-
-		Arrays.sort(beanNames);
-
-		for (String beanName : beanNames) {
-			System.out.println(beanName);
-		}
+        log.info("== GallantMedia Source Application Running ==");
+		/* If you ever want bean names and definitions, I guess...
+			String[] beanNames = ctx.getBeanDefinitionNames();
+		*/
 	}
 }
