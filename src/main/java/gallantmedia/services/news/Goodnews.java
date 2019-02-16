@@ -10,26 +10,18 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.io.FileOutputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
-import org.json.JSONArray;
-import org.json.JSONTokener;
-import org.json.JSONObject;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
-import org.json.JSONException;
 import com.google.gson.GsonBuilder;
 import com.google.gson.Gson;
 
@@ -77,7 +69,7 @@ public class Goodnews
             newsfiledate = sdf.parse(sdate);
         } catch(ParseException pe) {
             newsResults += "...Parse error detected " + pe.getMessage() + "...";
-            return true; // assume old news
+            return true; // build new news
         }
 
         // Calculate date differences between now and pre-renderd news if news even exists
@@ -146,8 +138,7 @@ public class Goodnews
 
     }
 
-    // Getting specific news values for now
-    public String getLatestTechNews()
+    private Map<String, Map<String,String>> buildNewsMap()
     {
         FileReader fread;
         Object newsObj = new Object();
@@ -159,11 +150,10 @@ public class Goodnews
 
         // TODO: This can be simplified I'm sure, two Jsonparsers?
         JSONParser jParse = new JSONParser();
-        JsonParser jParser;
+        JsonParser jParser = null;
 
         JsonToken toke;
 
-        String bigNewsString = "";
 
         String newsContent = "/opt/news/tech.news";
         ArrayList<String> newsitem = new ArrayList<>();
@@ -183,30 +173,25 @@ public class Goodnews
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String newsJsonString = gson.toJson(newsObj);
 
-        Logger logger = LoggerFactory.getLogger(Goodnews.class);
-        logger.info(newsJsonString);
+        //Logger logger = LoggerFactory.getLogger(Goodnews.class);
+        //logger.info(newsJsonString);
 
         JsonFactory jFactory = new JsonFactory();
         try {
             jParser = jFactory.createParser(newsJsonString);
         } catch(IOException ioe) {
-            return "No news from input/output: "+ioe.getMessage();
+            newsitem.add("No news from input/output: "+ioe.getMessage());
         }
 
         Map<String, String> newsArticle = new HashMap<>();
         int end_ob_count = 0;
         int end_ar_count = 0;
 
-        while(!jParser.isClosed()) {
+        while(jParser != null && !jParser.isClosed()) {
 
             try {
 
                 toke = jParser.nextToken();
-
-                /*
-                if(JsonToken.START_OBJECT.equals(toke)) { }
-                if(JsonToken.START_ARRAY.equals(toke)) { end_ar_count++; }
-                */
 
                 if(JsonToken.FIELD_NAME.equals(toke)) {
                     String newsField = jParser.getCurrentName();
@@ -270,41 +255,87 @@ public class Goodnews
                         newsArticle.put("hedImage", jParser.getValueAsString());
                         //bigNewsString += "<img width=\"350px\" height=\"225px\" align=\"left\" style=\"margin:5px;\" border=\"1\" src=\""+jParser.getValueAsString()+"\" >";
                     }
-
-
                 }
-/*
-                if(JsonToken.END_OBJECT.equals(toke)) {
-                    toke = jParser.nextToken();
-                    end_ob_count++;
-                }
-
-
-                if(JsonToken.END_ARRAY.equals(toke)) {
-                    toke = jParser.nextToken();
-                    //     newsArticle = new HashMap<>();
-                }
-*/
-                //newsArticle.clear();
-                //toke = jParser.nextToken();
-
-                // Check if text size is reasonable and article title is not a duplicate
-                //if(newsArticle.get("text").length() > 250 && !newsOrg.containsKey(newsArticle.get("title"))) {
-                //if(!newsOrg.containsKey(newsArticle.get("title_full"))) {
-                //}
-
             } catch(IOException ioe) {
-                return "No news from token input/output: "+ioe.getMessage();
+                newsitem.add("No news from token input/output: "+ioe.getMessage());
             }
-
-
         }
 
-        bigNewsString = newsWebView(newsOrg);
+        return newsOrg;
+    }
+
+
+    /**
+     * Simple returns tech news in full
+     * @return
+     */
+    public String getLatestTechNews(String viewType)
+    {
+        if (viewType == null) {
+            viewType = "full";
+        }
+
+        String bigNewsString = "";
+        Map<String, Map<String,String>> newsOrg;
+
+        newsOrg = buildNewsMap();
+
+        if (viewType != "full") {
+            // wants links
+            bigNewsString = newsLinksView(newsOrg);
+        } else {
+            bigNewsString = newsWebView(newsOrg);
+        }
+
         return bigNewsString;
     }
 
 
+    /**
+     * Builds a full news web view
+     * @param newsOrg
+     * @return
+     */
+    private String newsLinksView(Map<String, Map<String,String>> newsOrg)
+    {
+        String bigNews = "";
+        String title;
+
+        Map.Entry<String, Map<String,String>> newsRow;
+        Map<String, String> newsArt;
+
+        Iterator it = newsOrg.entrySet().iterator();
+        while (it.hasNext()) {
+
+            newsRow = (Map.Entry) it.next();
+            title = newsRow.getKey();
+            newsArt = newsRow.getValue();
+
+            if (newsArt.get("text").length() > 400) {
+
+                bigNews += "<a target=\"newsSource\" href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
+                /*
+                bigNews += "<div><h3>" + newsArt.get("title") + "</h3></div>";
+                bigNews += "<div>";
+                bigNews += "<div style=\"font-size:8pt;\"><em>" + newsArt.get("author") + " -- " + newsArt.get("published") + "</em></div>";
+                bigNews += newsArt.get("sizedImage");
+                bigNews += newsArt.get("text");
+                bigNews += "</div>";
+                */
+            }
+
+            it.remove();
+        }
+
+        return bigNews;
+    }
+
+
+    /**
+     * Builds a full news web view
+     * @param newsOrg
+     * @return
+     */
     private String newsWebView(Map<String, Map<String,String>> newsOrg)
     {
         String bigNews = "";

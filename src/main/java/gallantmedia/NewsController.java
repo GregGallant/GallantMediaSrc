@@ -3,16 +3,8 @@ package gallantmedia;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.webhoseio.sdk.WebhoseIOClient;
-import com.google.gson.JsonElement;
-import java.util.Map;
-import java.util.HashMap;
-import java.net.URISyntaxException;
-import java.io.IOException;
 import gallantmedia.services.news.Goodnews;
-import org.springframework.beans.factory.annotation.Autowired;
-import java.util.Date;
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  * A kind of vue controller
@@ -30,19 +22,24 @@ public class NewsController {
         return newTechNews;
     }
 
+    @CrossOrigin(origins = "http://www.gallantone.com")
     @RequestMapping(value="/news", method=RequestMethod.GET)
     public String showNews()
     {
         String bignews = "";
         Goodnews goodnews = new Goodnews();
-        bignews = goodnews.getLatestTechNews();
-        /*
-        ArrayList<String> newTechNews = goodnews.getLatestTechNews();
+        bignews = goodnews.getLatestTechNews("full");
 
-        for(String newsitem : newTechNews)  {
-            bignews += "<p>" + newsitem + "</p>";
-        }
-        */
+        return bignews;
+    }
+
+    @CrossOrigin(origins = "http://www.gallantone.com")
+    @RequestMapping(value="/newslinks", method=RequestMethod.GET)
+    public String showNewsLinks()
+    {
+        String bignews;
+        Goodnews goodnews = new Goodnews();
+        bignews = goodnews.getLatestTechNews("links");
 
         return bignews;
     }
