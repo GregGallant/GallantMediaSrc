@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Iterator;
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
@@ -24,6 +27,10 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.google.gson.GsonBuilder;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import gallantmedia.services.news.Article;
+
 
 public class Goodnews
 {
@@ -78,7 +85,9 @@ public class Goodnews
         Date today = new Date();
 
         long datediff = today.getTime() - newsfiledate.getTime();
-        //logger.info("dareDiff: " + datediff);
+        logger.info("==> Render dateDiff: " + datediff);
+        logger.info("==> Render oldNewsTime: " + oldNewsTime);
+        logger.info("==> Render fileexists: " + file.exists());
 
         if (!file.exists()) {
             logger.info("... News files not found ... ");
@@ -274,7 +283,7 @@ public class Goodnews
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
 
         if (viewType == null) {
-            viewType = "full";
+            viewType = "links";
         }
 
         // News check and possible render
@@ -285,11 +294,15 @@ public class Goodnews
 
         newsOrg = buildNewsMap(newsType);
 
-        if (viewType != "full") {
+        if (viewType.equals("links")) {
             // wants links
             bigNewsString = newsLinksView(newsOrg);
-        } else {
+        } else if(viewType.equals("json")) {
+            bigNewsString = newsJsonView(newsOrg);
+        } else if(viewType.equals("full")){
             bigNewsString = newsWebView(newsOrg);
+        } else {
+            bigNewsString = newsLinksView(newsOrg);
         }
 
         return bigNewsString;
@@ -362,6 +375,52 @@ public class Goodnews
         }
 
         return bigNews;
+    }
+
+
+    /**
+     * Builds a full news web view
+     * @param newsOrg A map containing a String and another map which is the article data
+     * @return String html view
+     */
+    private String newsJsonView(Map<String, Map<String,String>> newsOrg)
+    {
+        String jsonBigNews = "";
+        Map<String, String> newsArt;
+        Map.Entry<String, Map<String,String>> newsRow;
+        Map.Entry<String,String> artRow;
+
+        Article art = new Article();
+        List<Article> artlist = new ArrayList<>();
+
+        Iterator it = newsOrg.entrySet().iterator();
+        while (it.hasNext()) {
+
+            newsRow = (Map.Entry) it.next();
+            String title = newsRow.getKey();
+            newsArt = newsRow.getValue();
+
+            // Filters out weak articles
+            if (newsArt.get("text").length() > 400) {
+                art.setNewstitle(newsArt.get("title"));
+                art.setNewsauthor(newsArt.get("author"));
+                art.setNewspublished(newsArt.get("published"));
+                art.setNewsurl(newsArt.get("url"));
+                art.setNewsimage(newsArt.get("hedImage"));
+                art.setNewstext(newsArt.get("text"));
+            }
+
+            artlist.add(art);
+            art = new Article();
+
+            it.remove();
+        }
+
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        jsonBigNews = gson.toJson(artlist);
+
+        return jsonBigNews;
     }
 
 

@@ -8,7 +8,7 @@ plugins {
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.5.5'
+	version = '0.5.6'
 	archiveName = "gallantmedia-${version}.war"
 	enabled = true
 }
@@ -44,10 +44,3 @@ dependencies {
 	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
 }
-
-//eclipse {
-//	classpath {
-//		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-//		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
-//	}
-//}

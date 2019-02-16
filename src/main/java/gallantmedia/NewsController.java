@@ -47,16 +47,35 @@ public class NewsController {
         return bignews;
     }
 
-    /* TODO: Return JSON only
-    CrossOrigin(origins = "http://www.gallantone.com")
-    RequestMapping(value="/newsjson", method=RequestMethod.GET)
+    @CrossOrigin(origins = "http://www.gallantone.com")
+    @RequestMapping(value="/newsjson", method=RequestMethod.GET)
     public String showNewsJson() {
         String bignews;
         Goodnews goodnews = new Goodnews();
-        bignews = goodnews.getLatestTechNews("links");
+        bignews = goodnews.getLatestNews("tech","json");
 
         return bignews;
-
     }
-    */
+
+    @CrossOrigin(origins = "http://www.gallantone.com")
+    @RequestMapping(value="/newsusjson", method=RequestMethod.GET)
+    public String showUSNewsJson() {
+        String bignews;
+        Goodnews goodnews = new Goodnews();
+        bignews = goodnews.getLatestNews("US","json");
+
+        return bignews;
+    }
+
+    // US News
+    @CrossOrigin(origins = "http://www.gallantone.com")
+    @RequestMapping(value="/newsus", method=RequestMethod.GET)
+    public String showUSNews()
+    {
+        String bignews = "";
+        Goodnews goodnews = new Goodnews();
+        bignews = goodnews.getLatestNews("US", "full");
+
+        return bignews;
+    }
 }
