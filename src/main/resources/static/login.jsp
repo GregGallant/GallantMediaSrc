@@ -42,17 +42,17 @@
 <div id="ggscreen1" class="container-fluid">
     <div class="row no-gutter">
         <div class="col-lg-12 col-md-12 col-sm-12 hed">
-            <h1>Build for Tomorrow</h1>
-            <div class="subhed">
-                <span>Welcome to the Rest API...</span> <span>Full Stack Development for a brighter day</span>
-
+            <div class="${param.error}">
+                Invalid username and password.
             </div>
-            <div class="justif">
-                <div class="hline1"><strong>Languages:</strong> Python, PHP, Java Spring </div>
-                <div class="hline1"><strong>Servers:</strong> Debian, Ubuntu, CentOs</div>
-                <div class="hline1"><strong>App Servers:</strong> Apache, Nginx, wSGI </div>
+            <div class="${param.logout}">
+                You have been logged out.
             </div>
-
+            <form class="@{/login}" method="post">
+                <div><label> User Name : <input type="text" name="username"/> </label></div>
+                <div><label> Password: <input type="password" name="password"/> </label></div>
+                <div><input type="submit" value="Sign In"/></div>
+            </form>
         </div>
     </div>
     <div class="row no-gutter centered">
@@ -152,17 +152,7 @@
     </div>
     <div class="row no-gutter centered blahdiv">
 
-        <div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
+
 
     </div>
 </div>
