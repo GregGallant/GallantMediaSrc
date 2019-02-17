@@ -14,16 +14,6 @@ public class NewsController {
 
     private Goodnews goodnews;
 
-    @RequestMapping(value="/newsbuild", method=RequestMethod.GET)
-    public String newsScoop()
-    {
-        Goodnews goodnews = new Goodnews();
-        if (goodnews.renderLatestNews()) {
-            return "News rendered.";
-        }
-
-        return "No news rendering necessary.";
-    }
 
     @CrossOrigin(origins = "http://www.gallantone.com")
     @RequestMapping(value="/news", method=RequestMethod.GET)

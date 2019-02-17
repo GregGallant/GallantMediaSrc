@@ -1,9 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
+<html>
 <head>
     <title>Gallantmedia Source</title>
     <meta charset="UTF-8">
@@ -12,14 +8,7 @@
     <link type="text/css" rel="stylesheet" href="./css/bootstrap.css" />
 
     <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="./js/gallantvision.js"></script>
 
-    <!-- Vue Core library -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $.fn.parallax(['#ggscreen1', '#ggscreen2']);
-        })
-    </script>
 </head>
 <body>
 <div><img src="./images/gg_sunset.png" id="center_image" /></div>

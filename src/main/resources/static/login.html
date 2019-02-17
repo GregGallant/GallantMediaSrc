@@ -1,21 +1,19 @@
 <!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Welcome Back...</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
     <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/js/popper.min.js"></script>
     <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-
-<!--    <link type="text/css" rel="stylesheet" href="/css/gallantone.css" /> -->
     <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
     <link type="text/css" rel="stylesheet" href="/css/gm.css" />
-
     <link rel="icon" HREF="icons/favicon.ico" size="16x16">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
 </head>
+
+
 <body>
 <header id="fixed_header">
     <div class="row no-gutter superhead">
@@ -152,34 +150,20 @@
             </form>
         </div>
     </div>
-    <div id="ggscreen2" class="row no-gutter centered blahdiv">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="textHeader">
-                <h3>KEEPING THE DIGITAL WORLD INNOVATIVE AND VISUALLY REMARKABLE</h3>
-                <h5>Your design should be better... and <strong>Brighter!</strong></h5>
-            </div>
-        </div>
-        <!-- Body -->
-        <div class="row no-gutter centered whatsup">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <div class="subheader01">What's Happening</div>
-                <div class="whatsnew">
-                    <div class="newstuff">
-                        <img align="left" class="whatsnewimage" src="images/features/gnyc-preview.jpg" />
-                        <span class="hed">Greg Gallant Photography website</span>
-                    <em>Tools: Spring Boot, Gradle, Vue.js</em>
-                    <div class="stuffstuff">10 plus years of New York City photography. Stay tuned.</div>
-                    </div>
+    <div class="row no-gutter centered blahdiv">
 
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="subheader01">Exquisite Linkage</div>
-                <div class="linkage">
-                    <a target="new01" href="http://coolors.co">coolors.co</a> - Translate color schemes within a beautifully designed site.
-                </div>
-            </div>
+        <div th:if="${param.error}">
+            Invalid username and password.
         </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div><label> User Name : <input type="text" name="username"/> </label></div>
+            <div><label> Password: <input type="password" name="password"/> </label></div>
+            <div><input type="submit" value="Sign In"/></div>
+        </form>
+
     </div>
 </div>
 <footer>

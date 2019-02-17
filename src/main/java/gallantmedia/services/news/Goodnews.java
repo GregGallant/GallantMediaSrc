@@ -60,7 +60,7 @@ public class Goodnews
     {
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
 
-        int oldNewsTime = 21600000;
+        int oldNewsTime = 10000000;
 
         Date newsfiledate;
         String filename = newsPath + newsFilter + ".news";
@@ -191,8 +191,12 @@ public class Goodnews
         }
 
         // Parse through the String file of news
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().create();
         String newsJsonString = gson.toJson(newsObj);
+
+        logger.info("news lookup check: " +newsContent);
+        logger.info("news json check: " +newsJsonString);
+
 
         JsonFactory jFactory = new JsonFactory();
         try {
@@ -261,7 +265,27 @@ public class Goodnews
                         newsArticle.put("sizedImage", sizedImage);
                         newsArticle.put("hedImage", jParser.getValueAsString());
                     }
+
+                    // Relevancy items
+                    if (newsField.equals("section_title")) {
+                        toke = jParser.nextToken();
+                        String newsSectionTitle = jParser.getValueAsString();
+                        newsArticle.put("section_title", newsSectionTitle);
+                    }
+
+                    if (newsField.equals("spam_score")) {
+                        toke = jParser.nextToken();
+                        String newsSpamScore = jParser.getValueAsString();
+                        newsArticle.put("spam_score", newsSpamScore);
+                    }
+
+                    if (newsField.equals("site_full")) {
+                        toke = jParser.nextToken();
+                        String newsSiteFull = jParser.getValueAsString();
+                        newsArticle.put("site_full", newsSiteFull);
+                    }
                 }
+
             } catch(IOException ioe) {
                 logger.error("No news from token input/output: "+ioe.getMessage());
                 return noNews;
@@ -301,6 +325,8 @@ public class Goodnews
             bigNewsString = newsJsonView(newsOrg);
         } else if(viewType.equals("full")){
             bigNewsString = newsWebView(newsOrg);
+        } else if(viewType.equals("order")){
+            bigNewsString = newsTitleView(newsOrg);
         } else {
             bigNewsString = newsLinksView(newsOrg);
         }
@@ -423,6 +449,50 @@ public class Goodnews
         return jsonBigNews;
     }
 
+    // Analytics Views //////////
+
+    /**
+     * Order / Relevancy testing and general analytics
+     * @param newsOrg The gallant news org map
+     * @return String big news, of course!
+     */
+    private String newsTitleView(Map<String, Map<String,String>> newsOrg)
+    {
+        String jsonBigNews = "";
+        Map<String, String> newsArt;
+        Map.Entry<String, Map<String,String>> newsRow;
+        Map.Entry<String,String> artRow;
+        Article art = new Article();
+        List<Article> artlist = new ArrayList<>();
+        Iterator it = newsOrg.entrySet().iterator();
+
+        while (it.hasNext()) {
+
+            newsRow = (Map.Entry) it.next();
+            String title = newsRow.getKey();
+            newsArt = newsRow.getValue();
+
+            // Filters out weak articles
+            if (newsArt.get("text").length() > 400) {
+                art.setNewstitle(newsArt.get("title"));
+                art.setNewspublished(newsArt.get("published"));
+                art.setNewspublished(newsArt.get("site_full"));
+            }
+
+            artlist.add(art);
+            art = new Article();
+
+            it.remove();
+        }
+
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        jsonBigNews = gson.toJson(artlist);
+
+        return jsonBigNews;
+    }
+
+    /// IO Streams ////////
 
     /**
      * Writes the news content to file
@@ -448,6 +518,7 @@ public class Goodnews
             return;
         }
     }
+
 
 
 }

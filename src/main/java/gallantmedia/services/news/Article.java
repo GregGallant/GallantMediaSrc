@@ -3,17 +3,24 @@ package gallantmedia.services.news;
 public class Article
 {
 
-    public String newstitle;
+    protected String newstitle;
 
-    public String newsauthor;
+    protected String newsauthor;
 
-    public String newspublished;
+    protected String newspublished;
 
-    public String newsurl;
+    protected String newsurl;
 
-    public String newstext;
+    protected String newstext;
 
-    public String newsimage;
+    protected String newsimage;
+
+    protected String newssectiontitle;
+
+    protected String newsspamscore;
+
+    protected String newssitefull;
+
 
     public String getNewstitle() {
         return newstitle;
@@ -61,5 +68,29 @@ public class Article
 
     public void setNewsimage(String newsimage) {
         this.newsimage = newsimage;
+    }
+
+    public String getNewssectiontitle() {
+        return newssectiontitle;
+    }
+
+    public void setNewssectiontitle(String newssectiontitle) {
+        this.newssectiontitle = newssectiontitle;
+    }
+
+    public String getNewsspamscore() {
+        return newsspamscore;
+    }
+
+    public void setNewsspamscore(String newsspamscore) {
+        this.newsspamscore = newsspamscore;
+    }
+
+    public String getNewssitefull() {
+        return newssitefull;
+    }
+
+    public void setNewssitefull(String newssitefull) {
+        this.newssitefull = newssitefull;
     }
 }
