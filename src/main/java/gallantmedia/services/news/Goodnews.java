@@ -39,7 +39,7 @@ public class Goodnews
 {
     private JsonElement generalNews;
 
-    protected Map<String, String> filters;
+    protected Map<List<String>, String> filters;
 
     private String newsPath = "/opt/news/";
 
@@ -73,14 +73,85 @@ public class Goodnews
             "www.chicagotribune.com"
     );
 
+    private List<String> usFilter = Arrays.asList(
+           "Alexandria",
+           "Trump",
+           "Bernie",
+           "Politics",
+           "Business",
+           "US",
+           "United States"
+    );
+
+    private List<String> techFilter = Arrays.asList(
+            "Amazon",
+            "Bezos",
+            "Google",
+            "Apple",
+            "Linux",
+            "Microsoft",
+            "IBM",
+            "tech",
+            "computer",
+            "encrypt",
+            "technology",
+            "cyber",
+            "alibaba",
+            "yahoo",
+            "Bill Gates"
+    );
+
+    private List<String> bizFilter = Arrays.asList(
+            "stocks",
+            "ipo",
+            "nasdaq",
+            "dow jones",
+            "industry",
+            "finance",
+            "business",
+            "companies",
+            "merger",
+            "acquisition",
+            "kpi",
+            "employee"
+    );
+
+    private List<String> entFilter = Arrays.asList(
+            "mariah carey",
+            "ariana grande",
+            "taylor swift",
+            "beyonce",
+            "snl",
+            "cardi b",
+            "dualipa",
+            "Jay-Z",
+            "John Legend",
+            "entertainment",
+            "music",
+            "album",
+            "lady gaga",
+            "demi",
+            "marvel",
+            "movies",
+            "batman"
+    );
+
+    private List<String> artifactsFilter = Arrays.asList(
+            "Force Dump",
+            "Advertisement >"
+    );
+
     /**
      * Builds the news filters, add more as fit
      */
     private void buildNewsFilters()
     {
         filters = new HashMap<>();
-        filters.put("United States", "US");
-        filters.put("Technology", "tech");
+        filters.put(usFilter, "US");
+        filters.put(techFilter, "tech");
+        filters.put(bizFilter, "business");
+        filters.put(entFilter, "entertainment");
+
     }
 
     /**
@@ -141,7 +212,6 @@ public class Goodnews
     public boolean renderLatestNews()
     {
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
-
         buildNewsFilters();
 
         // Create a WebhoseIOClient instance
@@ -150,13 +220,19 @@ public class Goodnews
 
         Iterator it = filters.entrySet().iterator();
         while (it.hasNext()) {
-            Map.Entry filter = (Map.Entry)it.next();
+            Map.Entry<List<String>, String> filter = (Map.Entry)it.next();
 
             // If news is old this returns false and gets new news
-            if (!checkLatestNews(filter.getValue().toString())) {
+            if (!checkLatestNews(filter.getValue())) {
+                String filterString = "";
 
-                String filterString = "performance_score:>0 (title:\""+ filter.getKey().toString() +"\" OR title:"+filter.getValue().toString()+")";
-                queries.put("q", filterString);
+                List<String> superFilter = filter.getKey();
+                for (String ifilter : superFilter) {
+                    filterString += "title: \""+ ifilter +"\" OR section_title: \""+ ifilter +"\" OR site_section: \""+ifilter+"\" ";
+                }
+
+                String finalFilterString = "performance_score:>0 ( "+ filterString +")";
+                queries.put("q", finalFilterString);
                 queries.put("sort", "crawled");
 
                 try {
@@ -550,9 +626,29 @@ public class Goodnews
             newsScore = newsScore + 3;
         }
 
+        if (entFilter.contains( newsArt.get("title") )) {
+            newsScore = newsScore + 3;
+        }
+
+        if (techFilter.contains( newsArt.get("title") )) {
+            newsScore = newsScore + 3;
+        }
+
+        if (usFilter.contains( newsArt.get("title") )) {
+            newsScore = newsScore + 2;
+        }
+
+        if (artifactsFilter.contains( newsArt.get("title") )) {
+            newsScore = newsScore - 8;
+        }
+
         // -5 for spam!
         if (Float.parseFloat(newsArt.get("spam_score")) > 0f ) {
             newsScore = newsScore - 5;
+        }
+
+        if (Float.parseFloat(newsArt.get("spam_score")) > .5f ) {
+            newsScore = newsScore - 8;
         }
 
         return newsScore;

@@ -26,6 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             .authorizeRequests()
                 .antMatchers("/","/news","/newsjson","/newslinks","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
                 .antMatchers("/css/**","/bootstrap/**","/images/**","/js/**","/fonts/**","/icons/**", "/chat").permitAll()
+                .antMatchers("/newsentertainmentjson","/newsstocksjson").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
