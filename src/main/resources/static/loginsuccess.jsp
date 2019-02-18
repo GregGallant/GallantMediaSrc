@@ -43,17 +43,8 @@
     <div class="row no-gutter">
         <div class="col-lg-12 col-md-12 col-sm-12 hed">
             <br/>
-            <div class="auth_error">
-                Invalid username and password.
-            </div>
-            <div class="auth_logout">
-                You have been logged out.
-            </div>
-            <form class="/login" method="post">
-                <div><label> User Name : <input type="text" name="username"/> </label></div>
-                <div><label> Password: <input type="password" name="password"/> </label></div>
-                <div><input type="submit" value="Sign In"/></div>
-            </form>
+            <h1>Login Successful</h1>
+            <h3>Welcome back, sir.</h3>
         </div>
     </div>
     <div class="row no-gutter centered">

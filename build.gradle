@@ -8,7 +8,7 @@ plugins {
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.6.0'
+	version = '0.6.2'
 	archiveName = "gallantmedia-${version}.war"
 	enabled = true
 }
@@ -46,4 +46,5 @@ dependencies {
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.8'
 
 	compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.2.RELEASE'
 }

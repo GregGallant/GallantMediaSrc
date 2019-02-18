@@ -10,6 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
@@ -20,12 +24,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     {
         http
             .authorizeRequests()
-                .antMatchers("/","/error.jsp","/resources/**","/supernews", "/newsorder").permitAll()
-                .antMatchers("/css/**","/js/**","/fonts/**","/icons/**", "/chat").permitAll()
+                .antMatchers("/","/news","/newsjson","/newslinks","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
+                .antMatchers("/css/**","/bootstrap/**","/images/**","/js/**","/fonts/**","/icons/**", "/chat").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/loginsuccess")
+                .loginProcessingUrl("/loginprocess")
+                .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
             .logout()
@@ -42,4 +49,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         return new InMemoryUserDetailsManager(user);
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        // TODO: Maybe switch to Argonii
+        return new BCryptPasswordEncoder();
+    }
 }

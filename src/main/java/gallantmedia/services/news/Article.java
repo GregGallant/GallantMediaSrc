@@ -1,6 +1,6 @@
 package gallantmedia.services.news;
 
-public class Article
+public class Article implements Comparable<Article>
 {
 
     protected String newstitle;
@@ -21,6 +21,12 @@ public class Article
 
     protected String newssitefull;
 
+    protected int newsscore;
+
+
+    public int compareTo(Article article2) {
+        return this.getNewsscore() - article2.getNewsscore();
+    }
 
     public String getNewstitle() {
         return newstitle;
@@ -92,5 +98,13 @@ public class Article
 
     public void setNewssitefull(String newssitefull) {
         this.newssitefull = newssitefull;
+    }
+
+    public int getNewsscore() {
+        return newsscore;
+    }
+
+    public void setNewsscore(int newsscore) {
+        this.newsscore = newsscore;
     }
 }

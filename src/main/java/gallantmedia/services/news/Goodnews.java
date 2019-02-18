@@ -13,7 +13,10 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
@@ -40,6 +43,35 @@ public class Goodnews
 
     private String newsPath = "/opt/news/";
 
+    private List<String> relFilter = Arrays.asList(
+            "www.businessinsider.com",
+            "markets.businessinsider.com",
+            "www.independent.co.uk",
+            "www.usatoday.com",
+            "www.bbc.co.uk",
+            "www.bbc.com",
+            "timesofindia.indiatimes.com",
+            "edition.cnn.com",
+            "www.cnn.com",
+            "www.cnet.com",
+            "www.theguardian.com",
+            "www.chicagotribune.com",
+            "news.sky.com",
+            "www.rt.com",
+            "www.telegraph.co.uk",
+            "www.bloomberg.com"
+    );
+
+    private List<String> topFilter = Arrays.asList(
+            "www.independent.co.uk",
+            "www.usatoday.com",
+            "www.bbc.co.uk",
+            "www.bbc.com",
+            "edition.cnn.com",
+            "www.cnn.com",
+            "www.theguardian.com",
+            "www.chicagotribune.com"
+    );
 
     /**
      * Builds the news filters, add more as fit
@@ -434,6 +466,9 @@ public class Goodnews
                 art.setNewsurl(newsArt.get("url"));
                 art.setNewsimage(newsArt.get("hedImage"));
                 art.setNewstext(newsArt.get("text"));
+
+                int artScore = calcNewsOrderAlg(newsArt);
+                art.setNewsscore(artScore);
             }
 
             artlist.add(art);
@@ -441,6 +476,9 @@ public class Goodnews
 
             it.remove();
         }
+
+        Collections.sort(artlist);
+        Collections.reverse(artlist);
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
@@ -476,7 +514,12 @@ public class Goodnews
             if (newsArt.get("text").length() > 400) {
                 art.setNewstitle(newsArt.get("title"));
                 art.setNewspublished(newsArt.get("published"));
-                art.setNewspublished(newsArt.get("site_full"));
+                art.setNewssitefull(newsArt.get("site_full"));
+                art.setNewssectiontitle(newsArt.get("section_title"));
+                art.setNewsspamscore(newsArt.get("spam_score"));
+
+                int artScore = calcNewsOrderAlg(newsArt);
+                art.setNewsscore(artScore);
             }
 
             artlist.add(art);
@@ -485,12 +528,37 @@ public class Goodnews
             it.remove();
         }
 
+        Collections.sort(artlist);
+        Collections.reverse(artlist);
+
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         jsonBigNews = gson.toJson(artlist);
 
         return jsonBigNews;
     }
+
+    private int calcNewsOrderAlg(Map<String,String> newsArt)
+    {
+        int newsScore = 0;
+
+        if (relFilter.contains( newsArt.get("site_full") )) {
+            newsScore = newsScore + 1;
+        }
+
+        if (topFilter.contains( newsArt.get("site_full") )) {
+            newsScore = newsScore + 3;
+        }
+
+        // -5 for spam!
+        if (Float.parseFloat(newsArt.get("spam_score")) > 0f ) {
+            newsScore = newsScore - 5;
+        }
+
+        return newsScore;
+    }
+
+
 
     /// IO Streams ////////
 
@@ -518,7 +586,5 @@ public class Goodnews
             return;
         }
     }
-
-
 
 }
