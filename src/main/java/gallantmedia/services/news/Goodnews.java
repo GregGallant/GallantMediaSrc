@@ -53,6 +53,7 @@ public class Goodnews
             "timesofindia.indiatimes.com",
             "edition.cnn.com",
             "www.cnn.com",
+            "www.foxnews.com",
             "www.cnet.com",
             "www.theguardian.com",
             "www.chicagotribune.com",
@@ -63,29 +64,60 @@ public class Goodnews
     );
 
     private List<String> topFilter = Arrays.asList(
-            "www.independent.co.uk",
-            "www.usatoday.com",
-            "www.bbc.co.uk",
+            "www.bloomberg.com",
+            "www.theguardian.com",
+            "www.foxnews.com",
             "www.bbc.com",
             "edition.cnn.com",
             "www.cnn.com",
-            "www.theguardian.com",
             "www.chicagotribune.com"
     );
 
     private List<String> usFilter = Arrays.asList(
            "Alexandria",
            "Trump",
+           "Obama",
+           "Pelosi",
            "Bernie",
            "Politics",
            "Business",
            "US",
-           "United States"
+           "AOC",
+           "Kamala",
+           "Roger Stone",
+           "book",
+           "New York",
+           "L.A.",
+           "Soho",
+           "Los Angeles",
+           "Chicago",
+           "deal",
+           "United States",
+           "Cardi"
+    );
+
+    private List<String> bignewsFilter = Arrays.asList(
+            "Alexandria",
+            "Ocasio-Cortez",
+            "Trump",
+            "Roger Stone"
+    );
+
+    private List<String> bigtimeFilter = Arrays.asList(
+            "Alexandria",
+            "Ocasio-Cortez",
+            "Baldwin",
+            "Marvel",
+            "Netflix",
+            "Ariana",
+            "Taylor Swift"
     );
 
     private List<String> techFilter = Arrays.asList(
             "Amazon",
             "Bezos",
+            "Elon",
+            "Musk",
             "Google",
             "Apple",
             "Linux",
@@ -93,6 +125,7 @@ public class Goodnews
             "IBM",
             "tech",
             "computer",
+            "web",
             "encrypt",
             "technology",
             "cyber",
@@ -117,29 +150,43 @@ public class Goodnews
     );
 
     private List<String> entFilter = Arrays.asList(
-            "mariah carey",
-            "ariana grande",
-            "taylor swift",
-            "beyonce",
+            "Mariah Carey",
+            "Ariana Grande",
+            "Taylor Swift",
+            "Beyonce",
             "snl",
-            "cardi b",
-            "dualipa",
+            "Cardi-B",
             "Jay-Z",
-            "John Legend",
+            "Nirvana",
+            "Sheeran",
+            "Guitarist",
             "entertainment",
             "music",
             "album",
-            "lady gaga",
-            "demi",
-            "marvel",
+            "artists",
+            "Lady Gaga",
+            "Fyre",
             "movies",
-            "batman"
+            "song",
+            "Netflix",
+            "Batman"
     );
 
     private List<String> artifactsFilter = Arrays.asList(
             "Force Dump",
+            "Quiz",
             "Advertisement >"
     );
+
+    // Until sports, sports in meh...
+    private List<String> mehFilter = Arrays.asList(
+            "Opinion",
+            "Basketball",
+            "Football",
+            "Baseball",
+            "OpEd"
+    );
+
 
     /**
      * Builds the news filters, add more as fit
@@ -231,7 +278,8 @@ public class Goodnews
                     filterString += "title: \""+ ifilter +"\" OR section_title: \""+ ifilter +"\" OR site_section: \""+ifilter+"\" ";
                 }
 
-                String finalFilterString = "performance_score:>0 ( "+ filterString +")";
+                //String finalFilterString = "performance_score:>0 ( "+ filterString +")";
+                String finalFilterString = "performance_score:>0 language:english ( "+ filterString +")";
                 queries.put("q", finalFilterString);
                 queries.put("sort", "crawled");
 
@@ -430,11 +478,11 @@ public class Goodnews
             // wants links
             bigNewsString = newsLinksView(newsOrg);
         } else if(viewType.equals("json")) {
-            bigNewsString = newsJsonView(newsOrg);
+            bigNewsString = newsJsonView(newsOrg, newsType);
         } else if(viewType.equals("full")){
             bigNewsString = newsWebView(newsOrg);
         } else if(viewType.equals("order")){
-            bigNewsString = newsTitleView(newsOrg);
+            bigNewsString = newsTitleView(newsOrg, newsType);
         } else {
             bigNewsString = newsLinksView(newsOrg);
         }
@@ -462,7 +510,7 @@ public class Goodnews
             String title = newsRow.getKey();
             newsArt = newsRow.getValue();
 
-            if (newsArt.get("text").length() > 400) {
+            if (newsArt.get("text").length() > 850) {
 
                 bigNews += "<a target=\"newsSource\" href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
 
@@ -494,7 +542,7 @@ public class Goodnews
             String title = newsRow.getKey();
             newsArt = newsRow.getValue();
 
-            if (newsArt.get("text").length() > 400) {
+            if (newsArt.get("text").length() > 850) {
 
                 //bigNews = "<a href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
                 bigNews += "<div><h3>" + newsArt.get("title") + "</h3></div>";
@@ -517,7 +565,7 @@ public class Goodnews
      * @param newsOrg A map containing a String and another map which is the article data
      * @return String html view
      */
-    private String newsJsonView(Map<String, Map<String,String>> newsOrg)
+    private String newsJsonView(Map<String, Map<String,String>> newsOrg, String newsType)
     {
         String jsonBigNews = "";
         Map<String, String> newsArt;
@@ -535,7 +583,7 @@ public class Goodnews
             newsArt = newsRow.getValue();
 
             // Filters out weak articles
-            if (newsArt.get("text").length() > 400) {
+            if (newsArt.get("text").length() > 850) {
                 art.setNewstitle(newsArt.get("title"));
                 art.setNewsauthor(newsArt.get("author"));
                 art.setNewspublished(newsArt.get("published"));
@@ -543,7 +591,7 @@ public class Goodnews
                 art.setNewsimage(newsArt.get("hedImage"));
                 art.setNewstext(newsArt.get("text"));
 
-                int artScore = calcNewsOrderAlg(newsArt);
+                int artScore = calcNewsOrderAlg(newsArt, newsType);
                 art.setNewsscore(artScore);
             }
 
@@ -570,7 +618,7 @@ public class Goodnews
      * @param newsOrg The gallant news org map
      * @return String big news, of course!
      */
-    private String newsTitleView(Map<String, Map<String,String>> newsOrg)
+    private String newsTitleView(Map<String, Map<String,String>> newsOrg, String newsType)
     {
         String jsonBigNews = "";
         Map<String, String> newsArt;
@@ -587,14 +635,14 @@ public class Goodnews
             newsArt = newsRow.getValue();
 
             // Filters out weak articles
-            if (newsArt.get("text").length() > 400) {
+            if (newsArt.get("text").length() > 850) {
                 art.setNewstitle(newsArt.get("title"));
                 art.setNewspublished(newsArt.get("published"));
                 art.setNewssitefull(newsArt.get("site_full"));
                 art.setNewssectiontitle(newsArt.get("section_title"));
                 art.setNewsspamscore(newsArt.get("spam_score"));
 
-                int artScore = calcNewsOrderAlg(newsArt);
+                int artScore = calcNewsOrderAlg(newsArt, newsType);
                 art.setNewsscore(artScore);
             }
 
@@ -614,7 +662,7 @@ public class Goodnews
         return jsonBigNews;
     }
 
-    private int calcNewsOrderAlg(Map<String,String> newsArt)
+    private int calcNewsOrderAlg(Map<String,String> newsArt, String newsType)
     {
         int newsScore = 0;
 
@@ -627,15 +675,31 @@ public class Goodnews
         }
 
         if (entFilter.contains( newsArt.get("title") )) {
-            newsScore = newsScore + 3;
-        }
-
-        if (techFilter.contains( newsArt.get("title") )) {
-            newsScore = newsScore + 3;
+            newsScore = newsScore + 5;
         }
 
         if (usFilter.contains( newsArt.get("title") )) {
-            newsScore = newsScore + 2;
+            if (!newsType.equals("entertainment")) {
+                newsScore = newsScore + 4;
+            } else {
+                newsScore = newsScore - 3;
+            }
+        }
+
+        if (techFilter.contains( newsArt.get("title") ) && !newsType.equals("entertainment")) {
+            newsScore = newsScore + 3;
+        }
+
+        if (bigtimeFilter.contains( newsArt.get("title") ) && newsType.equals("entertainment")) {
+            newsScore = newsScore + 7;
+        }
+
+        if (bignewsFilter.contains( newsArt.get("title") ) && !newsType.equals("entertainment")) {
+            newsScore = newsScore + 7;
+        }
+
+        if (mehFilter.contains( newsArt.get("title") )) {
+            newsScore = newsScore - 5;
         }
 
         if (artifactsFilter.contains( newsArt.get("title") )) {
