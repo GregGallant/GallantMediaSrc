@@ -5,6 +5,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import gallantmedia.models.Contact;
+import gallantmedia.services.contact.ContactService;
+import gallantmedia.services.contact.ContactServiceImpl;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import gallantmedia.services.contact.ContactRepository;
 
 /**
  * A kind of vue controller
@@ -13,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class NewsAdminController {
 
     private Goodnews goodnews;
+
+    @Autowired
+    private ContactRepository contactRepository;
 
     // Relevancy Notes
     /*
@@ -25,12 +34,24 @@ public class NewsAdminController {
     @RequestMapping(value="/newsbuild", method=RequestMethod.GET)
     public String newsScoop()
     {
+        StringBuilder stringB = new StringBuilder("");
+
+        /*
         Goodnews goodnews = new Goodnews();
         if (goodnews.renderLatestNews()) {
             return "News rendered.";
         }
+        */
 
-        return "No news rendering necessary.";
+        List<Contact> contactList = contactRepository.findAll();
+
+        for(Contact contact:contactList) {
+            stringB.append(contact.getFirstname());
+            stringB.append(contact.getLastname());
+            stringB.append(contact.getWebsite());
+        }
+
+        return stringB.toString();
     }
 
     @CrossOrigin(origins = "http://www.gallantone.com")

@@ -8,7 +8,7 @@ plugins {
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.6.9'
+	version = '0.7.2'
 	archiveName = "gallantmedia-${version}.war"
 	enabled = true
 }

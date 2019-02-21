@@ -70,7 +70,8 @@ public class Goodnews
             "www.bbc.com",
             "edition.cnn.com",
             "www.cnn.com",
-            "www.chicagotribune.com"
+            "www.theobserver.com",
+            "www.newsobserver.com"
     );
 
     private List<String> usFilter = Arrays.asList(
@@ -82,7 +83,11 @@ public class Goodnews
            "Politics",
            "Business",
            "US",
+           "temperatures",
+           "Venezuela",
+           "Hurricane",
            "AOC",
+           "Brexit",
            "Kamala",
            "Roger Stone",
            "book",
@@ -100,16 +105,18 @@ public class Goodnews
             "Alexandria",
             "Ocasio-Cortez",
             "Trump",
+            "Bernie Sanders",
             "Roger Stone"
     );
 
     private List<String> bigtimeFilter = Arrays.asList(
             "Alexandria",
             "Ocasio-Cortez",
-            "Baldwin",
-            "Marvel",
-            "Netflix",
             "Ariana",
+            "Cardi",
+            "Lennon",
+            "Jagger",
+            "Regina King",
             "Taylor Swift"
     );
 
@@ -121,8 +128,24 @@ public class Goodnews
             "Google",
             "Apple",
             "Linux",
+            "NASA",
+            "Asteroid",
+            "Galaxy",
+            "Samsung",
+            "Sony",
+            "Spotify",
             "Microsoft",
             "IBM",
+            "artificial",
+            "Huawei",
+            "Facebook",
+            "Tim Cook",
+            "AI",
+            "Laptop",
+            "Mobile phone",
+            "machine learning",
+            "processing",
+            "Cryptocurrency",
             "tech",
             "computer",
             "web",
@@ -149,41 +172,120 @@ public class Goodnews
             "employee"
     );
 
+    private List<String> fashionFilter = Arrays.asList(
+            "Karl Lagerfeld",
+            "Kate Spade",
+            "Kate Moss",
+            "Kate Valentine",
+            "Prado",
+            "Versace",
+            "Gianni",
+            "Style",
+            "Fashion"
+    );
+
+    private List<String> sportsFilter = Arrays.asList(
+            "Football",
+            "Baseball",
+            "Basketball",
+            "Colin Kaepernick",
+            "Arod",
+            "derek jeter",
+            "NFL",
+            "NBA",
+            "NHL",
+            "MLB",
+            "Yankees",
+            "Mets",
+            "Packers",
+            "Green Bay"
+    );
+
+
     private List<String> entFilter = Arrays.asList(
             "Mariah Carey",
             "Ariana Grande",
             "Taylor Swift",
-            "Beyonce",
-            "snl",
             "Cardi-B",
-            "Jay-Z",
+            "Cardi B",
+            "guitarist",
+            "concert",
+            "record label",
+            "BMG",
+            "Tonight Show",
+            "late Show",
+            "EMI",
+            "kpop",
             "Nirvana",
-            "Sheeran",
-            "Guitarist",
+            "Sam Feldt",
+            "Kate Ryan",
+            "Rita Ora",
+            "Njomza",
+            "Rynx",
+            "Drew Love",
+            "Halsey",
+            "Lennon",
+            "Star Wars",
+            "Star Trek",
+            "Guitar",
             "entertainment",
             "music",
             "album",
+            "artist",
             "artists",
             "Lady Gaga",
-            "Fyre",
+            "Soul",
+            "R&B",
+            "Folk singer",
+            "Chris Cornell",
+            "Cobain",
+            "headphones",
+            "Rock Music",
+            "movie",
             "movies",
             "song",
-            "Netflix",
+            "singer",
+            "dancer",
+            "striptease",
+            "Avengers",
             "Batman"
     );
 
     private List<String> artifactsFilter = Arrays.asList(
             "Force Dump",
             "Quiz",
-            "Advertisement >"
+            "(WATCH)",
+            "2 of 41 3",
+            "Opinion",
+            "50 Cent",
+            "Hurricane",
+            "POLL:",
+            "Advertisement >",
+            "Car Imports",
+            "Rupee",
+            "Car Sales"
     );
 
     // Until sports, sports in meh...
     private List<String> mehFilter = Arrays.asList(
-            "Opinion",
             "Basketball",
             "Football",
             "Baseball",
+            "Netflix",
+            "Shooting",
+            "Pulwama",
+            "Shooter",
+            "50 cent",
+            "migrants",
+            "Pixar",
+            "GT-R",
+            "punisher",
+            "conspiracy",
+            "Opinion",
+            "jessica jones",
+            "thor",
+            "Brexit",
+            "Gun",
             "OpEd"
     );
 
@@ -198,6 +300,8 @@ public class Goodnews
         filters.put(techFilter, "tech");
         filters.put(bizFilter, "business");
         filters.put(entFilter, "entertainment");
+        //filters.put(entFilter, "fashion");
+        //filters.put(entFilter, "sports");
 
     }
 
@@ -679,19 +783,23 @@ public class Goodnews
         }
 
         if (usFilter.contains( newsArt.get("title") )) {
-            if (!newsType.equals("entertainment")) {
-                newsScore = newsScore + 4;
+            if (!newsType.equals("entertainment") && !newsType.equals("tech")) {
+                newsScore = newsScore + 11;
             } else {
-                newsScore = newsScore - 3;
+                newsScore = newsScore - 9;
             }
         }
 
         if (techFilter.contains( newsArt.get("title") ) && !newsType.equals("entertainment")) {
-            newsScore = newsScore + 3;
+            if (!newsType.equals("tech")) {
+                newsScore = newsScore + 3;
+            } else {
+                newsScore = newsScore + 9;
+            }
         }
 
         if (bigtimeFilter.contains( newsArt.get("title") ) && newsType.equals("entertainment")) {
-            newsScore = newsScore + 7;
+            newsScore = newsScore + 15;
         }
 
         if (bignewsFilter.contains( newsArt.get("title") ) && !newsType.equals("entertainment")) {
@@ -699,20 +807,20 @@ public class Goodnews
         }
 
         if (mehFilter.contains( newsArt.get("title") )) {
-            newsScore = newsScore - 5;
+            newsScore = newsScore - 14;
         }
 
         if (artifactsFilter.contains( newsArt.get("title") )) {
-            newsScore = newsScore - 8;
+            newsScore = newsScore - 15;
         }
 
         // -5 for spam!
         if (Float.parseFloat(newsArt.get("spam_score")) > 0f ) {
-            newsScore = newsScore - 5;
+            newsScore = newsScore - 9;
         }
 
         if (Float.parseFloat(newsArt.get("spam_score")) > .5f ) {
-            newsScore = newsScore - 8;
+            newsScore = newsScore - 13;
         }
 
         return newsScore;

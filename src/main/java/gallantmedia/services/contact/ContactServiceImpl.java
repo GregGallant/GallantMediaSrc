@@ -22,7 +22,11 @@ public class ContactServiceImpl implements ContactService
     public List<Contact> findAll() {
         return contactRepository.findAll();
     }
-
+/*
+    public Contact findById(int id) {
+        return ContactRepository.findById(id);
+    }
+*/
     public String findName() {
         /**
          * trial 1
