@@ -134,6 +134,8 @@ public class Goodnews
             "Samsung",
             "Sony",
             "Spotify",
+            "pianist",
+            "Yuja Wang",
             "Microsoft",
             "IBM",
             "artificial",

@@ -20,6 +20,10 @@ import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
 import javax.sql.DataSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 
@@ -43,14 +47,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         http
             .authorizeRequests()
                 .antMatchers("/","/news","/newsjson","/newslinks","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
-                .antMatchers("/css/**","/bootstrap/**","/images/**","/js/**","/fonts/**","/icons/**", "/chat").permitAll()
-                .antMatchers("/newsentertainmentjson","/newsbusinessjson","/newsbuild").permitAll()
+                .antMatchers("/css/**","/fonts/**","/bootstrap/**","/images/**","/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
+                 //.loginProcessingUrl("/loginprocess")
                 .loginPage("/login")
                 .defaultSuccessUrl("/loginsuccess")
-                //.loginProcessingUrl("/loginprocess")
                 .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
@@ -59,60 +62,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
         http.exceptionHandling().accessDeniedPage("/403");
     }
-/*
-    @Primary
-    @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public HikariDataSource dataSource() {
-        return DataSourceBuilder.create().build();
-    }
-*/
-/*
-    @Bean
-    @ConfigurationProperties("application.properties")
-    public DataSource dataSource() {
-        return DataSourceBuilder.create().build();
-    }
-*/
-/*
-    @Bean
-    @Primary
-    @ConfigurationProperties("application.properties")
-    public DataSourceProperties dataSourceProperties() {
-        return new DataSourceProperties();
-    }
-*/
-/*
-    @Autowired
-    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception
-    {
-        DataSource dataSource = dataSource();
-        Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
 
-        logger.info("configAuthentication: " + auth.toString());
-
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select user,password FROM user where username=?")
-                .authoritiesByUsernameQuery("select user,role FROM user WHERE username=?");
-    }
-*/
-    @Bean
     @Override
-    public UserDetailsService userDetailsService()
+    public void configure(AuthenticationManagerBuilder builder) throws Exception
     {
         Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
-
-        UserDetails user = User.withDefaultPasswordEncoder().username("ggallant")
-                                         .password("test").roles("USER").build();
-
-        logger.info("UserDetailsService called UserDetails user: " + user.toString());
-
-        return new InMemoryUserDetailsManager(user);
+        logger.info("====D~  Configure app called");
+        builder.userDetailsService(new GallantUserDetailsService());
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
+        logger.info("Hello from password encoder");
         // TODO: Maybe switch to Argonii
         return new BCryptPasswordEncoder();
     }
+
 }
