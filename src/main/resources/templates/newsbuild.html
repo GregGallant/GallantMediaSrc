@@ -7,8 +7,13 @@
             <br/>
             <br/>
             <br/>
-            <h1>Login Successful</h1>
-            <h3>Welcome back, sir.</h3>
+            <div style="background-color:#ffffff; color:#111111;">
+                <div th:each="contact : ${contactList}" style="border:1px solid #333333; padding:10px;">
+                    <div th:text="${contact.firstname}"></div>
+                    <div th:text="${contact.lastname}"></div>
+                    <div th:text="${contact.website}"></div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row no-gutter centered">
