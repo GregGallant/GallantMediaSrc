@@ -80,6 +80,16 @@ public class NewsController {
     }
 
     @CrossOrigin(origins = "http://www.gallantone.com")
+    @RequestMapping(value="/newsfashionjson", method=RequestMethod.GET)
+    public String showFashionNewsJson() {
+        String bignews;
+        Goodnews goodnews = new Goodnews();
+        bignews = goodnews.getLatestNews("fashion","json");
+
+        return bignews;
+    }
+
+    @CrossOrigin(origins = "http://www.gallantone.com")
     @RequestMapping(value="/newsentertainmentjson", method=RequestMethod.GET)
     public String showEntNewsJson() {
         String bignews;

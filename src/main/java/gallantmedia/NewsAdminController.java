@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-
+import gallantmedia.services.news.Article;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -48,15 +48,15 @@ public class NewsAdminController {
     {
     //    StringBuilder stringB = new StringBuilder("");
 
-        /*
-        Goodnews goodnews = new Goodnews();
-        if (goodnews.renderLatestNews()) {
-            return "News rendered.";
-        }
-        */
-        ModelAndView mav = new ModelAndView("newsbuild");
-        mav.addObject(contactRepository.findAll());
 
+        String bignews;
+        Goodnews goodnews = new Goodnews();
+        List<Article> listOfArticles = goodnews.getLatestNewsAdmin("US","admin");
+
+        ModelAndView mav = new ModelAndView("newsbuild");
+
+        mav.addObject(listOfArticles);
+        model.addAttribute("listOfArticles", listOfArticles);
         return mav;
     }
 

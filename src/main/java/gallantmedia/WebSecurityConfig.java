@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     {
         http
             .authorizeRequests()
-                .antMatchers("/","/news","/newsjson","/newslinks","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
+                .antMatchers("/","/news","/newsjson","/newslinks","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
                 .antMatchers("/css/**","/fonts/**","/bootstrap/**","/images/**","/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -66,8 +66,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Override
     public void configure(AuthenticationManagerBuilder builder) throws Exception
     {
-        Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
-        logger.info("====D~  Configure app called");
         builder.userDetailsService(new GallantUserDetailsService());
     }
 

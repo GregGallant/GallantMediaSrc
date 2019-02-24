@@ -1,0 +1,2137 @@
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.fadeInOut {
+    -webkit-animation-name: fadeInOut;
+    animation-name: fadeInOut;
+}
+
+.cfhead {
+    position: relative;
+    display: block;
+    padding: 12px 12px 12px 12px;
+    border: 4px solid #53939d;
+    border-radius: 10px;
+    margin: -30px 0 10px -20px;
+    background-color: #f4e8c1;
+    float: left;
+    font-size: 0.7em;
+}
+
+.cfgroup {
+    border: 1px inset #ffdc73;
+    padding: 4px 4px 8px 4px;
+    margin: 2px 0 2px 0;
+}
+
+.cfmesg {
+    font-size: 0.8em;
+    color: #ff5333;
+}
+
+.cffield {
+    font-size: 12px;
+    color: #101010;
+}
+
+.validation {
+    position: absolute;
+    display: block;
+    visibility: hidden;
+    margin: -50px 0 0 420px;
+    white-space: nowrap;
+    top: 0;
+    width: 340px;
+    max-height: 420px;
+    padding: 11px 11px 11px 11px;
+    font-size: 1.1em;
+    font-weight: normal;
+    text-align: right;
+    background-color: #ffecbf;
+    border: 5px solid #53939d;
+    border-radius: 3px;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+    -webkit-animation-duration: 15s;
+    animation-duration: 15s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+header div.superhead {
+    height: 76px;
+    padding: 0 0 0 12px;
+}
+header div.logohead {
+    padding: 45px 0 2px 9px;
+}
+header div.menuhead ul {
+    display: inline;
+    height: 70px;
+    width: auto;
+    padding: 50px 0 0 0;
+    margin: 0px 5px 0 0;
+    float: right;
+    clear: both;
+}
+header div.menuhead ul li {
+    display: inline;
+    font-family: Lora, Helvetica, Arial, sans-serif;
+    font-size: 1.12em;
+    padding: 0 40px 0 0;
+    text-decoration: none;
+}
+header div.menuhead ul li a {
+    color: #101010;
+}
+header div.menuhead ul li a:hover {
+    color: #2274a5;
+}
+header div.menuhead ul li a:visited {
+    color: #101010;
+}
+header div.burgerhead {
+    position: relative;
+    margin-top: 30px;
+    padding: 17px 20px 0 0;
+    float: right;
+}
+header div.burgerhead ul#burgermenu {
+    position: inherit;
+    margin: 0 30px 0 0;
+    border: 2px outset #53939d;
+    background-color: #2d8691;
+    width: 350px;
+    height: 300px;
+    z-index: 10;
+}
+header div.burgerhead button {
+    border: none;
+    background-color: #eeeeee;
+    padding: 0 0 0 0;
+}
+header div.burgerhead button img {
+    width: 24px;
+    height: 18px;
+}
+header div.dropdown-menu {
+    background: none;
+    border: none;
+}
+
+#newsUS {
+    font-family: Lora, Helvetica, Arial, sans-serif;
+    font-size: 0.8em;
+}
+#newsUS #news-loading {
+    text-align: center;
+    color: #53939d;
+}
+
+.gazette {
+    display: block;
+    font-family: Lora, Anton, Arial, sans-serif;
+    font-size: 0.9em;
+    color: #2274a5;
+    margin: 60px 0 0 0;
+    padding: 60px 0 0 0;
+}
+
+ul.newsMenuHeader {
+    display: block;
+    position: relative;
+    margin: 13px 0 0 0;
+    width: 100%;
+    min-width: 500px;
+    background-color: #2274a5;
+    border-radius: 5px;
+}
+ul.newsMenuHeader li {
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.25em;
+    color: #ffffff;
+    font-weight: normal;
+    margin: 5px 30px 5px 10px;
+    padding: 0 5px 0 5px;
+    cursor: pointer;
+    border: 1px solid #2274a5;
+}
+ul.newsMenuHeader li a:hover {
+    color: #f4e8c1;
+}
+ul.newsMenuHeader li a:visited {
+    color: #f4e8c1;
+}
+ul.newsMenuHeader li a:link {
+    color: #f4e8c1;
+}
+ul.newsMenuHeader li.hover {
+    position: relative;
+    background-color: #f4e8c1;
+    border: 1px outset #53939d;
+    padding: 0 5px 0 5px;
+    color: #2274a5;
+}
+
+.newsArticleRect {
+    display: block;
+    padding: 1px 1px 10px 1px;
+}
+.newsArticleRect h3.news {
+    font-family: Lora, Helvetica, Arial, sans-serif;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+.newsArticleRect .newsyText {
+    padding: 5px 2px 15px 0;
+    margin-bottom: 10px;
+}
+.newsArticleRect .newsyText span {
+    font-family: Lora, Helvetica, Arial, sans-serif;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+.newsArticleRect .newsyText img.newsImage {
+    margin: 5px 15px 15px 0;
+    border: 7px solid #192033;
+    width: 420px;
+    height: 250px;
+}
+.newsArticleRect .headlineNewsImage {
+    text-align: left;
+    margin: 15px;
+    border: 2px solid #101010;
+    width: 400px;
+    height: 300px;
+}
+
+@font-face {
+    font-family: Arvil;
+    src: url("../fonts/Arvil/Arvil_Sans.ttf"), url("../fonts/Arvil/Arvil_Sans.woff");
+}
+@font-face {
+    font-style: normal;
+    font-family: Anton;
+    src: url("../fonts/Anton/Anton-Regular.ttf"), url("../fonts/Anton/Anton-Regular.woff");
+}
+@font-face {
+    font-family: Lora;
+    src: url("../fonts/Lora/Lora-Regular.ttf"), url("../fonts/Lora/Lora-Regular.woff");
+}
+@font-face {
+    font-style: normal;
+    font-weight: normal;
+    font-family: Lowvetica;
+    src: url("../fonts/Lowvetica/Lowvetica.eot");
+}
+@font-face {
+    font-style: normal;
+    font-weight: normal;
+    font-family: Lowvetica;
+    src: url("../fonts/Lowvetica/Lowvetica.ttf") format("opentype");
+}
+body {
+    background-color: #eeeeee;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.beta {
+    font-size: 0.6em;
+    margin-top: -15px;
+    color: #2274a5;
+}
+
+.beta2 {
+    display: block;
+    font-size: 0.7em;
+    margin-top: -5px;
+    color: #101010;
+}
+
+.form-control {
+    width: 100%;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.95em;
+    margin: 5px 0 5px 0;
+}
+
+.textHeader {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Arvil, Arial, sans-serif;
+}
+.textHeader h1 {
+    font-family: Arvil, sans-serif;
+    font-size: 2.3em;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    color: #306063;
+    margin: 0 0 0 0;
+}
+.textHeader h3 {
+    font-family: Arvil, sans-serif;
+    font-size: 1.9em;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    color: #08907e;
+    margin: 0 0 0 0;
+}
+.textHeader h4 {
+    font-family: Arvil, sans-serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    letter-spacing: 0.075em;
+    color: #08907e;
+    margin: 20px 0 0 0;
+}
+.textHeader h5 {
+    font-family: Arvil, sans-serif;
+    font-size: 1.25em;
+    font-weight: normal;
+    letter-spacing: 0.084em;
+    color: #08403e;
+    margin: 0 0 0 0;
+}
+
+div.blahdiv {
+    padding: 7px 0 7px 0;
+}
+
+#fixed_header {
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 10px solid #53939d;
+    background-color: #eeeeee;
+    text-align: center;
+    width: 100%;
+    height: 85px;
+    z-index: 20;
+}
+
+form#contactForm {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#contactFormGroup {
+    padding-top: 3px;
+    padding-bottom: 10px;
+}
+#contactFormGroup h1 {
+    display: block;
+    padding: 25px 35px 25px 35px;
+    margin: auto auto;
+    font-family: Arvil, Helvetica, Arial, sans-serif;
+    font-size: 3.5em;
+    border-radius: 7px;
+    background-color: #53939d;
+    color: #f4e8c1;
+}
+#contactFormGroup h3 {
+    display: block;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    color: #101010;
+    line-height: 1.4em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    margin: auto auto;
+    border-radius: 7px;
+    background-color: #f4e8c1;
+}
+
+.icon_left {
+    display: inline-block;
+    background-color: #fff;
+    border: 1px solid #939393;
+    width: 85px;
+    height: 85px;
+    border: 1px solid #939393;
+}
+
+.subheader01 {
+    display: block;
+    font-family: Lowvetica, Helvetica, sans-serif;
+    font-size: 1.1em;
+    background-color: #258EA6;
+    color: #fff;
+    padding: 10px 10px 7px 15px;
+    margin: 0 0 10px 0;
+}
+
+.subheader02 {
+    font-family: Lowvetica, Helvetica, Arial, sans-serif;
+    font-size: 2.3em;
+    color: #E4DACF;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    margin: 24px 10px 24px 5px;
+    padding: 14px 0 0 0;
+}
+
+.icon_vert {
+    display: inline-block;
+    border-bottom: 1px solid #939393;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    text-align: left;
+    margin-bottom: 40px;
+}
+.icon_vert p {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    color: #ffffff;
+    line-height: 2.1em;
+}
+.icon_vert img {
+    margin: 0 15px 15px 0;
+}
+
+.icon_vert_2 {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    text-align: left;
+    margin-bottom: 40px;
+}
+.icon_vert_2 p {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    color: #ffffff;
+    line-height: 2.1em;
+}
+.icon_vert_2 img {
+    margin: 0 15px 15px 0;
+}
+
+.text_vert {
+    display: block;
+    float: left;
+    font-size: 0.9em;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.whatsnew {
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    color: #011936;
+    margin-bottom: 15px;
+}
+.whatsnew div.newstuff {
+    display: inline-block;
+    margin: 5px 0 10px 0;
+}
+.whatsnew div.newstuff span.hed {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 1.4em;
+}
+.whatsnew div.newstuff img {
+    display: inline-block;
+}
+.whatsnew div.newstuff em {
+    display: block;
+    text-align: right;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.whatsnew div.newstuff div.stuffstuff {
+    display: block;
+    margin: 5px 0 0 0;
+    font-size: 1.1em;
+}
+
+.linkage {
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    font-style: oblique;
+    font-weight: 100;
+    color: #303030;
+}
+.linkage a {
+    color: #1A936F;
+}
+.linkage a:hover {
+    color: #011936;
+}
+.linkage div {
+    vertical-align: top;
+    margin: 0 0 0 0;
+    color: #011936;
+    width: 100%;
+}
+
+.whatsnewimage {
+    display: inline-block;
+    font-size: 0.9em;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 100;
+    -moz-box-shadow: 3px 3px 4px #333;
+    -webkit-box-shadow: 3px 3px 4px #333;
+    box-shadow: 3px 3px 4px #333;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color="#000000");
+    border: 1px solid #258EA6;
+    margin: 0 14px 14px 0;
+}
+
+form {
+    max-width: 350px;
+    margin: 10px 0 0 25px;
+}
+form h2 {
+    margin: 5px 0 0 0;
+    font-size: 2.5em;
+}
+form button.btn-right {
+    float: right;
+}
+
+.contactimg {
+    border-top: 7px solid #4f7cac;
+    border-bottom: 7px solid #4f7cac;
+    background: url("/images/photo_wb.jpg") 100% 100% no-repeat;
+    background-size: cover;
+}
+
+.contactSubmitRow {
+    margin: 0 0 20px 0;
+    text-align: right;
+}
+
+.contactSubmit {
+    background-color: #1f3f83;
+    color: #ffffff;
+    font-size: 1.4em;
+    font-weight: normal;
+    width: 100%;
+}
+
+input.formy {
+    display: block;
+    width: 460px;
+    height: 44px;
+    padding: 0 5px 0 5px;
+    border-radius: 4px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+input.formwide {
+    display: block;
+    height: 44px;
+    padding: 0 5px 0 5px;
+    border-radius: 4px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    width: 800px;
+}
+
+.textformy {
+    padding: 7px;
+    border-radius: 6px;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.form-group {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#submitButton {
+    border: 2px outset #2274a5;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.has-warning {
+    color: #ff5333;
+    border: 1px solid #ff5333;
+}
+
+.has-success {
+    color: #1A936F;
+    border: 1px solid #4f7cac;
+}
+
+.has-error {
+    visibility: visible;
+}
+
+h2#contactHeader {
+    color: #ffdc73;
+    margin: 20px 0 0 8px;
+    font-family: Lora, Helvetica, Arial, sans-serif;
+}
+
+.ficons {
+    font-size: 60px;
+    margin: 0 0 10px 0;
+    padding: 10px 0 14px 0;
+}
+
+#ggscreen1 {
+    display: block;
+    position: relative;
+    top: 76px;
+}
+
+div.hed {
+    width: 100%;
+    min-height: 450px;
+    background-color: #00535d;
+    background: url("/images/asunset2.jpg") 100% 100% no-repeat;
+    background-size: cover;
+    border-top: 10px solid #53939d;
+    border-bottom: 10px solid #53939d;
+    text-align: left;
+}
+div.hed h1 {
+    font-family: Arvil, Anton, sans-serif;
+    font-size: 8em;
+    color: #022445;
+    padding: 10px 9px 0 20px;
+    margin: 0 0 0 0;
+}
+div.subhed {
+    margin: 0 0 0 1px;
+}
+div.subhed span {
+    display: inline-block;
+    padding: 0 0 0 25px;
+    font-family: Arvil, Helvetica, Arial, sans-serif;
+    font-size: 2.25em;
+    color: #192033;
+    font-weight: bold;
+    line-height: 50px;
+    letter-spacing: 1.4px;
+}
+div.allnight {
+    display: block;
+    width: 100%;
+    font-family: Lora, Arvil, Anton, sans-serif;
+    font-size: 2.3em;
+    text-align: center;
+    margin: 0 auto;
+    padding: 17px 0 0 0;
+}
+div.verbox {
+    padding: 25px 0 35px 0;
+}
+div.hline1 {
+    text-align: right;
+    display: block;
+    padding: 5px 9px 5px 9px;
+    margin: 1px 5px 1px 5px;
+    font-size: 5em;
+    font-family: Lora, serif;
+}
+div.justif {
+    float: right;
+    clear: both;
+    margin: 210px 0 10px 0;
+    padding: 10px;
+    display: block;
+    height: 370px;
+    border-radius: 10px;
+    vertical-align: bottom;
+    width: 844px;
+    background-color: #f0f0f0;
+    overflow: scroll;
+    font-size: 10pt;
+    font-family: Helvetica, Arial, sans-serif;
+}
+div.justif #newsfade a:link {
+    color: #2274a5;
+    margin-bottom: 5px;
+    padding: 5px 0 11px 0;
+}
+div.justif #newsfade a:hover {
+    color: #2274a5;
+    margin-bottom: 5px;
+    padding: 5px 0 11px 0;
+}
+div.justif #newsfade a:visited {
+    color: #2274a5;
+    margin-bottom: 5px;
+    padding: 5px 0 11px 0;
+}
+div.justif .newslogohead {
+    background-color: #53939d;
+    padding: 7px;
+    margin-bottom: 15px;
+}
+div.justif .newslogohead span {
+    font-weight: bold;
+}
+div.justif .newslogohead em {
+    font-size: 9pt;
+}
+div.gbox {
+    max-width: 400px;
+    min-width: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    background-color: #afd0ea;
+    margin: 7px auto auto;
+    padding: 15px 15px 15px 15px;
+    text-align: center;
+    font-family: Anton, sans-serif;
+    font-size: 1.2em;
+    color: #101010;
+    border: 5px solid #00535d;
+    border-radius: 5px;
+}
+div.gbox h4 {
+    font-family: Anton, sans-serif;
+    font-size: 1.3em;
+    line-height: 24px;
+    padding-bottom: 20px;
+}
+div.gbox p {
+    line-height: 28px;
+    letter-spacing: 0.45px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+div.hline2 {
+    text-align: right;
+    font-size: 0.25em;
+    font-weight: bold;
+}
+div.hline3 {
+    text-align: right;
+    font-size: 0.2em;
+    font-style: italic;
+    font-weight: bold;
+}
+div.centered {
+    width: 100%;
+    margin: 10px 0 10px 0;
+}
+div.footer {
+    width: 100%;
+    min-height: 220px;
+    max-height: 250px;
+    background-color: #2274a5;
+    border-top: 10px solid #53939d;
+    padding: 0 10px 40px 2px;
+    margin-top: 25px;
+}
+div.footer div ul.mini_footy li {
+    display: block;
+    float: left;
+    clear: both;
+    text-decoration: none;
+    font-size: 10pt;
+    padding-bottom: 4px;
+    color: #f4e8c1;
+}
+div.footer div ul.mini_footy li a {
+    color: #f4e8c1;
+}
+div.footer .foot_place_1 {
+    padding: 2px 10px 10px 25px;
+}
+div.footer .foot_addr {
+    text-align: right;
+}
+div.footer .foot_addr span {
+    padding: 0 0 10px 0;
+    margin: 0 0 0 0;
+    color: #f4e8c1;
+    font-family: Lora, serif;
+}
+div.footer .foot_addr div {
+    padding: 0 30px 0 0;
+    color: #ffffff;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+div.footer .foot_addr div.fname {
+    font-weight: normal;
+    font-family: Lora, serif;
+    margin-bottom: 10px;
+}
+div.footer .foot_addr div.femail {
+    font-weight: normal;
+    font-family: Lora, serif;
+    font-style: italic;
+    font-size: 0.7em;
+}
+div h4 {
+    font-family: Anton, sans-serif;
+    font-size: 1.3em;
+    line-height: 24px;
+}
+
+p {
+    font-family: Anton, sans-serif;
+    font-size: 1em;
+    line-height: 24px;
+}
+
+@media screen and (max-width: 2000px) and (min-width: 1301px) {
+    input.formy {
+        display: block;
+        width: 450px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    input.formwide {
+        display: block;
+        width: 680px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .textformy {
+        padding: 7px;
+        border-radius: 6px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        width: 680px;
+    }
+
+    .textHeader {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-family: Arvil, Arial, sans-serif;
+    }
+    .textHeader h1 {
+        font-family: Arvil, sans-serif;
+        font-size: 1.65em;
+        font-weight: normal;
+        letter-spacing: 0.08em;
+        color: #306063;
+        margin: 0 0 0 0;
+    }
+    .textHeader h3 {
+        font-family: Arvil, sans-serif;
+        font-size: 2em;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        color: #08907e;
+        margin: 0 0 0 0;
+    }
+    .textHeader h4 {
+        font-family: Arvil, sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+        letter-spacing: 0.075em;
+        color: #08907e;
+        margin: 20px 0 0 0;
+    }
+    .textHeader h5 {
+        font-family: Arvil, sans-serif;
+        font-size: 1.25em;
+        font-weight: normal;
+        letter-spacing: 0.084em;
+        color: #08403e;
+        margin: 0 0 0 0;
+    }
+
+    header div.menuhead ul {
+        display: inline;
+        height: 70px;
+        width: auto;
+        padding: 50px 0 0 0;
+        margin: 0 5px 0 0;
+        float: right;
+        clear: both;
+    }
+    header div.menuhead ul li {
+        display: inline;
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.02em;
+        padding: 0 20px 0 0;
+        text-decoration: none;
+    }
+    header div.menuhead ul li a {
+        display: inline;
+        color: #101010;
+    }
+    header div.menuhead ul li a:hover {
+        color: #2274a5;
+    }
+    header div.menuhead ul li a:visited {
+        color: #101010;
+    }
+    header div.burgerhead {
+        display: none;
+    }
+
+    div.hed {
+        width: 100%;
+        min-height: 450px;
+        background-color: #00535d;
+        background: url("/images/asunset2.jpg") 100% 100% no-repeat;
+        background-size: 100% 100%;
+        padding: 9px 9px 9px 9px;
+        border-top: 10px solid #53939d;
+        border-bottom: 10px solid #53939d;
+        text-align: left;
+        font-family: Arvil, Anton, sans-serif;
+        color: #192033;
+    }
+    div.hline1 {
+        text-align: right;
+        display: block;
+        padding: 5px 9px 5px 9px;
+        margin: 1px 5px 1px 5px;
+        font-size: 5em;
+        font-family: Lora, serif;
+    }
+    div.justif {
+        float: right;
+        clear: both;
+        margin: 210px 0 10px 0;
+        padding: 10px;
+        display: block;
+        height: 370px;
+        border-radius: 10px;
+        vertical-align: bottom;
+        width: 844px;
+        background-color: #f0f0f0;
+        font-size: 10pt;
+        overflow: scroll;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    div.justif #newsfade a:link {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif #newsfade a:hover {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif #newsfade a:visited {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif .newslogohead {
+        background-color: #53939d;
+        padding: 7px;
+        margin-bottom: 15px;
+    }
+    div.justif .newslogohead span {
+        font-weight: bold;
+    }
+    div.justif .newslogohead em {
+        font-size: 9pt;
+    }
+    div.subhed {
+        margin-top: -10px;
+        font-size: 1.4em;
+    }
+    div.subhed span {
+        line-height: 65px;
+        margin: -20px 0 0 0;
+    }
+    div.centered {
+        width: 100%;
+        margin: 10px 0 10px 0;
+    }
+    div.footer {
+        width: 100%;
+        min-height: 220px;
+        padding-bottom: 10px;
+        background-color: #2274a5;
+    }
+    div h4 {
+        font-family: Anton, sans-serif;
+        font-size: 1.3em;
+        line-height: 24px;
+    }
+}
+@media screen and (min-width: 900px) and (max-width: 1300px) {
+    input.formy {
+        display: block;
+        width: 350px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    input.formwide {
+        display: block;
+        width: 500px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .textformy {
+        padding: 7px;
+        border-radius: 6px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        width: 500px;
+    }
+
+    .textHeader {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-family: Arvil, Arial, sans-serif;
+    }
+    .textHeader h1 {
+        font-family: Arvil, sans-serif;
+        font-size: 1.25em;
+        font-weight: normal;
+        letter-spacing: 0.08em;
+        color: #306063;
+        margin: 0 0 0 0;
+    }
+    .textHeader h3 {
+        font-family: Arvil, sans-serif;
+        font-size: 2em;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        color: #08907e;
+        margin: 0 0 0 0;
+    }
+    .textHeader h4 {
+        font-family: Arvil, sans-serif;
+        font-size: 0.8em;
+        font-weight: normal;
+        letter-spacing: 0.075em;
+        color: #08907e;
+        margin: 20px 0 0 0;
+    }
+    .textHeader h5 {
+        font-family: Arvil, sans-serif;
+        font-size: 1.25em;
+        font-weight: normal;
+        letter-spacing: 0.084em;
+        color: #08403e;
+        margin: 0 0 0 0;
+    }
+
+    header div.menuhead ul {
+        display: inline;
+        height: 70px;
+        width: auto;
+        padding: 50px 0 0 0;
+        margin: 0 5px 0 0;
+        float: right;
+        clear: both;
+    }
+    header div.menuhead ul li {
+        display: inline;
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.02em;
+        padding: 0 20px 0 0;
+        text-decoration: none;
+    }
+    header div.menuhead ul li a {
+        display: inline;
+        color: #101010;
+    }
+    header div.menuhead ul li a:hover {
+        color: #2274a5;
+    }
+    header div.menuhead ul li a:visited {
+        color: #101010;
+    }
+    header div.burgerhead {
+        display: none;
+    }
+}
+@media screen and (min-width: 501px) and (max-width: 900px) {
+    input.formy {
+        display: block;
+        width: 300px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    input.formwide {
+        display: block;
+        width: 464px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .textformy {
+        padding: 7px;
+        border-radius: 6px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        width: 464px;
+    }
+
+    h2#contactHeader {
+        color: #53939d;
+    }
+
+    .validation {
+        margin: -50px 0 0 0;
+        font-size: 0.75em;
+        font-weight: normal;
+        white-space: nowrap;
+        width: 340px;
+        height: 420px;
+        padding: 11px 11px 11px 11px;
+        border-radius: 3px;
+        box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .textHeader {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-family: Arvil, Arial, sans-serif;
+    }
+    .textHeader h1 {
+        font-family: Arvil, sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+        letter-spacing: 0.08em;
+        color: #306063;
+        margin: 0 0 0 0;
+    }
+    .textHeader h3 {
+        font-family: Arvil, sans-serif;
+        font-size: 2em;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        color: #08907e;
+        margin: 0 0 0 0;
+    }
+    .textHeader h4 {
+        font-family: Arvil, sans-serif;
+        font-size: 0.65em;
+        font-weight: normal;
+        letter-spacing: 0.075em;
+        color: #08907e;
+        margin: 20px 0 0 0;
+    }
+    .textHeader h5 {
+        font-family: Arvil, sans-serif;
+        font-size: 1.25em;
+        font-weight: normal;
+        letter-spacing: 0.084em;
+        color: #08403e;
+        margin: 0 0 0 0;
+    }
+
+    header div.logohead {
+        width: 50%;
+    }
+    header div.menuhead {
+        width: 35%;
+    }
+    header div.menuhead ul {
+        display: none;
+        height: 70px;
+        width: auto;
+        padding: 50px 0 0 0;
+        margin: 0px 5px 0 0;
+        float: right;
+        clear: both;
+    }
+    header div.menuhead ul li {
+        display: inline;
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.02em;
+        padding: 0 20px 0 0;
+        text-decoration: none;
+    }
+    header div.menuhead ul li a {
+        color: #101010;
+    }
+    header div.menuhead ul li a:hover {
+        color: #2274a5;
+    }
+    header div.menuhead ul li a:visited {
+        color: #101010;
+    }
+    header div.burgerhead {
+        display: inline;
+        text-align: right;
+        width: auto;
+    }
+    header div.burgerhead ul#burgermenu {
+        position: absolute;
+        display: block;
+        left: -135px;
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+        border: 2px outset #53939d;
+        background-color: #afd0ea;
+        width: 180px;
+        height: auto;
+    }
+    header div.burgerhead ul#burgermenu li {
+        display: block;
+        color: #101010;
+        padding: 12px 10px 12px 10px;
+        font-family: Helvetica, Arial, serif;
+        font-size: 1.1em;
+        border-bottom: 2px inset #53939d;
+        text-decoration: none;
+        text-align: center;
+    }
+    header div.burgerhead ul#burgermenu li:hover {
+        background-color: #2d8691;
+        cursor: pointer;
+        color: #f4e8c1;
+    }
+    header div.burgerhead ul#burgermenu li:hover a {
+        color: #f4e8c1;
+    }
+    header div.burgerhead ul#burgermenu li a {
+        color: #101010;
+        text-decoration: none;
+    }
+    header div.burgerhead ul#burgermenu li a:hover {
+        color: #f4e8c1;
+        text-decoration: none;
+    }
+
+    .gazette {
+        display: block;
+        font-family: Lora, Anton, Arial, sans-serif;
+        font-size: 0.8em;
+        color: #2274a5;
+    }
+
+    ul.newsMenuHeader {
+        display: block;
+        position: relative;
+        margin: 9px 0 0 3px;
+        text-align: left;
+        width: 100%;
+        background-color: #2274a5;
+        border-radius: 5px;
+    }
+    ul.newsMenuHeader li {
+        display: inline;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
+        color: #ffffff;
+        font-weight: normal;
+        margin: 5px 1px 5px 1px;
+        padding: 0 5px 0 5px;
+        cursor: pointer;
+        border: 1px solid #2274a5;
+    }
+    ul.newsMenuHeader li a:hover {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li a:visited {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li a:link {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li.hover {
+        position: relative;
+        background-color: #f4e8c1;
+        border: 1px outset #53939d;
+        padding: 0 5px 0 5px;
+        color: #2274a5;
+    }
+
+    .newsArticleRect {
+        display: block;
+        padding: 1px 1px 10px 1px;
+    }
+    .newsArticleRect h3.news {
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .newsArticleRect .newsyText {
+        padding: 0 0 0 0;
+        margin-bottom: 10px;
+    }
+    .newsArticleRect .newsyText span {
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.2em;
+        font-weight: normal;
+    }
+    .newsArticleRect .newsyText img.newsImage {
+        display: block;
+        margin: 0 0 12px 0;
+        padding: 0;
+        border: 1px solid #101010;
+        width: 100%;
+        height: 225px;
+    }
+    .newsArticleRect .headlineNewsImage {
+        text-align: left;
+        margin: 15px;
+        border: 2px solid #101010;
+        width: 400px;
+        height: 300px;
+    }
+
+    div.hed h1 {
+        padding: 20px 9px 0 20px;
+        font-size: 6.5em;
+        line-height: 0.8em;
+    }
+    div.gbox {
+        font-size: 1em;
+    }
+    div.subhed span {
+        font-size: 2.1em;
+        line-height: 0.6em;
+        margin: 15px 0 0 0;
+        font-family: Arvil, Helvetica, Arial, sans-serif;
+    }
+    div.hline1 {
+        text-align: right;
+        display: block;
+        padding: 5px 9px 0 9px;
+        margin: 1px 5px 1px 5px;
+        font-size: 4em;
+        font-family: Lora, serif;
+    }
+    div.justif {
+        line-height: 14px;
+        float: right;
+        clear: both;
+        margin: 10px 0 10px 0;
+        padding: 10px;
+        display: block;
+        font-size: 0.8em;
+        height: 370px;
+        overflow: scroll;
+        border-radius: 10px;
+        vertical-align: bottom;
+        width: 500px;
+        background-color: #f0f0f0;
+    }
+    div.justif #newsfade a:link {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif #newsfade a:hover {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif #newsfade a:visited {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif .newslogohead {
+        background-color: #53939d;
+        padding: 7px;
+        margin-bottom: 15px;
+    }
+    div.justif .newslogohead span {
+        font-weight: bold;
+    }
+    div.justif .newslogohead em {
+        font-size: 9pt;
+    }
+}
+@media screen and (min-width: 371px) and (max-width: 500px) {
+    input.formy {
+        display: block;
+        width: 360px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    input.formwide {
+        display: block;
+        width: 360px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .textformy {
+        padding: 7px;
+        border-radius: 6px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        width: 360px;
+    }
+
+    h2#contactHeader {
+        color: #101010;
+    }
+
+    .textHeader {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-family: Arvil, Arial, sans-serif;
+    }
+    .textHeader h1 {
+        font-family: Arvil, sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+        letter-spacing: 0.08em;
+        color: #306063;
+        margin: 0 0 0 0;
+    }
+    .textHeader h3 {
+        font-family: Arvil, sans-serif;
+        font-size: 1.7em;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        color: #08907e;
+        margin: 0 0 0 0;
+    }
+    .textHeader h4 {
+        font-family: Arvil, sans-serif;
+        font-size: 0.75em;
+        font-weight: normal;
+        letter-spacing: 0.075em;
+        color: #08907e;
+        margin: 20px 0 0 0;
+    }
+    .textHeader h5 {
+        font-family: Arvil, sans-serif;
+        font-size: 1.25em;
+        font-weight: normal;
+        letter-spacing: 0.084em;
+        color: #08403e;
+        margin: 0 0 0 0;
+    }
+
+    .validation {
+        margin: -50px 0 0 0;
+        font-size: 0.75em;
+        font-weight: normal;
+        white-space: nowrap;
+        width: 340px;
+        height: 420px;
+        padding: 11px 11px 11px 11px;
+        border-radius: 3px;
+        box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    header div.logohead {
+        padding: 50px 0 2px 9px;
+        min-width: 100px;
+        max-width: 140px;
+    }
+    header div.menuhead {
+        min-width: 100px;
+        width: 50%;
+    }
+    header div.menuhead ul {
+        display: none;
+        height: 70px;
+        width: auto;
+        padding: 50px 0 0 0;
+        margin: 0px 5px 0 0;
+        float: right;
+        clear: both;
+    }
+    header div.menuhead ul li {
+        display: inline;
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.12em;
+        padding: 0 40px 0 0;
+        text-decoration: none;
+    }
+    header div.menuhead ul li a {
+        color: #101010;
+    }
+    header div.menuhead ul li a:hover {
+        color: #2274a5;
+    }
+    header div.menuhead ul li a:visited {
+        color: #101010;
+    }
+    header div.burgerhead {
+        display: inline;
+        width: 10%;
+        text-align: right;
+    }
+    header div.burgerhead ul#burgermenu {
+        position: absolute;
+        display: block;
+        left: -45px;
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+        border: 2px outset #53939d;
+        background-color: #afd0ea;
+        width: 180px;
+        height: auto;
+    }
+    header div.burgerhead ul#burgermenu li {
+        display: block;
+        color: #101010;
+        padding: 12px 10px 12px 10px;
+        font-family: Helvetica, Arial, serif;
+        font-size: 1.1em;
+        border-bottom: 2px inset #53939d;
+        text-decoration: none;
+        text-align: center;
+    }
+    header div.burgerhead ul#burgermenu li:hover {
+        background-color: #2d8691;
+        cursor: pointer;
+        color: #f4e8c1;
+    }
+    header div.burgerhead ul#burgermenu li:hover a {
+        color: #f4e8c1;
+    }
+    header div.burgerhead ul#burgermenu li a {
+        color: #101010;
+        text-decoration: none;
+    }
+    header div.burgerhead ul#burgermenu li a:hover {
+        color: #f4e8c1;
+        text-decoration: none;
+    }
+
+    .gazette {
+        display: block;
+        font-family: Lora, Anton, Arial, sans-serif;
+        font-size: 0.8em;
+        color: #2274a5;
+    }
+
+    ul.newsMenuHeader {
+        display: block;
+        position: relative;
+        margin: 9px 0 0 3px;
+        text-align: left;
+        width: 100%;
+        background-color: #2274a5;
+        border-radius: 5px;
+        min-width: 325px;
+    }
+    ul.newsMenuHeader li {
+        display: inline;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.9em;
+        color: #ffffff;
+        font-weight: normal;
+        margin: 5px 5px 5px 5px;
+        padding: 0 5px 0 5px;
+        cursor: pointer;
+        border: 1px solid #2274a5;
+    }
+    ul.newsMenuHeader li a:hover {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li a:visited {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li a:link {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li.hover {
+        position: relative;
+        background-color: #f4e8c1;
+        border: 1px outset #53939d;
+        padding: 0 5px 0 5px;
+        color: #2274a5;
+    }
+
+    .newsArticleRect {
+        display: block;
+        padding: 1px 1px 10px 1px;
+    }
+    .newsArticleRect h3.news {
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .newsArticleRect .newsyText {
+        padding: 0 0 0 0;
+        margin-bottom: 10px;
+    }
+    .newsArticleRect .newsyText span {
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+    }
+    .newsArticleRect .newsyText img.newsImage {
+        display: block;
+        margin: 0 0 11px 0;
+        padding: 0;
+        border: 1px solid #101010;
+        width: 100%;
+        height: 225px;
+    }
+    .newsArticleRect .headlineNewsImage {
+        text-align: left;
+        margin: 15px;
+        border: 2px solid #101010;
+        width: 400px;
+        height: 300px;
+    }
+
+    div.hed {
+        width: 100%;
+        min-height: 450px;
+        background-color: #00535d;
+        background: url("/images/asunset2.jpg") 100% 100% no-repeat;
+        background-size: cover;
+        padding: 9px 9px 9px 9px;
+        border-top: 10px solid #53939d;
+        border-bottom: 10px solid #53939d;
+        font-size: 0.55em;
+        line-height: 1em;
+    }
+    div.hed h1 {
+        line-height: 0.9em;
+        margin-bottom: 10px;
+    }
+    div.subhed {
+        font-size: 0.5em;
+    }
+    div.subhed span {
+        line-height: 32px;
+        margin: 4px 0 0 0;
+        font-family: Arvil, sans-serif;
+        font-size: 5em;
+    }
+    div.verbox {
+        padding: 5px 0 5px 0;
+    }
+    div.hline1 {
+        font-weight: bold;
+        padding: 12px 12px 12px 12px;
+        width: 300px;
+        font-size: 11pt;
+    }
+    div.justif {
+        line-height: 14px;
+        float: right;
+        clear: both;
+        margin: 10px 0 10px 0;
+        padding: 10px;
+        display: block;
+        font-size: 10px;
+        height: 370px;
+        overflow: scroll;
+        border-radius: 10px;
+        vertical-align: bottom;
+        width: 344px;
+        background-color: #f0f0f0;
+    }
+    div.justif #newsfade a:link {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif #newsfade a:hover {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif #newsfade a:visited {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif .newslogohead {
+        background-color: #53939d;
+        padding: 7px;
+        margin-bottom: 15px;
+    }
+    div.justif .newslogohead span {
+        font-weight: bold;
+    }
+    div.justif .newslogohead em {
+        font-size: 9pt;
+    }
+    div.midhed {
+        width: 100%;
+        min-height: 420px;
+        background-color: #2d8691;
+    }
+    div.gbox {
+        max-width: 300px;
+        min-width: 150px;
+    }
+    div.gbox p {
+        font-size: 12pt;
+        line-height: 18pt;
+    }
+    div.centered {
+        width: 100%;
+        margin: 10px 0 10px 0;
+    }
+    div.footer {
+        width: 100%;
+        min-height: 190px;
+        background-color: #2274a5;
+        padding-bottom: 40px;
+    }
+    div h4 {
+        font-family: Anton, sans-serif;
+        font-size: 1.3em;
+        line-height: 24px;
+    }
+    div.hline2 {
+        text-align: right;
+        font-size: 0.25em;
+        font-weight: bold;
+    }
+    div.hline3 {
+        text-align: right;
+        font-size: 0.2em;
+        font-style: italic;
+        font-weight: bold;
+    }
+}
+@media screen and (max-width: 370px) {
+    .img-fluid {
+        max-width: 85%;
+    }
+
+    .whatsnewimage {
+        display: inline-block;
+        font-size: 0.9em;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: 100;
+        -moz-box-shadow: 3px 3px 4px #333;
+        -webkit-box-shadow: 3px 3px 4px #333;
+        box-shadow: 3px 3px 4px #333;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+        filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color="#000000");
+        border: 1px solid #258EA6;
+        margin: 0 14px 14px 0;
+        width: 90%;
+    }
+
+    input.formy {
+        display: block;
+        width: 300px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    input.formwide {
+        display: block;
+        width: 300px;
+        height: 44px;
+        padding: 0 5px 0 5px;
+        border-radius: 4px;
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    h2#contactHeader {
+        padding-top: 11px;
+        color: #101010;
+        font-weight: bold;
+    }
+
+    .textHeader {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-family: Arvil, Arial, sans-serif;
+    }
+    .textHeader h1 {
+        font-family: Arvil, sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+        letter-spacing: 0.08em;
+        color: #306063;
+        margin: 0 0 0 0;
+    }
+    .textHeader h3 {
+        font-family: Arvil, sans-serif;
+        font-size: 2em;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        color: #08907e;
+        margin: 0 0 0 0;
+    }
+    .textHeader h4 {
+        font-family: Arvil, sans-serif;
+        font-size: 0.65em;
+        font-weight: normal;
+        letter-spacing: 0.075em;
+        color: #08907e;
+        margin: 20px 0 0 0;
+    }
+    .textHeader h5 {
+        font-family: Arvil, sans-serif;
+        font-size: 1.25em;
+        font-weight: normal;
+        letter-spacing: 0.084em;
+        color: #08403e;
+        margin: 0 0 0 0;
+    }
+
+    .validation {
+        margin: -50px 0 0 0;
+        font-size: 0.75em;
+        font-weight: normal;
+        white-space: nowrap;
+        max-width: 300px;
+        min-height: 320px;
+        padding: 11px 11px 11px 11px;
+        border-radius: 3px;
+        box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    #fixed_header {
+        max-width: 369px;
+    }
+
+    header {
+        max-width: 369px;
+    }
+    header div.superhead {
+        margin: 0 0 0 0;
+    }
+    header div.logohead {
+        width: 85%;
+        text-align: left;
+    }
+    header div.menuhead {
+        width: 42%;
+    }
+    header div.menuhead ul {
+        display: none;
+        height: 70px;
+        width: auto;
+        padding: 50px 0 0 0;
+        margin: 0px 5px 0 0;
+        float: right;
+        clear: both;
+    }
+    header div.menuhead ul li {
+        display: inline;
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.12em;
+        padding: 0 40px 0 0;
+        text-decoration: none;
+    }
+    header div.menuhead ul li a {
+        color: #101010;
+    }
+    header div.menuhead ul li a:hover {
+        color: #2274a5;
+    }
+    header div.menuhead ul li a:visited {
+        color: #101010;
+    }
+    header div.burgerhead {
+        display: inline;
+        text-align: right;
+        padding: 0 0 0 0;
+        margin: -30px 0 0 0;
+    }
+    header div.burgerhead ul#burgermenu {
+        position: absolute;
+        display: block;
+        margin: 0 0 0 -10px;
+        padding: 0 0 0 0;
+        border: 2px outset #53939d;
+        background-color: #afd0ea;
+        width: 140px;
+        height: auto;
+    }
+    header div.burgerhead ul#burgermenu li {
+        display: block;
+        color: #101010;
+        padding: 12px 10px 12px 10px;
+        font-family: Helvetica, Arial, serif;
+        font-size: 0.9em;
+        border-bottom: 2px inset #53939d;
+        text-decoration: none;
+        text-align: center;
+    }
+    header div.burgerhead ul#burgermenu li:hover {
+        background-color: #2d8691;
+        cursor: pointer;
+        color: #f4e8c1;
+    }
+    header div.burgerhead ul#burgermenu li:hover a {
+        color: #f4e8c1;
+    }
+    header div.burgerhead ul#burgermenu li a {
+        color: #101010;
+        text-decoration: none;
+    }
+    header div.burgerhead ul#burgermenu li a:hover {
+        color: #f4e8c1;
+        text-decoration: none;
+    }
+    header div.dropdown-menu {
+        background: none;
+        border: none;
+    }
+
+    .gazette {
+        display: block;
+        font-family: Lora, Anton, Arial, sans-serif;
+        font-size: 0.8em;
+        color: #2274a5;
+    }
+
+    ul.newsMenuHeader {
+        display: block;
+        position: relative;
+        margin: 9px 0 0 3px;
+        text-align: left;
+        width: 100%;
+        background-color: #2274a5;
+        border-radius: 5px;
+        min-width: 325px;
+    }
+    ul.newsMenuHeader li {
+        display: inline;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.9em;
+        color: #ffffff;
+        font-weight: normal;
+        margin: 5px 5px 5px 5px;
+        padding: 0 5px 0 5px;
+        cursor: pointer;
+        border: 1px solid #2274a5;
+    }
+    ul.newsMenuHeader li a:hover {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li a:visited {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li a:link {
+        color: #f4e8c1;
+    }
+    ul.newsMenuHeader li.hover {
+        position: relative;
+        background-color: #f4e8c1;
+        border: 1px outset #53939d;
+        padding: 0 5px 0 5px;
+        color: #2274a5;
+    }
+
+    .newsArticleRect {
+        display: block;
+        padding: 1px 1px 10px 1px;
+    }
+    .newsArticleRect h3.news {
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .newsArticleRect .newsyText {
+        padding: 0 0 0 0;
+        margin-bottom: 10px;
+    }
+    .newsArticleRect .newsyText span {
+        font-family: Lora, Helvetica, Arial, sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+    }
+    .newsArticleRect .newsyText img.newsImage {
+        display: block;
+        margin: 0 0 11px 0;
+        padding: 0;
+        border: 1px solid #101010;
+        width: 100%;
+        height: 225px;
+    }
+    .newsArticleRect .headlineNewsImage {
+        text-align: left;
+        margin: 15px;
+        border: 2px solid #101010;
+        width: 400px;
+        height: 300px;
+    }
+
+    div.hed {
+        width: 100%;
+        min-height: 450px;
+        background-color: #00535d;
+        background: url("/images/asunset2.jpg") 100% 100% no-repeat;
+        background-size: cover;
+        padding: 9px 9px 9px 9px;
+        border-top: 10px solid #53939d;
+        border-bottom: 10px solid #53939d;
+        font-size: 0.55em;
+        line-height: 1em;
+    }
+    div.hed h1 {
+        line-height: 0.9em;
+        margin-bottom: 10px;
+    }
+    div.subhed span {
+        line-height: 22px;
+        margin: 4px 0 0 0;
+        font-size: 2.35em;
+        font-family: Arvil, Helvetica, Arial sans-serif;
+    }
+    div.verbox {
+        padding: 5px 0 5px 0;
+    }
+    div.hline1 {
+        font-weight: bold;
+        padding: 12px 12px 12px 12px;
+        width: 300px;
+        font-size: 9pt;
+    }
+    div.justif {
+        line-height: 14px;
+        float: right;
+        clear: both;
+        margin: 10px;
+        padding: 10px;
+        overflow: scroll;
+        display: block;
+        font-size: 10px;
+        height: 370px;
+        border-radius: 10px;
+        vertical-align: bottom;
+        width: 290px;
+        background-color: #f0f0f0;
+    }
+    div.justif #newsfade a:link {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif #newsfade a:hover {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif #newsfade a:visited {
+        color: #2274a5;
+        margin-bottom: 5px;
+        padding: 5px 0 11px 0;
+    }
+    div.justif .newslogohead {
+        background-color: #53939d;
+        padding: 7px;
+        margin-bottom: 15px;
+    }
+    div.justif .newslogohead span {
+        font-weight: bold;
+    }
+    div.justif .newslogohead em {
+        font-size: 9pt;
+    }
+    div.midhed {
+        width: 100%;
+        min-height: 420px;
+        background-color: #2d8691;
+    }
+    div.gbox {
+        max-width: 300px;
+        min-width: 150px;
+    }
+    div.gbox p {
+        font-size: 12pt;
+        line-height: 18pt;
+    }
+    div.centered {
+        width: 100%;
+        margin: 10px 0 10px 0;
+    }
+    div.footer {
+        width: 100%;
+        min-height: 190px;
+        background-color: #2274a5;
+        padding-bottom: 40px;
+    }
+    div h4 {
+        font-family: Anton, sans-serif;
+        font-size: 1.3em;
+        line-height: 24px;
+    }
+    div.hline2 {
+        text-align: right;
+        font-size: 0.25em;
+        font-weight: bold;
+    }
+    div.hline3 {
+        text-align: right;
+        font-size: 0.2em;
+        font-style: italic;
+        font-weight: bold;
+    }
+}
+
+/*# sourceMappingURL=gm.css.map */

@@ -123,8 +123,7 @@ public class Goodnews
     private List<String> techFilter = Arrays.asList(
             "Amazon",
             "Bezos",
-            "Elon",
-            "Musk",
+            "Elon Musk",
             "Google",
             "Apple",
             "Linux",
@@ -134,8 +133,7 @@ public class Goodnews
             "Samsung",
             "Sony",
             "Spotify",
-            "pianist",
-            "Yuja Wang",
+            "hacker",
             "Microsoft",
             "IBM",
             "artificial",
@@ -154,7 +152,7 @@ public class Goodnews
             "encrypt",
             "technology",
             "cyber",
-            "alibaba",
+            "Alibaba",
             "yahoo",
             "Bill Gates"
     );
@@ -180,6 +178,11 @@ public class Goodnews
             "Kate Moss",
             "Kate Valentine",
             "Prado",
+            "Styles",
+            "Clothing",
+            "Calvin Klein",
+            "Kenneth Cole",
+            "Nike",
             "Versace",
             "Gianni",
             "Style",
@@ -208,49 +211,32 @@ public class Goodnews
             "Mariah Carey",
             "Ariana Grande",
             "Taylor Swift",
-            "Cardi-B",
-            "Cardi B",
+            "Cardi",
             "guitarist",
             "concert",
             "record label",
-            "BMG",
             "Tonight Show",
-            "late Show",
-            "EMI",
             "kpop",
-            "Nirvana",
-            "Sam Feldt",
-            "Kate Ryan",
+            "pop music",
+            "pianist",
+            "Lady Gaga",
+            "Yuja Wang",
+            "lead singer",
             "Rita Ora",
             "Njomza",
-            "Rynx",
-            "Drew Love",
-            "Halsey",
             "Lennon",
+            "Kurt Cobain",
+            "Frances Bean Cobain",
+            "Van Halen",
             "Star Wars",
             "Star Trek",
-            "Guitar",
             "entertainment",
             "music",
             "album",
             "artist",
-            "artists",
-            "Lady Gaga",
             "Soul",
-            "R&B",
-            "Folk singer",
-            "Chris Cornell",
-            "Cobain",
             "headphones",
-            "Rock Music",
-            "movie",
-            "movies",
-            "song",
-            "singer",
-            "dancer",
-            "striptease",
-            "Avengers",
-            "Batman"
+            "song"
     );
 
     private List<String> artifactsFilter = Arrays.asList(
@@ -300,9 +286,9 @@ public class Goodnews
         filters = new HashMap<>();
         filters.put(usFilter, "US");
         filters.put(techFilter, "tech");
-        filters.put(bizFilter, "business");
+        //filters.put(bizFilter, "business");
         filters.put(entFilter, "entertainment");
-        //filters.put(entFilter, "fashion");
+        filters.put(entFilter, "fashion");
         //filters.put(entFilter, "sports");
 
     }
@@ -557,7 +543,6 @@ public class Goodnews
         return newsOrg;
     }
 
-
     /**
      * Gets the latest news depending on type, rendering view type
      * @param newsType String tech news or whatever news
@@ -567,6 +552,7 @@ public class Goodnews
     public String getLatestNews(String newsType, String viewType)
     {
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
+        logger.info("getLatestNews::View Type: " + viewType);
 
         if (viewType == null) {
             viewType = "links";
@@ -580,36 +566,50 @@ public class Goodnews
 
         newsOrg = buildNewsMap(newsType);
 
-        if (viewType.equals("links")) {
-            // wants links
-            bigNewsString = newsLinksView(newsOrg);
-        } else if(viewType.equals("json")) {
-            bigNewsString = newsJsonView(newsOrg, newsType);
-        } else if(viewType.equals("full")){
-            bigNewsString = newsWebView(newsOrg);
-        } else if(viewType.equals("order")){
-            bigNewsString = newsTitleView(newsOrg, newsType);
-        } else {
-            bigNewsString = newsLinksView(newsOrg);
-        }
+        bigNewsString = newsJsonView(newsOrg, newsType, viewType);
 
         return bigNewsString;
     }
 
 
+
+    public List<Article> getLatestNewsAdmin(String newsType, String viewType)
+    {
+        Logger logger = LoggerFactory.getLogger(Goodnews.class);
+        logger.info("getLatestNewsAdmin::View Type: " + viewType);
+
+        if (viewType == null) {
+            viewType = "links";
+        }
+
+        // News check and possible render
+        renderLatestNews();
+
+        String bigNewsString = "";
+        Map<String, Map<String,String>> newsOrg;
+
+        newsOrg = buildNewsMap(newsType);
+
+        List<Article> bigNewsList = newsAdminView(newsOrg, newsType);
+
+        return bigNewsList;
+    }
+
+
     /**
      * Builds a full news web view
-     * @param newsOrg A map containing a String and another map which is the article data
-     * @return String html view as links
+     *
+     * @param artlist
+     * @param it
+     * @return
      */
-    private String newsLinksView(Map<String, Map<String,String>> newsOrg)
+    private String buildLinksView(List<Article> artlist, Iterator it)
     {
         String bigNews = "";
 
         Map.Entry<String, Map<String,String>> newsRow;
         Map<String, String> newsArt;
 
-        Iterator it = newsOrg.entrySet().iterator();
         while (it.hasNext()) {
 
             newsRow = (Map.Entry) it.next();
@@ -617,9 +617,7 @@ public class Goodnews
             newsArt = newsRow.getValue();
 
             if (newsArt.get("text").length() > 850) {
-
                 bigNews += "<a target=\"newsSource\" href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
-
             }
 
             it.remove();
@@ -631,17 +629,17 @@ public class Goodnews
 
     /**
      * Builds a full news web view
-     * @param newsOrg A map containing a String and another map which is the article data
-     * @return String html view
+     * @param artlist
+     * @param it
+     * @return
      */
-    private String newsWebView(Map<String, Map<String,String>> newsOrg)
+    private String buildWebView(List<Article> artlist, Iterator it)
     {
         String bigNews = "";
         Map<String, String> newsArt;
         Map.Entry<String, Map<String,String>> newsRow;
         Map.Entry<String,String> artRow;
 
-        Iterator it = newsOrg.entrySet().iterator();
         while (it.hasNext()) {
 
             newsRow = (Map.Entry) it.next();
@@ -671,68 +669,62 @@ public class Goodnews
      * @param newsOrg A map containing a String and another map which is the article data
      * @return String html view
      */
-    private String newsJsonView(Map<String, Map<String,String>> newsOrg, String newsType)
+    private String newsJsonView(Map<String, Map<String,String>> newsOrg, String newsType, String viewType)
     {
         String jsonBigNews = "";
-        Map<String, String> newsArt;
-        Map.Entry<String, Map<String,String>> newsRow;
-        Map.Entry<String,String> artRow;
-
-        Article art = new Article();
+        Logger logger = LoggerFactory.getLogger(Goodnews.class);
+        logger.info("8====D~  viewType check: " + viewType);
         List<Article> artlist = new ArrayList<>();
 
         Iterator it = newsOrg.entrySet().iterator();
-        while (it.hasNext()) {
 
-            newsRow = (Map.Entry) it.next();
-            String title = newsRow.getKey();
-            newsArt = newsRow.getValue();
-
-            // Filters out weak articles
-            if (newsArt.get("text").length() > 850) {
-                art.setNewstitle(newsArt.get("title"));
-                art.setNewsauthor(newsArt.get("author"));
-                art.setNewspublished(newsArt.get("published"));
-                art.setNewsurl(newsArt.get("url"));
-                art.setNewsimage(newsArt.get("hedImage"));
-                art.setNewstext(newsArt.get("text"));
-
-                int artScore = calcNewsOrderAlg(newsArt, newsType);
-                art.setNewsscore(artScore);
-            }
-
-            artlist.add(art);
-            art = new Article();
-
-            it.remove();
+        if (viewType.equals("links")) {
+            // wants links
+            jsonBigNews = buildLinksView(artlist, it);
+        } else if(viewType.equals("json") || viewType.equals("admin")) {
+            jsonBigNews = buildJsonView(artlist, newsType, it, false);
+        } else if(viewType.equals("full")){
+            jsonBigNews = buildWebView(artlist, it);
+        } else if(viewType.equals("order")){
+            jsonBigNews = buildJsonView(artlist, newsType, it, true);
+        } else {
+            jsonBigNews = buildLinksView(artlist, it);
         }
-
-        Collections.sort(artlist);
-        Collections.reverse(artlist);
-
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        jsonBigNews = gson.toJson(artlist);
 
         return jsonBigNews;
     }
-
-    // Analytics Views //////////
 
     /**
-     * Order / Relevancy testing and general analytics
-     * @param newsOrg The gallant news org map
-     * @return String big news, of course!
+     * Builds a full news web view
+     * @param newsOrg A map containing a String and another map which is the article data
+     * @return String html view
      */
-    private String newsTitleView(Map<String, Map<String,String>> newsOrg, String newsType)
+    private List<Article> newsAdminView(Map<String, Map<String,String>> newsOrg, String newsType)
+    {
+        List<Article> artlist = new ArrayList<>();
+
+        Iterator it = newsOrg.entrySet().iterator();
+
+        return buildAdminView(artlist, newsType, it, false);
+    }
+
+    /**
+     * Main method to output news in json format
+     *
+     * @param artlist  The map of articles
+     * @param newsType  String essentially the news category
+     * @param it    Iterator the iterator
+     * @param titlesOnly  boolean titles for less debugging etc.
+     * @return
+     */
+    private String buildJsonView(List<Article> artlist, String newsType, Iterator it, boolean titlesOnly)
     {
         String jsonBigNews = "";
+
+        Article art = new Article();
         Map<String, String> newsArt;
         Map.Entry<String, Map<String,String>> newsRow;
         Map.Entry<String,String> artRow;
-        Article art = new Article();
-        List<Article> artlist = new ArrayList<>();
-        Iterator it = newsOrg.entrySet().iterator();
 
         while (it.hasNext()) {
 
@@ -740,16 +732,34 @@ public class Goodnews
             String title = newsRow.getKey();
             newsArt = newsRow.getValue();
 
-            // Filters out weak articles
-            if (newsArt.get("text").length() > 850) {
-                art.setNewstitle(newsArt.get("title"));
-                art.setNewspublished(newsArt.get("published"));
-                art.setNewssitefull(newsArt.get("site_full"));
-                art.setNewssectiontitle(newsArt.get("section_title"));
-                art.setNewsspamscore(newsArt.get("spam_score"));
+            if (titlesOnly == false) {
 
-                int artScore = calcNewsOrderAlg(newsArt, newsType);
-                art.setNewsscore(artScore);
+                // Filters out weak articles
+                if (newsArt.get("text").length() > 850) {
+                    art.setNewstitle(newsArt.get("title"));
+                    art.setNewsauthor(newsArt.get("author"));
+                    art.setNewspublished(newsArt.get("published"));
+                    art.setNewsurl(newsArt.get("url"));
+                    art.setNewsimage(newsArt.get("hedImage"));
+                    art.setNewstext(newsArt.get("text"));
+
+                    int artScore = calcNewsOrderAlg(newsArt, newsType);
+                    art.setNewsscore(artScore);
+                }
+
+            } else {
+
+                // Filters out weak articles
+                if (newsArt.get("text").length() > 850) {
+                    art.setNewstitle(newsArt.get("title"));
+                    art.setNewspublished(newsArt.get("published"));
+                    art.setNewssitefull(newsArt.get("site_full"));
+                    art.setNewssectiontitle(newsArt.get("section_title"));
+                    art.setNewsspamscore(newsArt.get("spam_score"));
+
+                    int artScore = calcNewsOrderAlg(newsArt, newsType);
+                    art.setNewsscore(artScore);
+                }
             }
 
             artlist.add(art);
@@ -767,6 +777,67 @@ public class Goodnews
 
         return jsonBigNews;
     }
+
+    private List<Article> buildAdminView(List<Article> artlist, String newsType, Iterator it, boolean titlesOnly)
+    {
+
+        String jsonBigNews = "";
+
+        Article art = new Article();
+        Map<String, String> newsArt;
+        Map.Entry<String, Map<String,String>> newsRow;
+        Map.Entry<String,String> artRow;
+
+        while (it.hasNext()) {
+
+            newsRow = (Map.Entry) it.next();
+            String title = newsRow.getKey();
+            newsArt = newsRow.getValue();
+
+            if (titlesOnly == true) {
+
+                // Filters out weak articles
+                if (newsArt.get("text").length() > 850) {
+                    art.setNewstitle(newsArt.get("title"));
+                    art.setNewsauthor(newsArt.get("author"));
+                    art.setNewspublished(newsArt.get("published"));
+                    art.setNewsurl(newsArt.get("url"));
+                    art.setNewsimage(newsArt.get("hedImage"));
+                    art.setNewstext(newsArt.get("text"));
+
+                    int artScore = calcNewsOrderAlg(newsArt, newsType);
+                    art.setNewsscore(artScore);
+                }
+
+            } else {
+
+                // Filters out weak articles
+                if (newsArt.get("text").length() > 850) {
+                    art.setNewstitle(newsArt.get("title"));
+                    art.setNewspublished(newsArt.get("published"));
+                    art.setNewssitefull(newsArt.get("site_full"));
+                    art.setNewssectiontitle(newsArt.get("section_title"));
+                    art.setNewsspamscore(newsArt.get("spam_score"));
+
+                    int artScore = calcNewsOrderAlg(newsArt, newsType);
+                    art.setNewsscore(artScore);
+                }
+            }
+
+            artlist.add(art);
+            art = new Article();
+
+            it.remove();
+        }
+
+        Collections.sort(artlist);
+        Collections.reverse(artlist);
+
+        return artlist;
+    }
+
+    // Analytics Views soon... //////////
+
 
     private int calcNewsOrderAlg(Map<String,String> newsArt, String newsType)
     {
@@ -785,7 +856,7 @@ public class Goodnews
         }
 
         if (usFilter.contains( newsArt.get("title") )) {
-            if (!newsType.equals("entertainment") && !newsType.equals("tech")) {
+            if (!newsType.equals("entertainment") && !newsType.equals("fashion") && !newsType.equals("tech")) {
                 newsScore = newsScore + 11;
             } else {
                 newsScore = newsScore - 9;
