@@ -4,8 +4,8 @@
   Author: Greg Gallant
 */
 
-//let g_env = "api.gallantone.com";
-let g_env = "staging.gallantone.com:8080";
+let g_env = "api.gallantone.com";
+//let g_env = "staging.gallantone.com:8080";
 
 let newsJson;
 let load_news_type;

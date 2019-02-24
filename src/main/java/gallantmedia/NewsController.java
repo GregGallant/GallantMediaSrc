@@ -15,7 +15,7 @@ public class NewsController {
     private Goodnews goodnews;
 
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/news", method=RequestMethod.GET)
     public String showNews()
     {
@@ -37,7 +37,7 @@ public class NewsController {
         return bignews;
     }
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/newsjson", method=RequestMethod.GET)
     public String showNewsJson() {
         String bignews;
@@ -47,7 +47,7 @@ public class NewsController {
         return bignews;
     }
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/newsusjson", method=RequestMethod.GET)
     public String showUSNewsJson() {
         String bignews;
@@ -58,7 +58,7 @@ public class NewsController {
     }
 
     // US News
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/newsus", method=RequestMethod.GET)
     public String showUSNews()
     {
@@ -69,7 +69,7 @@ public class NewsController {
         return bignews;
     }
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/newsbusinessjson", method=RequestMethod.GET)
     public String showStocksNewsJson() {
         String bignews;
@@ -79,7 +79,7 @@ public class NewsController {
         return bignews;
     }
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/newsfashionjson", method=RequestMethod.GET)
     public String showFashionNewsJson() {
         String bignews;
@@ -89,7 +89,7 @@ public class NewsController {
         return bignews;
     }
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/newsentertainmentjson", method=RequestMethod.GET)
     public String showEntNewsJson() {
         String bignews;

@@ -143,6 +143,9 @@ public class Goodnews
             "AI",
             "Laptop",
             "Mobile phone",
+            "smartphone",
+            "chromebook",
+            "web browser",
             "machine learning",
             "processing",
             "Cryptocurrency",
@@ -261,6 +264,8 @@ public class Goodnews
             "Baseball",
             "Netflix",
             "Shooting",
+            "Court Hearing",
+            "Bail",
             "Pulwama",
             "Shooter",
             "50 cent",
@@ -288,7 +293,7 @@ public class Goodnews
         filters.put(techFilter, "tech");
         //filters.put(bizFilter, "business");
         filters.put(entFilter, "entertainment");
-        filters.put(entFilter, "fashion");
+        //filters.put(entFilter, "fashion");
         //filters.put(entFilter, "sports");
 
     }
@@ -554,10 +559,6 @@ public class Goodnews
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
         logger.info("getLatestNews::View Type: " + viewType);
 
-        if (viewType == null) {
-            viewType = "links";
-        }
-
         // News check and possible render
         renderLatestNews();
 
@@ -577,10 +578,6 @@ public class Goodnews
     {
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
         logger.info("getLatestNewsAdmin::View Type: " + viewType);
-
-        if (viewType == null) {
-            viewType = "links";
-        }
 
         // News check and possible render
         renderLatestNews();
@@ -871,20 +868,20 @@ public class Goodnews
             }
         }
 
-        if (bigtimeFilter.contains( newsArt.get("title") ) && newsType.equals("entertainment")) {
+        if (bigtimeFilter.contains( newsArt.get("title") ) && newsType.equals("entertainment") && !newsType.equals("tech")) {
             newsScore = newsScore + 15;
         }
 
-        if (bignewsFilter.contains( newsArt.get("title") ) && !newsType.equals("entertainment")) {
+        if (bignewsFilter.contains( newsArt.get("title") ) && !newsType.equals("entertainment") && !newsType.equals("tech")) {
             newsScore = newsScore + 7;
         }
 
         if (mehFilter.contains( newsArt.get("title") )) {
-            newsScore = newsScore - 14;
+            newsScore = newsScore - 20;
         }
 
         if (artifactsFilter.contains( newsArt.get("title") )) {
-            newsScore = newsScore - 15;
+            newsScore = newsScore - 25;
         }
 
         // -5 for spam!

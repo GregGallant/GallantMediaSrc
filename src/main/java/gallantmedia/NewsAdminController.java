@@ -70,7 +70,7 @@ public class NewsAdminController {
     }
 
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/supernews", method=RequestMethod.GET)
     public String adminUSNewsJson()
     {
@@ -82,7 +82,7 @@ public class NewsAdminController {
     }
 
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/newsorder", method=RequestMethod.GET)
     public String adminUSNewsOrderJson()
     {
@@ -94,7 +94,7 @@ public class NewsAdminController {
     }
 
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+    @CrossOrigin(origins = "http://news.gallantone.com")
     @RequestMapping(value="/newsanalytics", method=RequestMethod.GET)
     public String adminAnalyticsJson()
     {
