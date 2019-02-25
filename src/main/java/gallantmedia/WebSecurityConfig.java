@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     {
         http
             .authorizeRequests()
-                .antMatchers("/","/news","/newsjson","/newslinks","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
+                .antMatchers("/","/news","/newsjson","/newslinks","/newssportsjson","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
                 .antMatchers("/css/**","/fonts/**","/bootstrap/**","/images/**","/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

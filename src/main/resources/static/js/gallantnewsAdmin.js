@@ -144,7 +144,7 @@ function createNewsHeadline(articleBlob)
     articleBlob.forEach(function(article)
     {
 
-        if (article.newstitle != null && article.newstitle != "") {
+        if (article.newstitle != null && article.newstitle != "" && article.newstext.length > 1) {
 
             let art_image = "<img align=\"left\" class=\"newsImage\" src=\""+article.newsimage+"\" onerror=\"imgError(this)\" />";
 

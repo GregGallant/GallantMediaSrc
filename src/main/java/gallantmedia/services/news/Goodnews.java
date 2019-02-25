@@ -200,6 +200,16 @@ public class Goodnews
             "Football",
             "Baseball",
             "Basketball",
+            "Hockey",
+            "Lacrosse",
+            "Notre Dame",
+            "Milwaukee Bucks",
+            "Knicks",
+            "Brooklyn Nets",
+            "Minnesota Twins",
+            "Seahawks",
+            "49ers",
+            "Teams",
             "Colin Kaepernick",
             "Arod",
             "derek jeter",
@@ -265,9 +275,6 @@ public class Goodnews
 
     // Until sports, sports in meh...
     private List<String> mehFilter = Arrays.asList(
-            "Basketball",
-            "Football",
-            "Baseball",
             "Netflix",
             "Shooting",
             "Court Hearing",
@@ -289,14 +296,18 @@ public class Goodnews
     );
 
     private List<String> paragraphReplace = Arrays.asList(
-            "Picture: Ardiles Rante/News Corp Australia",
-            "Picture: Ardiles Rante/ News Corp Australia",
             "Advertisement: ",
             "Advertisement",
-            "\\(Zillow Photo\\)",
-            "\\(Photo Credit: KDKA\\)",
             "- The",
-            "\\[More New York\\]",
+            "Follow the latest on Brexit live",
+            "Save\n",
+            "Share\n",
+            "Best Samsung Galaxy S8 deals on all the other providers",
+            "Share Share Tweet\n",
+            "Share Tweet\n",
+            "Share Facebook",
+            "Share on Reddit reddit",
+            "Share on Reddit",
             ". --"
     );
 
@@ -332,7 +343,7 @@ public class Goodnews
         //filters.put(bizFilter, "business");
         filters.put(entFilter, "entertainment");
         //filters.put(entFilter, "fashion");
-        //filters.put(entFilter, "sports");
+        filters.put(sportsFilter, "sports");
 
     }
 
@@ -957,29 +968,30 @@ public class Goodnews
 
     private String filterText(String ntext)
     {
+        String rrtext = "";
         String ftext = "";
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
-/*
+
         for(String toReplace:paragraphReplace)
         {
             Pattern patt = Pattern.compile("("+toReplace+")");
             Matcher m = patt.matcher(ntext);
             //StringBuffer ftext = new StringBuffer(ntext.length());
 
-            while(m.find()) {
+            if(m.find()) {
                 logger.info("8===D~ House of M: " + m);
                 logger.info("8===D~ True M KNIGHT: " + m.group(1));
                 String matchedText = m.group(1);
                 logger.info("8===D~ MatchedText: " + matchedText);
-                ftext = m.replaceAll("<br/><br/>");
+                rrtext = m.replaceAll(" ");
             }
         }
-*/
+
 
         for(String toReplace:paragraphBefore)
         {
             Pattern patt = Pattern.compile("("+toReplace+")");
-            Matcher m = patt.matcher(ntext);
+            Matcher m = patt.matcher(rrtext);
             //StringBuffer ftext = new StringBuffer(ntext.length());
 
 
