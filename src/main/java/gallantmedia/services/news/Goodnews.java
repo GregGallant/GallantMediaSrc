@@ -34,9 +34,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import gallantmedia.services.news.Article;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Goodnews
 {
+    protected static final int MIN_ARTICLE_COUNT = 850;
+
     private JsonElement generalNews;
 
     protected Map<List<String>, String> filters;
@@ -254,6 +258,8 @@ public class Goodnews
             "Advertisement >",
             "Car Imports",
             "Rupee",
+            "<meta",
+            "injectionEnabled",
             "Car Sales"
     );
 
@@ -281,6 +287,38 @@ public class Goodnews
             "Gun",
             "OpEd"
     );
+
+    private List<String> paragraphReplace = Arrays.asList(
+            "Picture: Ardiles Rante/News Corp Australia",
+            "Picture: Ardiles Rante/ News Corp Australia",
+            "Advertisement: ",
+            "Advertisement",
+            "\\(Zillow Photo\\)",
+            "\\(Photo Credit: KDKA\\)",
+            "- The",
+            "\\[More New York\\]",
+            ". --"
+    );
+
+    private List<String> paragraphBefore = Arrays.asList(
+            "The company",
+            "One ",
+            "Two ",
+            "Three ",
+            "Four ",
+            "Five ",
+            "Six ",
+            "Seven ",
+            "Eight ",
+            "Nine ",
+            "Ten ",
+            "Before ",
+            "After ",
+            "On ",
+            "As ",
+            "\n"
+    );
+
 
 
     /**
@@ -582,7 +620,6 @@ public class Goodnews
         // News check and possible render
         renderLatestNews();
 
-        String bigNewsString = "";
         Map<String, Map<String,String>> newsOrg;
 
         newsOrg = buildNewsMap(newsType);
@@ -613,7 +650,7 @@ public class Goodnews
             String title = newsRow.getKey();
             newsArt = newsRow.getValue();
 
-            if (newsArt.get("text").length() > 850) {
+            if (newsArt.get("text").length() > MIN_ARTICLE_COUNT) {
                 bigNews += "<a target=\"newsSource\" href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
             }
 
@@ -643,7 +680,7 @@ public class Goodnews
             String title = newsRow.getKey();
             newsArt = newsRow.getValue();
 
-            if (newsArt.get("text").length() > 850) {
+            if (newsArt.get("text").length() > MIN_ARTICLE_COUNT) {
 
                 //bigNews = "<a href=\""+newsArt.get("url")+"\">"+newsArt.get("title")+"</a><br/>";
                 bigNews += "<div><h3>" + newsArt.get("title") + "</h3></div>";
@@ -702,7 +739,7 @@ public class Goodnews
 
         Iterator it = newsOrg.entrySet().iterator();
 
-        return buildAdminView(artlist, newsType, it, false);
+        return buildAdminView(artlist, newsType, it);
     }
 
     /**
@@ -717,7 +754,7 @@ public class Goodnews
     private String buildJsonView(List<Article> artlist, String newsType, Iterator it, boolean titlesOnly)
     {
         String jsonBigNews = "";
-
+        String filteredText = "";
         Article art = new Article();
         Map<String, String> newsArt;
         Map.Entry<String, Map<String,String>> newsRow;
@@ -732,13 +769,14 @@ public class Goodnews
             if (titlesOnly == false) {
 
                 // Filters out weak articles
-                if (newsArt.get("text").length() > 850) {
+                if (newsArt.get("text").length() > MIN_ARTICLE_COUNT) {
                     art.setNewstitle(newsArt.get("title"));
                     art.setNewsauthor(newsArt.get("author"));
                     art.setNewspublished(newsArt.get("published"));
                     art.setNewsurl(newsArt.get("url"));
                     art.setNewsimage(newsArt.get("hedImage"));
-                    art.setNewstext(newsArt.get("text"));
+                    filteredText = filterText(newsArt.get("text"));
+                    art.setNewstext(filteredText);
 
                     int artScore = calcNewsOrderAlg(newsArt, newsType);
                     art.setNewsscore(artScore);
@@ -747,7 +785,7 @@ public class Goodnews
             } else {
 
                 // Filters out weak articles
-                if (newsArt.get("text").length() > 850) {
+                if (newsArt.get("text").length() > MIN_ARTICLE_COUNT) {
                     art.setNewstitle(newsArt.get("title"));
                     art.setNewspublished(newsArt.get("published"));
                     art.setNewssitefull(newsArt.get("site_full"));
@@ -775,11 +813,11 @@ public class Goodnews
         return jsonBigNews;
     }
 
-    private List<Article> buildAdminView(List<Article> artlist, String newsType, Iterator it, boolean titlesOnly)
+    private List<Article> buildAdminView(List<Article> artlist, String newsType, Iterator it)
     {
 
         String jsonBigNews = "";
-
+        String filteredText;
         Article art = new Article();
         Map<String, String> newsArt;
         Map.Entry<String, Map<String,String>> newsRow;
@@ -791,34 +829,26 @@ public class Goodnews
             String title = newsRow.getKey();
             newsArt = newsRow.getValue();
 
-            if (titlesOnly == true) {
 
-                // Filters out weak articles
-                if (newsArt.get("text").length() > 850) {
-                    art.setNewstitle(newsArt.get("title"));
-                    art.setNewsauthor(newsArt.get("author"));
-                    art.setNewspublished(newsArt.get("published"));
-                    art.setNewsurl(newsArt.get("url"));
-                    art.setNewsimage(newsArt.get("hedImage"));
-                    art.setNewstext(newsArt.get("text"));
+            // Filters out weak articles
+            if (newsArt.get("text").length() > MIN_ARTICLE_COUNT)
+            {
+                art.setNewstitle(newsArt.get("title"));
+                art.setNewsauthor(newsArt.get("author"));
+                art.setNewspublished(newsArt.get("published"));
+                art.setNewsurl(newsArt.get("url"));
+                art.setNewsimage(newsArt.get("hedImage"));
 
-                    int artScore = calcNewsOrderAlg(newsArt, newsType);
-                    art.setNewsscore(artScore);
-                }
+                filteredText = filterText(newsArt.get("text"));
+                art.setNewstext(filteredText);
 
-            } else {
+                art.setNewssitefull(newsArt.get("site_full"));
+                art.setNewssectiontitle(newsArt.get("section_title"));
+                art.setNewsspamscore(newsArt.get("spam_score"));
 
-                // Filters out weak articles
-                if (newsArt.get("text").length() > 850) {
-                    art.setNewstitle(newsArt.get("title"));
-                    art.setNewspublished(newsArt.get("published"));
-                    art.setNewssitefull(newsArt.get("site_full"));
-                    art.setNewssectiontitle(newsArt.get("section_title"));
-                    art.setNewsspamscore(newsArt.get("spam_score"));
+                int artScore = calcNewsOrderAlg(newsArt, newsType);
+                art.setNewsscore(artScore);
 
-                    int artScore = calcNewsOrderAlg(newsArt, newsType);
-                    art.setNewsscore(artScore);
-                }
             }
 
             artlist.add(art);
@@ -923,6 +953,48 @@ public class Goodnews
         } catch(IOException ioe) {
             return;
         }
+    }
+
+    private String filterText(String ntext)
+    {
+        String ftext = "";
+        Logger logger = LoggerFactory.getLogger(Goodnews.class);
+/*
+        for(String toReplace:paragraphReplace)
+        {
+            Pattern patt = Pattern.compile("("+toReplace+")");
+            Matcher m = patt.matcher(ntext);
+            //StringBuffer ftext = new StringBuffer(ntext.length());
+
+            while(m.find()) {
+                logger.info("8===D~ House of M: " + m);
+                logger.info("8===D~ True M KNIGHT: " + m.group(1));
+                String matchedText = m.group(1);
+                logger.info("8===D~ MatchedText: " + matchedText);
+                ftext = m.replaceAll("<br/><br/>");
+            }
+        }
+*/
+
+        for(String toReplace:paragraphBefore)
+        {
+            Pattern patt = Pattern.compile("("+toReplace+")");
+            Matcher m = patt.matcher(ntext);
+            //StringBuffer ftext = new StringBuffer(ntext.length());
+
+
+            //while(m.find()) {
+            if (m.find()) {
+                logger.info("8===D~ House of M: " + m);
+                String matchedText = m.group(1);
+                logger.info("8===D~ True M PALADIN: " + m.group(1));
+                logger.info("8===D~ MatchedText: " + matchedText);
+                ftext = m.replaceAll("<br/><br/>" + matchedText);
+            }
+        }
+
+        logger.info("8===D~ FinalFilteredText: " + ftext);
+        return ftext;
     }
 
 }
