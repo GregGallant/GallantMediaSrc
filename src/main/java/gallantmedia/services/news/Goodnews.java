@@ -229,6 +229,8 @@ public class Goodnews
             "Ariana Grande",
             "Taylor Swift",
             "Cardi",
+            "Oscars",
+            "Hollywood",
             "guitarist",
             "concert",
             "record label",
@@ -245,7 +247,6 @@ public class Goodnews
             "Kurt Cobain",
             "Frances Bean Cobain",
             "Van Halen",
-            "Star Wars",
             "Star Trek",
             "entertainment",
             "music",
@@ -267,9 +268,12 @@ public class Goodnews
             "POLL:",
             "Advertisement >",
             "Car Imports",
+            "Con Artists",
+            "Scam Warning",
             "Rupee",
             "<meta",
             "injectionEnabled",
+            "Kelly",
             "Car Sales"
     );
 
@@ -284,13 +288,12 @@ public class Goodnews
             "50 cent",
             "migrants",
             "Pixar",
+            "Star Wars",
+            "Star Trek",
             "GT-R",
             "punisher",
             "conspiracy",
             "Opinion",
-            "jessica jones",
-            "thor",
-            "Brexit",
             "Gun",
             "OpEd"
     );
@@ -298,7 +301,6 @@ public class Goodnews
     private List<String> paragraphReplace = Arrays.asList(
             "Advertisement: ",
             "Advertisement",
-            "- The",
             "Follow the latest on Brexit live",
             "Save\n",
             "Share\n",
@@ -307,8 +309,7 @@ public class Goodnews
             "Share Tweet\n",
             "Share Facebook",
             "Share on Reddit reddit",
-            "Share on Reddit",
-            ". --"
+            "Share on Reddit"
     );
 
     private List<String> paragraphBefore = Arrays.asList(
@@ -879,8 +880,138 @@ public class Goodnews
 
     private int calcNewsOrderAlg(Map<String,String> newsArt, String newsType)
     {
+        Logger logger = LoggerFactory.getLogger(Goodnews.class);
         int newsScore = 0;
 
+        for(String afilter:relFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                newsScore = newsScore + 1;
+            }
+        }
+
+        for(String afilter:topFilter)
+        {
+            String tomatch = newsArt.get("site_full");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                newsScore = newsScore + 3;
+            }
+        }
+
+        for(String afilter:entFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                if (!newsType.equals("sports") && !newsType.equals("tech")) {
+                    newsScore = newsScore + 5;
+                }
+            }
+        }
+
+        for(String afilter:usFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                if (!newsType.equals("entertainment") && !newsType.equals("sports") && !newsType.equals("tech"))
+                {
+                    newsScore = newsScore + 9;
+                } else {
+                    newsScore = newsScore - 9;
+                }
+            }
+        }
+
+        for(String afilter:sportsFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                if (newsType.equals("sports")) {
+                    newsScore = newsScore + 5;
+                }
+            }
+        }
+
+
+        for(String afilter:techFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                if (newsType.equals("tech")) {
+                    newsScore = newsScore + 9;
+                }
+            }
+        }
+
+        for(String afilter:bigtimeFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                if (newsType.equals("entertainment")) {
+                    newsScore = newsScore + 9;
+                }
+            }
+        }
+
+
+        for(String afilter:bignewsFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                if (newsType.equals("US")) {
+                    newsScore = newsScore + 9;
+                }
+            }
+        }
+
+        for(String afilter:artifactsFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                newsScore = newsScore - 20;
+            }
+        }
+
+        for(String afilter:mehFilter)
+        {
+            String tomatch = newsArt.get("title");
+            Pattern patt = Pattern.compile("("+afilter+")");
+            Matcher m = patt.matcher(tomatch);
+
+            if(m.find()) {
+                newsScore = newsScore - 10;
+            }
+        }
+
+
+/*
         if (relFilter.contains( newsArt.get("site_full") )) {
             newsScore = newsScore + 1;
         }
@@ -888,7 +1019,6 @@ public class Goodnews
         if (topFilter.contains( newsArt.get("site_full") )) {
             newsScore = newsScore + 3;
         }
-
         if (entFilter.contains( newsArt.get("title") )) {
             newsScore = newsScore + 5;
         }
@@ -924,6 +1054,7 @@ public class Goodnews
         if (artifactsFilter.contains( newsArt.get("title") )) {
             newsScore = newsScore - 25;
         }
+*/
 
         // -5 for spam!
         if (Float.parseFloat(newsArt.get("spam_score")) > 0f ) {
@@ -971,7 +1102,7 @@ public class Goodnews
         String rrtext = "";
         String ftext = "";
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
-
+/*
         for(String toReplace:paragraphReplace)
         {
             Pattern patt = Pattern.compile("("+toReplace+")");
@@ -983,15 +1114,15 @@ public class Goodnews
                 logger.info("8===D~ True M KNIGHT: " + m.group(1));
                 String matchedText = m.group(1);
                 logger.info("8===D~ MatchedText: " + matchedText);
-                rrtext = m.replaceAll(" ");
+                rrtext = m.replaceFirst(" ");
             }
         }
-
+*/
 
         for(String toReplace:paragraphBefore)
         {
             Pattern patt = Pattern.compile("("+toReplace+")");
-            Matcher m = patt.matcher(rrtext);
+            Matcher m = patt.matcher(ntext);
             //StringBuffer ftext = new StringBuffer(ntext.length());
 
 

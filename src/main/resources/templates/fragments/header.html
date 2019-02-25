@@ -15,16 +15,16 @@
 
 <header id="fixed_header">
     <div class="row no-gutter superhead">
-        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 logohead"><img class="img-fluid"  src="/images/gone_logo.png" border="0"/></div>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 logohead">api.<img class="img-fluid"  src="/images/gone_logo.png" border="0"/></div>
         <div class="col-lg-9 col-md-7 col-sm-7 col-xs-7 menuhead">
             <ul class="nav">
                 <li><a href="/">Home</a></li>
                 <li><a href="/newsbuild">News Admin</a></li>
                 <li><a href="/contactAdmin">Contact Admin</a></li>
-                <li><a target="software" href="http://qa.gallantone.com">Software</a></li>
-                <li> <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out"/>
-                </form></li>
+                <li>
+                    <form th:action="@{/logout}" method="post" style="position:relative; display:inline; padding:0; margin:0;">
+                        <input type="submit" value="Sign Out"/>
+                    </form></li>
             </ul>
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 burgerhead dropdown">
