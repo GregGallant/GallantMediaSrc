@@ -220,7 +220,9 @@ public class Goodnews
             "Yankees",
             "Mets",
             "Packers",
-            "Green Bay"
+            "Green Bay",
+            "Dayton Moore",
+            "WWE"
     );
 
 
@@ -254,7 +256,8 @@ public class Goodnews
             "artist",
             "Soul",
             "headphones",
-            "song"
+            "song",
+            "Mark Hollis"
     );
 
     private List<String> artifactsFilter = Arrays.asList(
@@ -277,10 +280,10 @@ public class Goodnews
             "Car Sales"
     );
 
-    // Until sports, sports in meh...
     private List<String> mehFilter = Arrays.asList(
             "Netflix",
-            "Shooting",
+            "shooting",
+            "stabbing",
             "Court Hearing",
             "Bail",
             "Pulwama",

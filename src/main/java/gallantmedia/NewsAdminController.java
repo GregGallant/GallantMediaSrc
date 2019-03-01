@@ -60,6 +60,61 @@ public class NewsAdminController {
         return mav;
     }
 
+    @RequestMapping(value="/sportsbuild", method=RequestMethod.GET)
+    public ModelAndView newssportsbuild(Contact contact, BindingResult result, Model model)
+    {
+        //    StringBuilder stringB = new StringBuilder("");
+
+
+        String bignews;
+        Goodnews goodnews = new Goodnews();
+        List<Article> listOfArticles = goodnews.getLatestNewsAdmin("sports","admin");
+
+        ModelAndView mav = new ModelAndView("newsbuild");
+
+        mav.addObject(listOfArticles);
+        model.addAttribute("listOfArticles", listOfArticles);
+        return mav;
+    }
+
+    @RequestMapping(value="/entbuild", method=RequestMethod.GET)
+    public ModelAndView newsentbuild(Contact contact, BindingResult result, Model model)
+    {
+        //    StringBuilder stringB = new StringBuilder("");
+
+
+        String bignews;
+        Goodnews goodnews = new Goodnews();
+        List<Article> listOfArticles = goodnews.getLatestNewsAdmin("entertainment","admin");
+
+        ModelAndView mav = new ModelAndView("newsbuild");
+
+        mav.addObject(listOfArticles);
+        model.addAttribute("listOfArticles", listOfArticles);
+        return mav;
+    }
+
+    @RequestMapping(value="/techbuild", method=RequestMethod.GET)
+    public ModelAndView newstechbuild(Contact contact, BindingResult result, Model model)
+    {
+        //    StringBuilder stringB = new StringBuilder("");
+
+
+        String bignews;
+        Goodnews goodnews = new Goodnews();
+        List<Article> listOfArticles = goodnews.getLatestNewsAdmin("tech","admin");
+
+        ModelAndView mav = new ModelAndView("newsbuild");
+
+        mav.addObject(listOfArticles);
+        model.addAttribute("listOfArticles", listOfArticles);
+        return mav;
+    }
+
+
+
+
+
     @RequestMapping(value="/contactAdmin", method=RequestMethod.GET)
     public ModelAndView contactBuild(Contact contact, BindingResult result, Model model)
     {

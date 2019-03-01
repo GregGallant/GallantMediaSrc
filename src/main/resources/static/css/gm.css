@@ -547,6 +547,16 @@ div.hed {
   border-bottom: 10px solid #53939d;
   text-align: left;
 }
+div.gghed {
+  width: 100%;
+  min-height: 548px;
+  background-color: #00535d;
+  background: url("/images/gg4hire2.jpg") 100% 100% no-repeat;
+  background-size: cover;
+  border-top: 10px solid #53939d;
+  border-bottom: 10px solid #53939d;
+  text-align: left;
+}
 div.hed h1 {
   font-family: Arvil, Anton, sans-serif;
   font-size: 8em;
@@ -801,6 +811,19 @@ p {
     min-height: 450px;
     background-color: #00535d;
     background: url("/images/newsboard_beta.jpg") 100% 100% no-repeat;
+    background-size: 100% 100%;
+    padding: 9px 9px 9px 9px;
+    border-top: 10px solid #53939d;
+    border-bottom: 10px solid #53939d;
+    text-align: left;
+    font-family: Arvil, Anton, sans-serif;
+    color: #192033;
+  }
+  div.gghed {
+    width: 100%;
+    min-height: 550px;
+    background-color: #00535d;
+    background: url("/images/gg4hire2.jpg") 100% 100% no-repeat;
     background-size: 100% 100%;
     padding: 9px 9px 9px 9px;
     border-top: 10px solid #53939d;
@@ -1296,7 +1319,19 @@ p {
     width: 100%;
     min-height: 450px;
     background-color: #00535d;
-    background: url("/images/newsboard_beta.jpg") 100% 100% no-repeat;
+    background: url("../images/newsboard_beta.jpg") 100% 100% no-repeat;
+    background-size: cover;
+    padding: 9px 9px 9px 9px;
+    border-top: 10px solid #53939d;
+    border-bottom: 10px solid #53939d;
+    font-size: 0.55em;
+    line-height: 1em;
+  }
+  div.gghed {
+    width: 100%;
+    min-height: 550px;
+    background-color: #00535d;
+    background: url("../images/gg4hire2.jpg") 100% 100% no-repeat;
     background-size: cover;
     padding: 9px 9px 9px 9px;
     border-top: 10px solid #53939d;
@@ -1561,7 +1596,19 @@ p {
     width: 100%;
     min-height: 450px;
     background-color: #00535d;
-    background: url("/images/newsboard_beta.jpg") 100% 100% no-repeat;
+    background: url("../images/newsboard_beta.jpg") 100% 100% no-repeat;
+    background-size: cover;
+    padding: 9px 9px 9px 9px;
+    border-top: 10px solid #53939d;
+    border-bottom: 10px solid #53939d;
+    font-size: 0.55em;
+    line-height: 1em;
+  }
+  div.gghed {
+    width: 100%;
+    min-height: 550px;
+    background-color: #00535d;
+    background: url("../images/gg4hire2.jpg") 100% 100% no-repeat;
     background-size: cover;
     padding: 9px 9px 9px 9px;
     border-top: 10px solid #53939d;
