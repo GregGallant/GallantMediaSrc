@@ -8,7 +8,7 @@ plugins {
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.7.91'
+	version = '0.8.0'
 	archiveName = "gallantmedia-${version}.war"
 	enabled = true
 }
@@ -48,4 +48,7 @@ dependencies {
 
 	compile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.1.2.RELEASE'
+
+	compile group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.1'
+	compile group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
 }
