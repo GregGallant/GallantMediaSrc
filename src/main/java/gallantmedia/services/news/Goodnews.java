@@ -109,8 +109,10 @@ public class Goodnews
     private List<String> bignewsFilter = Arrays.asList(
             "Alexandria",
             "Ocasio-Cortez",
-            "Trump",
+            "Notre Dame",
             "Ivanka",
+            "Bernie",
+            "Pelosi",
             "Bernie Sanders",
             "Roger Stone"
     );
@@ -120,7 +122,7 @@ public class Goodnews
             "Cardi",
             "Lennon",
             "Jagger",
-            "Regina King",
+            "Blackpink",
             "Taylor Swift"
     );
 
@@ -205,7 +207,6 @@ public class Goodnews
             "NCAA",
             "Hockey",
             "Lacrosse",
-            "Notre Dame",
             "Milwaukee Bucks",
             "Knicks",
             "Brooklyn Nets",
@@ -238,7 +239,6 @@ public class Goodnews
             "Mark Hollis",
             "Vanessa Hudgens",
             "Lizzo",
-            "Tove Lo",
             "Iggy",
             "Dua Lipa",
             "Avril Lavigne",

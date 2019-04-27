@@ -117,7 +117,7 @@
                  console.log("DIV HEIGHT: "+$('#'+divID).height());
                  */
 
-                /* Creating a one time only autoscroller.  It moves for the user, ONCE.  Anymore and it's terrible UI.  Other sites love to annoy their users.  --ggallant */
+                /* Creating a one time only autoscroller.  It moves for the user, ONCE.  Anymore and it's terrible UI.  Other sites love to annoy their customer.  --ggallant */
                 $(window).scroll(function(event){
 
                     /* Outdated stuff */

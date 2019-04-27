@@ -39,19 +39,18 @@
         <div class="col-lg-12 col-md-12 col-sm-12 hed">
             <br/>
             <br/>
-            <div th:if="${param.error}">
-                Invalid username and password.
-            </div>
-            <div th:if="${param.logout}">
-                You have been logged out.
+            <div>
             </div>
             <br/>
             <br/>
             <div class="justif" style="width:640px; font-size:1.1em; color:#ffece3;">
-                <form th:action="@{/login}" method="post" style="margin-top:-5px; padding-top:5px; padding-bottom:5px;">
-                    <div><label> <span style="padding:11px; background-color:#444444;">User Name :</span> <input style="font-family:Arial,sans-serif; width:220px;" type="text" name="username"/> </label></div>
+                <form action="/register" method="post" style="margin-top:-5px; padding-top:5px; padding-bottom:5px;">
+                    <div><label> <span style="padding:11px; background-color:#444444;">First Name :</span> <input style="font-family:Arial,sans-serif; width:220px;" type="text" name="firstname"/> </label></div>
+                    <div><label> <span style="padding:11px; background-color:#444444;">Last Name :</span> <input style="font-family:Arial,sans-serif; width:220px;" type="text" name="lastname"/> </label></div>
+                    <div><label> <span style="padding:11px; background-color:#444444;">Email :</span> <input style="font-family:Arial,sans-serif; width:220px;" type="text" name="email"/> </label></div>
                     <div><label> <span style="padding:11px; background-color:#444444;">Password :</span> <input style="font-family:Arial,sans-serif; width:220px;" type="password" name="password"/> </label></div>
-                    <div><input style="width:45%; background-color:#33ecaf; font-size:1.5em;" type="submit" class="btn button" value="Sign In"/></div>
+                    <div><label> <span style="padding:11px; background-color:#444444;">Confirm Password :</span> <input style="font-family:Arial,sans-serif; width:220px;" type="password" name="password"/> </label></div>
+                    <div><input style="width:45%; background-color:#33ecaf; font-size:1.5em;" type="submit" class="btn button" value="Register"/></div>
                 </form>
             </div>
         </div>

@@ -14,17 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Arrays;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Description;
-import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-
 import org.springframework.context.support.ResourceBundleMessageSource;
 
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 @SpringBootApplication
 public class GallantMediaSrcApplication extends SpringBootServletInitializer

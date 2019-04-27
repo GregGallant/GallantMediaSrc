@@ -18,9 +18,6 @@ import gallantmedia.services.contact.ContactRepository;
 import org.springframework.validation.BindingResult;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import gallantmedia.services.news.Article;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,8 +43,7 @@ public class NewsAdminController {
     @RequestMapping(value="/newsbuild", method=RequestMethod.GET)
     public ModelAndView newsbuild(Contact contact, BindingResult result, Model model)
     {
-    //    StringBuilder stringB = new StringBuilder("");
-
+        // StringBuilder stringB = new StringBuilder("");
 
         String bignews;
         Goodnews goodnews = new Goodnews();
