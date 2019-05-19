@@ -5,6 +5,8 @@ import gallantmedia.services.customer.CustomerRepository;
 import gallantmedia.services.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,10 +14,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -47,10 +51,15 @@ public class GallantUserDetailsService implements UserDetailsService
         Logger logger = LoggerFactory.getLogger(GallantUserDetailsService.class);
         logger.info("====D LoadUserByUsername with new customerRepo happening...: " + customerRepository);
         try {
-            Customer customer = customerRepository.findUserByEmail(username);
+            final Customer customer = customerRepository.findUserByEmail(username);
             if (customer != null) {
-                PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+                PasswordEncoder encoder = new BCryptPasswordEncoder();
+                //PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+                //String password = encoder.encode(customer.getPassword());
                 String password = encoder.encode(customer.getPassword());
+                logger.info("8=======D~  Customer.getEmail: " + customer.getEmail());
+                logger.info("8=======D~  EncPass: " + password);
                 return User.withUsername(customer.getEmail()).accountLocked(!customer.isEnabled()).password(password).roles(customer.getRole()).build();
             }
         } catch(Exception ex) {

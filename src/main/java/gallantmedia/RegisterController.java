@@ -2,11 +2,14 @@ package gallantmedia;
 
 import gallantmedia.models.Contact;
 import gallantmedia.services.customer.CustomerRepository;
+import gallantmedia.services.customer.CustomerService;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import gallantmedia.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,54 +29,28 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@RestController
+@Controller
 public class RegisterController
 {
 
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private CustomerService customerService;
+
     @RequestMapping(value="/register", method= RequestMethod.GET)
-    public String registerGet(HttpServletRequest request)
+    public String registerGet(Model model)
     {
-        return("Fix React templating, pl0x");
+        model.addAttribute("userForm", new Customer());
+        return "register";
     }
 
     @RequestMapping(value="/register", method=RequestMethod.POST)
-    public String registerFormSubmit(HttpServletRequest request, @Valid @ModelAttribute Customer customer, BindingResult bindingResult)
+    public String registerFormSubmit(@Valid @ModelAttribute("userForm") Customer userForm, BindingResult bindingResult)
     {
-        String errorJson;
+        customerService.save(userForm);
 
-        ObjectMapper om = new ObjectMapper();
-
-        if (bindingResult.hasErrors()) {
-            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-
-            try {
-                errorJson = om.writeValueAsString(fieldErrors);
-                return errorJson;
-            } catch(JsonGenerationException e) {
-                e.printStackTrace();
-                System.out.println("Registration err: " + e);
-            } catch (JsonMappingException je) {
-                System.out.println("Registration err" + je);
-                je.printStackTrace();
-            } catch (IOException ie) {
-                System.out.println("Registration err" + ie);
-                ie.printStackTrace();
-            }
-        }
-
-        // Get Customer
-        Map<String, String[]> customerMap = request.getParameterMap();
-        Set customerSet = customerMap.entrySet();
-
-        // Build Customer obj
-        String customerJson = customer.buildCustomer(customerSet);
-
-        customer = this.setTimestamps(customer);
-        //customerRepository.save(customer);
-
-        return(customerJson);
+        return "redirect:/index";
     }
 
     /**

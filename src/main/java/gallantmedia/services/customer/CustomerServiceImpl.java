@@ -7,11 +7,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -21,6 +24,7 @@ public class CustomerServiceImpl implements CustomerService
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Autowired
     private CustomerRepository customerRepository;
 
     public List<Customer> findAll()
@@ -29,7 +33,12 @@ public class CustomerServiceImpl implements CustomerService
         return emptyList;
     }
 
-    public void saveUser(Customer user) {}
+    public void save(Customer user) {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
+        //user.setRoles(new HashSet<>(roleRepository.findAll()));
+        customerRepository.save(user);
+    }
 
     public Customer findUserByEmail(String email)
     {

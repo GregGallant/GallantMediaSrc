@@ -36,6 +36,7 @@ public class Customer implements Serializable
     @Column(name="password")
     private String password;
 
+    @Transient
     private String confirmpassword;
 
     @Column(name="roles")
