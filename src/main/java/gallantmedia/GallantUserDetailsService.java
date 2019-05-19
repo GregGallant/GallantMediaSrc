@@ -2,6 +2,9 @@ package gallantmedia;
 
 import gallantmedia.models.Customer;
 import gallantmedia.services.customer.CustomerRepository;
+import gallantmedia.services.customer.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,19 +18,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GallantUserDetailsService implements UserDetailsService
 {
-
     private static List<UserObject> users = new ArrayList<>();
 
     private CustomerRepository customerRepository;
 
-    /**
-     * TODO: Dbase
-     */
+    @Autowired
     public GallantUserDetailsService(CustomerRepository customerRepository)
     {
+        Logger logger = LoggerFactory.getLogger(GallantUserDetailsService.class);
+        logger.info("==> UserDetailsService start -- parameter CustomerRepository userRepository: " + customerRepository);
         this.customerRepository = customerRepository;
 
         String pw_hash = BCrypt.hashpw("testing", BCrypt.gensalt());
@@ -36,21 +40,21 @@ public class GallantUserDetailsService implements UserDetailsService
         users.add(new UserObject("greg", pw_hash, "ADMIN"));
     }
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
-        Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
-        logger.info("====D LoadUserByUsername with new customerRepo happening...");
-
+        Logger logger = LoggerFactory.getLogger(GallantUserDetailsService.class);
+        logger.info("====D LoadUserByUsername with new customerRepo happening...: " + customerRepository);
         try {
-            final Customer customer = this.customerRepository.findUserByEmail(username);
-
+            Customer customer = customerRepository.findUserByEmail(username);
             if (customer != null) {
                 PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
                 String password = encoder.encode(customer.getPassword());
                 return User.withUsername(customer.getEmail()).accountLocked(!customer.isEnabled()).password(password).roles(customer.getRole()).build();
             }
         } catch(Exception ex) {
+            logger.error("8====D LoadUserByUsername ERROR...");
             ex.printStackTrace();
         }
 

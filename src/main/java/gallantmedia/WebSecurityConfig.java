@@ -2,30 +2,49 @@ package gallantmedia;
 
 import gallantmedia.services.customer.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.web.server.authentication.RedirectServerAuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
+    @Autowired
     private CustomerRepository userRepository;
 
-    public WebSecurityConfig(CustomerRepository userRepository)
+    @Override
+    public UserDetailsService userDetailsServiceBean() throws Exception {
+        return new GallantUserDetailsService(userRepository);
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception
     {
-        this.userRepository = userRepository;
+        web
+                .ignoring()
+                .antMatchers("/","/register","/news","/newsjson","/newslinks","/newssportsjson","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder")
+                .antMatchers("/css/**","/fonts/**","/bootstrap/**","/images/**","/js/**")
+        ;
+
+        //http.exceptionHandling().accessDeniedPage("/403");
     }
 
     @Override
@@ -35,24 +54,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             .authorizeRequests()
                 .antMatchers("/","/register","/news","/newsjson","/newslinks","/newssportsjson","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
                 .antMatchers("/css/**","/fonts/**","/bootstrap/**","/images/**","/js/**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().fullyAuthenticated()
                 .and()
             .formLogin()
-                 //.loginProcessingUrl("/loginprocess")
                 .loginPage("/login")
                 .defaultSuccessUrl("/loginsuccess")
                 .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
-            .logout()
-                .permitAll();
+            .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login")
+                .permitAll()
+        ;
 
-        http.exceptionHandling().accessDeniedPage("/403");
+        //http.exceptionHandling().accessDeniedPage("/403");
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder builder) throws Exception
     {
+        Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
+        logger.info("==> WebSecurityConfig start -- parameter CustomerRepository userRepository: " + this.userRepository);
+
+//        builder.inMemoryAuthentication()
+ //               .withUser("username").password("password").roles("USER");
         builder.userDetailsService(new GallantUserDetailsService(this.userRepository));
     }
 

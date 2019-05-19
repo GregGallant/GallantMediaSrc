@@ -23,10 +23,10 @@ public class Customer implements Serializable
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="firstname")
+    @Column(name="fname")
     private String firstName;
 
-    @Column(name="lastname")
+    @Column(name="lname")
     private String lastName;
 
     @Column(name="email")
@@ -38,7 +38,7 @@ public class Customer implements Serializable
 
     private String confirmpassword;
 
-    @Column(name="role")
+    @Column(name="roles")
     private String role;
 
     @Column(name="status")

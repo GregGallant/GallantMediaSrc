@@ -29,6 +29,8 @@ import java.util.*;
 /**
  * Created by ggallant on 2/20/17.
  */
+//@CrossOrigin(origins = "https://www.gallantone.com")
+@CrossOrigin(origins = "http://staging2.gallantone.com")
 @RestController
 public class IndexController
 {
@@ -36,16 +38,14 @@ public class IndexController
     @Autowired
     private ContactService contactService;
 
-    @Autowired
     private ContactRepository contactRepository;
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
     @RequestMapping(value="/contact", method = RequestMethod.GET)
     public String contactInit(HttpServletRequest request) {
         return ("{error: jsp}");
     }
 
-    @CrossOrigin(origins = "http://www.gallantone.com")
+
     @RequestMapping(value="/contact", method = RequestMethod.POST)
     public String contactForm(HttpServletRequest request, @Valid @ModelAttribute Contact contact, BindingResult bindingResult)
     {

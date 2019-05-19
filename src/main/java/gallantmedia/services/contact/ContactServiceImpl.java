@@ -14,9 +14,8 @@ public class ContactServiceImpl implements ContactService
 {
     private static final Logger log = LoggerFactory.getLogger("ContactService");
 
-    private EntityManager em;
+    //private EntityManager em;
 
-    @Autowired
     private ContactRepository contactRepository;
 
     public List<Contact> findAll() {

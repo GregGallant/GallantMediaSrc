@@ -8,7 +8,7 @@ plugins {
 
 war {
 	baseName = 'gallantmedia'
-	version = '0.8.2'
+	version = '0.8.8'
 	archiveName = "gallantmedia-${version}.war"
 	enabled = true
 }
@@ -33,15 +33,20 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'com.google.code.gson:gson:2.8.5'
 
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-mustache', version: '2.1.4.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.1.5.RELEASE'
+	compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version: '3.0.4.RELEASE'
+	compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.4.1'
 
 	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
 	compile group: 'org.apache.commons', name: 'commons-digester3', version: '3.2'
 	compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
     compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.13'
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+	
 	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
+	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.2.Final'
 	compile group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.0.14.Final'
+	
 	compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.11'
 	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.7'
 	compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'

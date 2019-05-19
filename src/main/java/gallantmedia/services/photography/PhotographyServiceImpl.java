@@ -14,9 +14,8 @@ public class PhotographyServiceImpl implements PhotographyService
 {
     private static final Logger log = LoggerFactory.getLogger("PhotographyService");
 
-    private EntityManager em;
+    //private EntityManager em;
 
-    @Autowired
     private PhotographyRepository photographyRepository;
 
     public List<Photography> findAll() {

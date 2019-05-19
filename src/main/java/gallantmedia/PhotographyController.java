@@ -16,9 +16,6 @@ public class PhotographyController
     @Autowired
     private PhotographyService photographyService;
 
-    @Autowired
-    private PhotographyRepository photographyRepository;
-
     @RequestMapping("/photography")
     public String index() {
         log.info("Photography Mapped, dumping column data: " + photographyService.findName().toString());
