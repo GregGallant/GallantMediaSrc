@@ -54,12 +54,12 @@ public class GallantUserDetailsService implements UserDetailsService
             final Customer customer = customerRepository.findUserByEmail(username);
             if (customer != null) {
 
-                PasswordEncoder encoder = new BCryptPasswordEncoder();
+                //PasswordEncoder encoder = new BCryptPasswordEncoder();
                 //PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
                 //String password = encoder.encode(customer.getPassword());
-                String password = encoder.encode(customer.getPassword());
+                //String password = encoder.encode(customer.getPassword());
+                String password = customer.getPassword();
                 logger.info("8=======D~  Customer.getEmail: " + customer.getEmail());
-                logger.info("8=======D~  EncPass: " + password);
                 return User.withUsername(customer.getEmail()).accountLocked(!customer.isEnabled()).password(password).roles(customer.getRole()).build();
             }
         } catch(Exception ex) {

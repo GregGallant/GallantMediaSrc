@@ -44,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService
         logger.info("=====>>>> User to be saved: " + user.getPassword());
         logger.info("=====>>>> User to be saved: " + user.getFirstName());
         logger.info("=====>>>> User to be saved: " + user.getLastName());
-
+        user.setStatus(1);
         user.setRole("[\"ROLE_USER\"]"); // TODO: Handle roles
         //user.setRoles(new HashSet<>(roleRepository.findAll()));
         customerRepository.save(user);
