@@ -77,8 +77,8 @@ public class RegisterController
 
         if (dateStr != null) {
             sqlnow = new java.sql.Date(dateStr.getTime());
-            customer.setCreated(sqlnow);
-            customer.setUpdated(sqlnow);
+            //customer.setCreated(sqlnow);
+            //customer.setUpdated(sqlnow);
         }
 
         return customer;

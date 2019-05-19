@@ -27,6 +27,8 @@ public class CustomerServiceImpl implements CustomerService
     @Autowired
     private CustomerRepository customerRepository;
 
+    private Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
+
     public List<Customer> findAll()
     {
         List<Customer> emptyList = new ArrayList<Customer>();
@@ -36,13 +38,20 @@ public class CustomerServiceImpl implements CustomerService
     public void save(Customer user) {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
+        user.onCreate();
+        user.onUpdate();
+        logger.info("=====>>>> User to be saved: " + user.getEmail());
+        logger.info("=====>>>> User to be saved: " + user.getPassword());
+        logger.info("=====>>>> User to be saved: " + user.getFirstName());
+        logger.info("=====>>>> User to be saved: " + user.getLastName());
+
+        user.setRole("[\"ROLE_USER\"]"); // TODO: Handle roles
         //user.setRoles(new HashSet<>(roleRepository.findAll()));
         customerRepository.save(user);
     }
 
     public Customer findUserByEmail(String email)
     {
-        Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
         logger.info("====D Logger customerservice impl called");
         /*
         Customer c = new Customer();

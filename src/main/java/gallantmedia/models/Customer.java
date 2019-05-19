@@ -6,6 +6,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -46,10 +47,20 @@ public class Customer implements Serializable
     private int status;
 
     @Column(name="created")
-    private Date created;
+    private LocalDateTime created;
 
     @Column(name="updated")
-    private Date updated;
+    private LocalDateTime updated;
+
+    @PrePersist
+    public void onCreate() {
+        this.setCreated(LocalDateTime.now());
+    }
+
+    @PreUpdate
+    public void onUpdate() {
+        this.setUpdated(LocalDateTime.now());
+    }
 
     public String getFirstName() {
         return firstName;
@@ -116,19 +127,19 @@ public class Customer implements Serializable
         this.role = role;
     }
 
-    public Date getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public Date getUpdated() {
+    public LocalDateTime getUpdated() {
         return updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
 
