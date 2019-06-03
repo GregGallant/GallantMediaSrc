@@ -1,5 +1,7 @@
 package gallantmedia;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import gallantmedia.models.Contact;
 import gallantmedia.services.customer.CustomerRepository;
 import gallantmedia.services.customer.CustomerService;
@@ -7,17 +9,17 @@ import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import gallantmedia.models.Customer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.Date;
@@ -29,28 +31,59 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonToken;
+import org.json.simple.parser.JSONParser;
+
 @Controller
 public class RegisterController
 {
 
+    Logger logger = LoggerFactory.getLogger(RegisterController.class);
     private CustomerRepository customerRepository;
 
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping(value="/register", method= RequestMethod.GET)
-    public String registerGet(Model model)
+    @CrossOrigin(origins = "http://staging.gallantone.com")
+    @RequestMapping(value="/register", method= RequestMethod.GET, headers = "Accept=application/json")
+    @ResponseBody
+    public String registerGet(
+            @RequestParam Map<String, String> reg)
     {
-        model.addAttribute("userForm", new Customer());
+        //public String registerGet(Model model)
+        //model.addAttribute("userForm", new Customer());
+
         return "register";
     }
 
-    @RequestMapping(value="/register", method=RequestMethod.POST)
-    public String registerFormSubmit(@Valid @ModelAttribute("userForm") Customer userForm, BindingResult bindingResult)
+    @CrossOrigin(origins = "http://staging.gallantone.com")
+    @RequestMapping(value="/register", method=RequestMethod.POST, headers = "Accept=application/json")
+    @ResponseBody
+    public String registerFormSubmit(
+            @RequestBody Customer reg
+    )
     {
-        customerService.save(userForm);
+        logger.info("User trying to register is: " + reg.getEmail());
+        reg.onCreate();
+        reg.onUpdate();
 
-        return "redirect:/index";
+        try {
+            customerService.save(reg);
+        } catch(Exception e) {
+            return "Exception thrown: " + e.toString();
+        }
+
+        Gson gson = new GsonBuilder().create();
+        String userFormJson = gson.toJson(reg);
+        if (userFormJson != null) {
+            return userFormJson;
+        }
+
+        return "No data found from returned json";
+        //return "redirect:/index";
+
     }
 
     /**

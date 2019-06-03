@@ -31,7 +31,7 @@ import java.util.Set;
  */
 //@CrossOrigin(origins = "https://www.gallantone.com")
 @Controller
-@CrossOrigin(origins = "http://staging2.gallantone.com")
+@CrossOrigin(origins = "http://staging.gallantone.com")
 public class LoginController
 {
 
@@ -41,9 +41,5 @@ public class LoginController
         return "login";
     }
 
-    @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String loginPostInit(Model model) {
-        //return new ModelAndView("loginsuccess");
-        return "loginsuccess";
-    }
 }
+
