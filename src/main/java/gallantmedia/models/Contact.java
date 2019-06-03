@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import javax.validation.Constraint;
@@ -49,8 +50,8 @@ public class Contact implements Serializable
    @Column(name="website")
    private String website;
 
-   @Column(name="company")
-   private String company;
+   @Column(name="srequest")
+   private String requestSelect;
 
    @Column(name="phone")
    @PhoneFormat
@@ -62,12 +63,20 @@ public class Contact implements Serializable
    private String description;
 
    @Column(name="created")
-   private Date created;
+   private LocalDateTime created;
 
    @Column(name="updated")
-   private Date updated;
+   private LocalDateTime updated;
 
+   @PrePersist
+   public void onCreate() {
+        this.setCreated(LocalDateTime.now());
+   }
 
+   @PreUpdate
+   public void onUpdate() {
+       this.setUpdated(LocalDateTime.now());
+   }
 
   // @Constraint(validatedBy = PhoneValidator.class)
 
@@ -120,8 +129,8 @@ public class Contact implements Serializable
                case("website"):
                    this.setWebsite(cval);
                    break;
-               case("company"):
-                   this.setCompany(cval);
+               case("requestSelect"):
+                   this.setRequestSelect(cval);
                    break;
            }
        }
@@ -236,17 +245,17 @@ public class Contact implements Serializable
                                                          this.description = description;
                                                                                         }
 
-    public Date getCreated() {
+    public LocalDateTime getCreated() {
                                    return created;
                                                   }
-    public void setCreated(Date created) {
+    public void setCreated(LocalDateTime created) {
                                                this.created = created;
                                                                       }
 
-    public Date getUpdated() {
+    public LocalDateTime getUpdated() {
                                    return updated;
                                                   }
-    public void setUpdated(Date updated) { this.updated = updated; }
+    public void setUpdated(LocalDateTime updated) { this.updated = updated; }
 
     public String getEmail() {
                                    return email;
@@ -269,8 +278,8 @@ public class Contact implements Serializable
                                                  this.website = website;
                                                                         }
 
-    public String getCompany() { return company; }
-    public void setCompany(String company) { this.company = company; }
+    public String getRequestSelect() { return requestSelect; }
+    public void setRequestSelect(String requestSelect) { this.requestSelect = requestSelect; }
 
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }

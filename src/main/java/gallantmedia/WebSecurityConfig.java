@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     {
         web
                 .ignoring()
-                .antMatchers("/","/register","/news","/newsjson","/newslinks","/newssportsjson","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder")
+                .antMatchers("/","/contact", "/register","/news","/newsjson","/newslinks","/newssportsjson","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder")
                 .antMatchers("/css/**","/fonts/**","/bootstrap/**","/images/**","/js/**")
         ;
 
@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     {
         http
             .authorizeRequests()
-                .antMatchers("/","/register","/news","/newsjson","/newslinks","/newssportsjson","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
+                .antMatchers("/","/contact","/register","/news","/newsjson","/newslinks","/newssportsjson","/newsfashionjson","/newsentertainmentjson","/newsusjson","/newsus","/error","/resources/**","/supernews", "/newsorder").permitAll()
                 .antMatchers("/css/**","/fonts/**","/bootstrap/**","/images/**","/js/**").permitAll()
                 .anyRequest().fullyAuthenticated()
                 .and()
