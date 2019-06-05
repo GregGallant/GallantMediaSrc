@@ -16,11 +16,14 @@ public class ContactServiceImpl implements ContactService
 
     //private EntityManager em;
 
+    @Autowired
     private ContactRepository contactRepository;
 
     public List<Contact> findAll() {
         return contactRepository.findAll();
     }
+
+    private Logger logger = LoggerFactory.getLogger(ContactServiceImpl.class);
 /*
     public Contact findById(int id) {
         return ContactRepository.findById(id);
@@ -48,12 +51,12 @@ public class ContactServiceImpl implements ContactService
         return "No data found.";
     }
 
-    public void saveContact(Contact contact) {
+    public void save(Contact contact) {
         try {
             contactRepository.save(contact);
         } catch(Exception e) {
             // do something
-            System.out.println("Exception thrown: " + e.toString());
+            logger.info("Exception thrown: " + e.toString());
         }
     }
 }

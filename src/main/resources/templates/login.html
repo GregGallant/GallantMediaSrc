@@ -22,9 +22,9 @@
         <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 logohead"><img class="img-fluid" src="/images/gone_logo.png" border="0"/></div>
         <div class="col-lg-9 col-md-7 col-sm-7 col-xs-7 menuhead">
             <ul class="nav">
-                <li>Home</li>
+                <li><a href="https://www.gallantone.com">Home</a></li>
                 <li>Login</li>
-                <li>Sign Up</li>
+                <li><a href="https://www.gallantone.com/register">Sign Up</a></li>
                 <li><a href="http://news.gallantone.com">News</a><span class="beta">-Beta</span></li>
             </ul>
         </div>
@@ -32,9 +32,9 @@
             <button class="btn dropdown-toggle" type="button" id="burgertime" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid theburger" src="/images/goodburger50.png" border="0"/></button>
             <div class="dropdown-menu">
                 <ul id="burgermenu" aria-labelledby="burgertime">
-                    <li class="dropdown-item">Home</li>
+                    <li class="dropdown-item"><a href="https://www.gallantone.com">Home</a></li>
                     <li class="dropdown-item">Login</li>
-                    <li class="dropdown-item">Sign Up</li>
+                    <li class="dropdown-item"><a href="https://www.gallantone.com/register">Sign Up</a></li>
                     <li class="dropdown-item"><a href="http://news.gallantone.com">News</a></li>
                 </ul>
             </div>
@@ -49,7 +49,7 @@
                     <h1>Login</h1>
                     <div class="subhed">
                     <form th:action="@{/login}" method="post">
-                        <input class="form-control formy" type="text" name="email" placeholder="Email"/>
+                        <input class="form-control formy" type="text" name="username" placeholder="Email"/>
                         <input class="form-control formy" type="password" name="password" placeholder="Password"/>
                         <input id="loginButton" class="loginSubmit btn btn-large" type="submit" value="Login"/>
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />

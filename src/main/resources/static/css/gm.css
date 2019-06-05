@@ -173,7 +173,8 @@ p {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  font-family: Arvil, Arial, sans-serif; }
+  font-family: Arvil, Arial, sans-serif;
+  padding-bottom: 14px; }
   .textHeader h1 {
     font-family: Arvil,sans-serif;
     font-size: 2em;
@@ -365,7 +366,8 @@ form {
 
 .transparentForm {
   position: relative;
-  display: block; }
+  display: block;
+  margin: 0 15px 0 15px; }
 
 .formContainer {
   position: absolute;
@@ -373,6 +375,18 @@ form {
   top: 0;
   min-width: 700px;
   min-height: 700px;
+  background-color: #022445;
+  border-color: 1px solid #53939d;
+  opacity: .7;
+  border-radius: 7px;
+  z-index: 3; }
+
+.formContainerThanks {
+  position: absolute;
+  display: block;
+  top: 0;
+  min-width: 700px;
+  min-height: 300px;
   background-color: #022445;
   border-color: 1px solid #53939d;
   opacity: .7;
@@ -402,6 +416,14 @@ form {
   background-size: cover;
   width: 100%;
   min-height: 1000px; }
+
+.contactimgThanks {
+  border-top: 7px solid #4f7cac;
+  border-bottom: 7px solid #4f7cac;
+  background: url("/images/asunset.jpg") 100% 100% no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 500px; }
 
 .form-control {
   font-family: Helvetica, Arial, sans-serif;
@@ -453,6 +475,19 @@ h2#contactHeader {
   font-family: Viga, Helvetica, Arial, sans-serif;
   text-align: left;
   font-size: 1.5em; }
+
+.panel {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .7em;
+  color: #e0e0e0;
+  text-align: left; }
+
+.panel-register {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .7em;
+  color: #e0e0e0;
+  text-align: left;
+  padding: 0 0 0 20px; }
 
 .contactSubmitRow {
   margin: 10px 0 20px 0; }
@@ -517,11 +552,12 @@ input.formwide {
   border: 1px solid #4f7cac; }
 
 .has-error {
-  visibility: visible; }
+  visibility: visible;
+  border: 1px solid #ff5333; }
 
 div.hed {
   width: 100%;
-  min-height: 500px;
+  min-height: 640px;
   background-color: #00535d;
   background: url("/images/gohead.jpg") 100% 100% no-repeat;
   background-size: cover;
@@ -557,6 +593,56 @@ div.allnight {
   text-align: center;
   margin: 0 auto;
   padding: 17px 0 0 0; }
+
+div.wosnight {
+  display: block;
+  width: 100%;
+  font-family: Lora,Arvil, Anton, sans-serif;
+  font-size: 2.3em;
+  background-color: #ffffff;
+  text-align: center;
+  margin: 0 auto;
+  padding: 17px 0 0 0;
+  border-top: 2px solid #00535d;
+  border-bottom: 2px solid #00535d; }
+
+div.wosleft {
+  display: inline;
+  text-align: left;
+  font-family: Helvetica, Arial, sans-serif; }
+  div.wosleft p {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .4em;
+    line-height: 1.7em;
+    margin-left: 11px;
+    margin-right: 11px; }
+  div.wosleft img.wosdevices {
+    display: inline;
+    text-align: left;
+    float: left; }
+  div.wosleft img.woslogoimg {
+    display: inline;
+    float: right; }
+
+div .clearme {
+  display: block;
+  clear: both; }
+
+div.wosright {
+  display: inline;
+  text-align: left; }
+  div.wosright img.woslogoimg {
+    margin-right: 10px; }
+
+div.printshop {
+  position: relative;
+  max-height: 375px;
+  display: inline;
+  padding: 0 0 5px 0;
+  border: 1px solid #333333;
+  margin: 9px 9px 9px 9px; }
+  div.printshop img.psi {
+    padding-bottom: 5px; }
 
 div.verbox {
   padding: 25px 0 35px 0; }
@@ -609,24 +695,43 @@ div.gbox {
   border: 1px solid #00535d;
   text-align: center;
   margin: 7px 7px 7px 7px;
-  max-width: 340px;
-  padding: 15px 15px 15px 15px;
+  max-width: 510px;
+  padding: 0;
   min-height: 300px;
   max-height: 300px;
   background-color: #eff0ff;
   font-family: Anton, sans-serif;
-  font-size: 1.2em;
+  font-size: 1em;
   color: #101010;
   border-radius: 2px; }
   div.gbox h4 {
-    font-family: Anton, sans-serif;
-    font-size: 1.3em;
-    line-height: 24px;
-    padding-bottom: 20px; }
+    font-family: Gudea, sans-serif;
+    font-size: 1.1em;
+    padding-top: 11px; }
+    div.gbox h4.left {
+      text-align: left;
+      padding-left: 10px; }
+    div.gbox h4.right {
+      text-align: right;
+      padding-right: 10px; }
+    div.gbox h4.white {
+      text-align: left;
+      color: #ffffff;
+      padding-left: 10px; }
   div.gbox h5 {
     font-family: Gudea, sans-serif;
-    font-size: .9em;
+    font-size: .8em;
     letter-spacing: .45px; }
+    div.gbox h5.left {
+      text-align: left;
+      padding-left: 10px; }
+    div.gbox h5.right {
+      text-align: right;
+      padding-right: 10px; }
+    div.gbox h5.white {
+      text-align: left;
+      color: #ffffff;
+      padding-left: 10px; }
   div.gbox p {
     font-size: .8em;
     line-height: 28px;
@@ -646,9 +751,14 @@ div.hline3 {
 
 div.centered {
   display: block;
-  margin: 0 0 10px 0;
+  margin: 0 0 0 0;
   padding: 0 0 0 0;
   text-align: center; }
+
+#gofooter {
+  position: relative;
+  bottom: 0;
+  width: 100%; }
 
 div .poweredby {
   font-family: Arial,Helvetica,sans-serif;
@@ -656,8 +766,8 @@ div .poweredby {
 
 div.footer {
   width: 100%;
-  min-height: 220px;
-  max-height: 250px;
+  min-height: 245px;
+  max-height: 300px;
   background-color: #022445;
   border-top: 1px solid #2274a5;
   padding: 0 10px 40px 2px;
@@ -718,6 +828,17 @@ body {
   background-color: #eeeeee;
   margin: 0 0 0 0;
   padding: 0 0 0 0; }
+
+.content {
+  width: 100%;
+  margin: 0 0 0 0; }
+
+.container-fluid {
+  padding: 0 0 0 0;
+  margin-right: auto;
+  margin-left: auto; }
+  .container-fluid .row {
+    margin: 0 0 0 0; }
 
 .beta {
   font-size: .6em;
@@ -917,7 +1038,6 @@ div.blahdiv {
       height: 300px; }
   div.hed {
     width: 100%;
-    min-height: 500px;
     background-color: #00535d;
     background: url("/images/gohead.jpg") 100% 100% no-repeat;
     background-size: 100% 100%;
@@ -975,7 +1095,7 @@ div.blahdiv {
   div h4 {
     font-family: Anton, sans-serif;
     font-size: 1.3em;
-    line-height: 24px; }
+    line-height: 14px; }
   input.formy {
     display: block;
     width: 350px;
@@ -1025,8 +1145,10 @@ div.blahdiv {
       margin: 0 0 0 0; }
   div.footer {
     width: 100%;
-    min-height: 220px;
+    min-height: 245px;
     padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
     background-color: #022445; } }
 
 @media screen and (min-width: 900px) and (max-width: 1300px) {
@@ -1071,40 +1193,7 @@ div.blahdiv {
     padding: 7px;
     border-radius: 6px;
     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-    width: 500px; }
-  .textHeader {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-family: Arvil, Arial, sans-serif; }
-    .textHeader h1 {
-      font-family: Arvil,sans-serif;
-      font-size: 1.25em;
-      font-weight: normal;
-      letter-spacing: .08em;
-      color: #306063;
-      margin: 0 0 0 0; }
-    .textHeader h3 {
-      font-family: Arvil,sans-serif;
-      font-size: 2em;
-      font-weight: normal;
-      letter-spacing: .05em;
-      color: #08907e;
-      margin: 0 0 0 0; }
-    .textHeader h4 {
-      font-family: Arvil,sans-serif;
-      font-size: .8em;
-      font-weight: normal;
-      letter-spacing: .075em;
-      color: #08907e;
-      margin: 20px 0 0 0; }
-    .textHeader h5 {
-      font-family: Arvil,sans-serif;
-      font-size: 1.25em;
-      font-weight: normal;
-      letter-spacing: .084em;
-      color: #08403e;
-      margin: 0 0 0 0; } }
+    width: 500px; } }
 
 @media screen and (min-width: 501px) and (max-width: 900px) {
   input.formy {
@@ -1536,7 +1625,6 @@ div.blahdiv {
       height: 300px; }
   div.hed {
     width: 100%;
-    min-height: 500px;
     background-color: #00535d;
     background: url("/images/gohead.jpg") 100% 100% no-repeat;
     background-size: cover;
@@ -1605,7 +1693,7 @@ div.blahdiv {
   div h4 {
     font-family: Anton, sans-serif;
     font-size: 1.3em;
-    line-height: 24px; }
+    line-height: 14px; }
   div.hline2 {
     text-align: right;
     font-size: .25em;
@@ -1619,6 +1707,8 @@ div.blahdiv {
     width: 100%;
     min-height: 190px;
     background-color: #022445;
+    margin-top: 0;
+    margin-bottom: 0;
     padding-bottom: 40px; } }
 
 @media screen and (max-width: 370px) {
@@ -1686,7 +1776,7 @@ div.blahdiv {
   h2#contactHeader {
     padding-top: 11px; }
   .formContainer {
-    min-width: 340px;
+    min-width: 320px;
     min-height: 700px; }
   .select-control {
     width: 300px; }
@@ -1908,7 +1998,7 @@ div.blahdiv {
   div h4 {
     font-family: Anton, sans-serif;
     font-size: 1.3em;
-    line-height: 24px; }
+    line-height: 14px; }
   div.hline2 {
     text-align: right;
     font-size: .25em;

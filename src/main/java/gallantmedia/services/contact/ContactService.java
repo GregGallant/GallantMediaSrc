@@ -10,5 +10,6 @@ public interface ContactService
 
     public String findName();
 
-    public void saveContact(Contact contact);
+    public void save(Contact contact);
+
 }

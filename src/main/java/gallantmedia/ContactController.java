@@ -8,6 +8,8 @@ import gallantmedia.services.contact.ContactService;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -33,6 +35,7 @@ import java.util.Set;
 @RestController
 public class ContactController
 {
+    Logger logger = LoggerFactory.getLogger(RegisterController.class);
 
     @Autowired
     private ContactService contactService;
@@ -45,10 +48,12 @@ public class ContactController
     }
 
     @CrossOrigin(origins = "http://staging.gallantone.com")
-    @RequestMapping(value="/contact", method = RequestMethod.POST)
+    @RequestMapping(value="/contact", method = RequestMethod.POST, headers = "Accept=application/json")
     @ResponseBody
-    public String contactForm(HttpServletRequest request, @Valid @RequestBody Contact contact, BindingResult bindingResult)
+    public String contactForm(@RequestBody Contact contact)
     {
+        logger.info("User trying to contact is: " + contact.getEmail());
+        /*
         String errorJson;
         ObjectMapper om = new ObjectMapper();
 
@@ -70,6 +75,7 @@ public class ContactController
                 e.printStackTrace();
             }
         }
+        */
 
         contact.onCreate();
         contact.onUpdate();
@@ -79,7 +85,7 @@ public class ContactController
 
         // Save
         try {
-            contactRepository.save(contact);
+            contactService.save(contact);
         } catch(Exception e) {
             return "Exception thrown : " + e.toString();
         }
