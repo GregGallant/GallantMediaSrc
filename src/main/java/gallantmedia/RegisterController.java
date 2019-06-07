@@ -46,7 +46,7 @@ public class RegisterController
     @Autowired
     private CustomerService customerService;
 
-    @CrossOrigin(origins = "http://staging.gallantone.com")
+    @CrossOrigin(origins = "https://www.gallantone.com")
     @RequestMapping(value="/register", method= RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
     public String registerGet(
@@ -58,7 +58,7 @@ public class RegisterController
         return "register";
     }
 
-    @CrossOrigin(origins = "http://staging.gallantone.com")
+    @CrossOrigin(origins = "https://www.gallantone.com")
     @RequestMapping(value="/register", method=RequestMethod.POST, headers = "Accept=application/json")
     @ResponseBody
     public String registerFormSubmit(

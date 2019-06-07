@@ -30,7 +30,7 @@ import java.util.*;
  * Created by ggallant on 2/20/17.
  */
 //@CrossOrigin(origins = "https://www.gallantone.com")
-@CrossOrigin(origins = "http://staging.gallantone.com")
+@CrossOrigin(origins = "https://www.gallantone.com")
 @RestController
 public class IndexController
 {

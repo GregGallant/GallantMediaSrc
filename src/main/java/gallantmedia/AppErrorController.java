@@ -41,13 +41,13 @@ public class AppErrorController implements ErrorController
 
     @RequestMapping(value=PATH)
     public String error(Model model) {
-        logger.info("--===D Error method 1");
+        logger.info("--=== Error method 1");
         return "error";
     }
 
     @Override
     public String getErrorPath() {
-        logger.info("--===D getErrorPath Method");
+        logger.info("--=== getErrorPath Method");
         return PATH;
     }
 }

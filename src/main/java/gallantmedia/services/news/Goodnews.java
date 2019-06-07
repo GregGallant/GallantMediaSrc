@@ -738,7 +738,7 @@ public class Goodnews
     {
         String jsonBigNews = "";
         Logger logger = LoggerFactory.getLogger(Goodnews.class);
-        logger.info("8====D~  viewType check: " + viewType);
+        logger.info("====~  viewType check: " + viewType);
         List<Article> artlist = new ArrayList<>();
 
         Iterator it = newsOrg.entrySet().iterator();
@@ -1129,10 +1129,7 @@ public class Goodnews
             //StringBuffer ftext = new StringBuffer(ntext.length());
 
             if(m.find()) {
-                logger.info("8===D~ House of M: " + m);
-                logger.info("8===D~ True M KNIGHT: " + m.group(1));
                 String matchedText = m.group(1);
-                logger.info("8===D~ MatchedText: " + matchedText);
                 rrtext = m.replaceFirst(" ");
             }
         }
@@ -1147,15 +1144,11 @@ public class Goodnews
 
             //while(m.find()) {
             if (m.find()) {
-                logger.info("8===D~ House of M: " + m);
                 String matchedText = m.group(1);
-                logger.info("8===D~ True M PALADIN: " + m.group(1));
-                logger.info("8===D~ MatchedText: " + matchedText);
-                ftext = m.replaceAll("<br/><br/>" + matchedText);
+                ftext = m.replaceAll("<br/><br/> " + matchedText);
             }
         }
 
-        logger.info("8===D~ FinalFilteredText: " + ftext);
         return ftext;
     }
 

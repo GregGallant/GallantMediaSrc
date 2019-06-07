@@ -47,7 +47,7 @@ public class ContactController
         return ("{error: jsp}");
     }
 
-    @CrossOrigin(origins = "http://staging.gallantone.com")
+    @CrossOrigin(origins = "https://www.gallantone.com")
     @RequestMapping(value="/contact", method = RequestMethod.POST, headers = "Accept=application/json")
     @ResponseBody
     public String contactForm(@RequestBody Contact contact)

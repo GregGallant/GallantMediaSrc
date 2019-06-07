@@ -31,7 +31,7 @@ import java.util.Set;
  */
 //@CrossOrigin(origins = "https://www.gallantone.com")
 @Controller
-@CrossOrigin(origins = "http://staging.gallantone.com")
+@CrossOrigin(origins = "https://www.gallantone.com")
 public class LoginController
 {
 

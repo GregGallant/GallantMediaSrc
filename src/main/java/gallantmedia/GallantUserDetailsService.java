@@ -49,7 +49,7 @@ public class GallantUserDetailsService implements UserDetailsService
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
         Logger logger = LoggerFactory.getLogger(GallantUserDetailsService.class);
-        logger.info("====D LoadUserByUsername with new customerRepo happening...: " + customerRepository);
+        logger.info("==== LoadUserByUsername with new customerRepo happening...: " + customerRepository);
         try {
             final Customer customer = customerRepository.findUserByEmail(username);
             if (customer != null) {
@@ -58,11 +58,11 @@ public class GallantUserDetailsService implements UserDetailsService
                 String password = encoder.encode(customer.getPassword());
                 */
                 String password = customer.getPassword();
-                logger.info("8=======D~  Customer.getEmail: " + customer.getEmail());
+                logger.info("=======~  Customer.getEmail: " + customer.getEmail());
                 return User.withUsername(customer.getEmail()).accountLocked(!customer.isEnabled()).password(password).roles(customer.getRole()).build();
             }
         } catch(Exception ex) {
-            logger.error("8====D LoadUserByUsername ERROR...");
+            logger.error("==== LoadUserByUsername ERROR...");
             ex.printStackTrace();
         }
 

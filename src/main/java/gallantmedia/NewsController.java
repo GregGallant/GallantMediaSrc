@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import gallantmedia.services.news.Goodnews;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-//@CrossOrigin(origins = "http://news.gallantone.com")
-@CrossOrigin(origins = "http://staging2.gallantone.com")
+@CrossOrigin(origins = "https://www.gallantone.com")
 @RestController
 public class NewsController
 {
@@ -24,7 +23,6 @@ public class NewsController
         return bignews;
     }
 
-    @CrossOrigin(origins = "https://www.gallantone.com")
     @RequestMapping(value="/newslinks", method=RequestMethod.GET)
     public String showNewsLinks()
     {
