@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -28,6 +29,7 @@ import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableWebSecurity
+@Order(1)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
     @Autowired
@@ -74,6 +76,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         //http.exceptionHandling().accessDeniedPage("/403");
     }
 
+
+
     @Override
     public void configure(AuthenticationManagerBuilder builder) throws Exception
     {
@@ -106,3 +110,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     }
 
 }
+

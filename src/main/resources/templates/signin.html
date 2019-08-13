@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="The first iteration of the portfolio of Greg A. Gallant, a software engineer, photographer and guitarist from New York City."/>
+    <meta name="dc.description" content="The first iteration of the portfolio of Greg A. Gallant, a software engineer, photographer and guitarist from New York City."/>
+    <meta name="dc.title" content="Greg Gallant Software Engineering Portfolio" />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="Greg Gallant, portfolio, photography, stock photography, software engineering, web design" />
+    <link rel="shortcut icon" href="./cfavicon.ico" />
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="/css/gm.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="manifest" href="./manifest.json" />
+    <title>GallantOne.com thanks you kindly.</title>
+</head>
+<body>
+<noscript>Javascript helps to view this site properly.</noscript>
+<header id="fixed_header">
+    <div class="row no-gutter superhead">
+        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4 logohead"><a href="/"><img class="img-fluid" src="/images/cronvega_logo1.png" border="0"/></a></div>
+        <div class="col-lg-9 col-md-7 col-sm-7 col-xs-7 menuhead">
+            <ul class="nav">
+                <ul class="topmenu">
+                    <li class="auth">Sign In</li>
+                    <li class="auth"><a href="http://www.cronvega.com/register">Register</a></li>
+                </ul>
+                <li class="norm"><a href="http://www.cronvega.com">Home</a></li>
+                <li class="norm"><a href="http://www.cronvega.com/services">Services</a></li>
+
+                <li class="norm"><a href="http://www.cronvega.com/consultation">Consultation</a></li>
+                <li class="menuSpacing">&nbsp;</li>
+            </ul>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 burgerhead dropdown">
+            <button class="btn dropdown-toggle" type="button" id="burgertime" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid theburger" src="/images/goodburger50.png" border="0"/></button>
+            <div class="dropdown-menu">
+                <ul id="burgermenu" aria-labelledby="burgertime">
+                    <li class="dropdown-item"><a href="/">Home</a></li>
+                    <li class="dropdown-item"><a href="http://www.cronvega.com/services">Services</a></li>
+                    <li class="dropdown-item"><a href="http://www.cronvega.com/consultation">Consultation</a></li>
+                    <li class="dropdown-item">Sign-In</li>
+                    <li class="dropdown-item"><a href="http://www.cronvega.com/register">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="content">
+    <div class="headerSpace">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-12 col-md-12 col-sm-12 hed">
+                    <h1>Login</h1>
+                    <div class="subhed">
+                        <form th:action="@{/login}" method="post">
+                            <input class="form-control formy" type="text" name="username" placeholder="Email"/>
+                            <input class="form-control formy" type="password" name="password" placeholder="Password"/>
+                            <input id="loginButton" class="loginSubmit btn btn-large" type="submit" value="Login"/>
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <div th:if="${param.error}">
+                                <div class="alert alert-danger">
+                                    Invalid username and password.
+                                </div>
+                            </div>
+                            <div th:if="${param.logout}">
+                                <div class="alert alert-info">
+                                    You have been logged out.
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-lg-12 col-md-12 col-sm-12 footer">&nbsp;
+                <div class="foot_place_1">
+                    &nbsp;<img src="/images/cronvega_logo1.png" border="0" />
+                    <div>
+                        <ul class="mini_footy">
+                            <li><a href="/news">News</a></li>
+                            <li><a target="github" href="http://www.github.com/GregGallant">GitHub</a></li>
+                            <li><a target="linkedin" href="http://www.linkedin.com/in/greggallant">Linked-In</a></li>
+                            <li><a target="software" href="http://qa.gallantone.com">Software</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="foot_addr" id="secc">
+                    <div class="fhead">Programming, Design & Photography</div>
+                    <div class="fname">Greg Gallant </div>
+                    <div class="femail">ggallant2017@gmail.com </div>
+                    <div class="femail">Powered by: <a class="poweredby" href="https://spring.io">Spring Boot 2.1.2</a> and <a class="poweredby" href="https://reactjs.org">React 16.86.6</a>.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

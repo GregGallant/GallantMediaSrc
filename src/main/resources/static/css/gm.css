@@ -2008,3 +2008,42 @@ div.blahdiv {
     font-size: .2em;
     font-style: italic;
     font-weight: bold; } }
+
+header div.menuhead ul {
+  display: inline;
+  height: 70px;
+  width: auto;
+  padding: 50px 0 0 0;
+  margin: 0 5px 0 0;
+  float: right;
+  clear: both; }
+header div.menuhead ul ul.topmenu {
+  padding: -50px 0 0 0; }
+header div.menuhead ul ul.topmenu li.auth {
+  position: relative;
+  display: inline;
+  top: -84px;
+  text-transform: none;
+  padding: 0 15px 0 0;
+  font-family: Gudea,Helvetica,Arial,sans-serif;
+  font-size: 0.92em;
+  text-decoration: none; }
+header div.menuhead ul ul.topmenu li.auth a {
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #101010; }
+header div.menuhead ul li.norm {
+  display: inline;
+  font-family: Gudea,Helvetica,Arial,sans-serif;
+  font-size: 0.92em;
+  padding: 0 70px 0 0;
+  text-decoration: none;
+  text-transform: uppercase; }
+header div.menuhead ul li.norm.menuSpacing {
+  width: 200px; }
+header div.menuhead ul li.norm a {
+  color: #101010; }
+header div.menuhead ul li.norm a:hover {
+  color: #2274a5; }
+header div.menuhead ul li.norm a:visited {
+  color: #101010; }

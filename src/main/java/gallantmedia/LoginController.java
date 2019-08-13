@@ -31,15 +31,14 @@ import java.util.Set;
  */
 //@CrossOrigin(origins = "https://www.gallantone.com")
 @Controller
-@CrossOrigin(origins = "https://www.gallantone.com")
 public class LoginController
 {
 
+    @CrossOrigin(origins = "https://www.gallantone.com")
     @RequestMapping(value="/login", method=RequestMethod.GET)
-    public String loginGetInit(Model model) {
+    public String loginGallantone(Model model) {
         //return new ModelAndView("login");
         return "login";
     }
-
 }
 
