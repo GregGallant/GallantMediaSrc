@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -44,34 +45,58 @@ public class Goodmusic {
           for (JsonElement e : musicAsJEArr) {
               musicArr.add(e.getAsJsonObject().get("id").toString());
               musicArr.add(e.getAsJsonObject().get("name").toString());
+              musicArr.add(e.getAsJsonObject().get("picture_medium").toString());
+              musicArr.add(e.getAsJsonObject().get("picture_big").toString());
           }
-
-          /*
-          logger.info("ID: " + musicArr.get(0));
-          logger.info("ID: " + musicArr.get(1));
-          logger.info("Tracklist: " + musicArr.get(2));
-          */
 
           String artistName = musicArr.get(1).replaceAll(" ", "%20");
-          JsonElement albumList = renderAlbumsByArtistName(artistName);
-          JsonElement albumListData = albumList.getAsJsonObject().get("data");
-          JsonArray albumAsJEArr = albumListData.getAsJsonArray();
+          if (artistName != null && !artistName.equals("")) {
+              artistName = cleanString(artistName);
+              JsonElement albumList = renderAlbumsByArtistName(artistName);
 
-          logger.info("Album Listing: " + albumList);
+              JsonElement albumListData = albumList.getAsJsonObject().get("data");
+              JsonArray albumAsJEArr = albumListData.getAsJsonArray();
 
-          List<String> albumArr = new ArrayList<>();
-          for (JsonElement e : albumAsJEArr) {
-               albumArr.add(e.getAsJsonObject().get("id").toString());
-               albumArr.add(e.getAsJsonObject().get("cover_medium").toString());
-               albumArr.add(e.getAsJsonObject().get("cover_big").toString());
-               albumArr.add(e.getAsJsonObject().get("tracklist").toString());
+
+              List<String> albumArr = new ArrayList<>();
+              for (JsonElement e : albumAsJEArr) {
+                   albumArr.add(e.getAsJsonObject().get("id").toString());
+                   albumArr.add(e.getAsJsonObject().get("title").toString());
+                   albumArr.add(e.getAsJsonObject().get("cover_medium").toString());
+                   albumArr.add(e.getAsJsonObject().get("cover_big").toString());
+                   albumArr.add(e.getAsJsonObject().get("tracklist").toString());
+
+                  String tracklistUrl = e.getAsJsonObject().get("tracklist").toString();
+                  if (tracklistUrl != null && tracklistUrl.contains("http")) {
+                      JsonElement tracklist = renderTracksByAlbum(tracklistUrl);
+
+                      JsonElement trackListData = tracklist.getAsJsonObject().get("data");
+                      JsonArray tracksAsJEArr = trackListData.getAsJsonArray();
+
+                      List<String> tracksArr = new ArrayList<>();
+                      for (JsonElement t : tracksAsJEArr) {
+                          tracksArr.add(t.getAsJsonObject().get("id").toString());
+                          tracksArr.add(t.getAsJsonObject().get("title").toString());
+                          tracksArr.add(t.getAsJsonObject().get("title_short").toString());
+                          tracksArr.add(t.getAsJsonObject().get("link").toString());
+                          tracksArr.add(t.getAsJsonObject().get("preview").toString());
+                          tracksArr.add(t.getAsJsonObject().get("duration").toString());
+                      }
+
+                      logger.info("Track List: " + tracksArr);
+                  }
+              }
           }
 
-          String tracklistUrl = albumArr.get(3);
-         logger.info("Tracklist URL: " + tracklistUrl);
-          JsonElement tracklist = renderTracksByAlbum(tracklistUrl);
+          //String tracklistUrl = albumArr.get(4);
+          //logger.info("Tracklist URL: " + tracklistUrl);
+          //logger.info("Album List: " + albumArr);
 
-          logger.info("Tracks Listing: " + tracklist);
+
+          // Render Tracks
+
+
+
           //logger.info("Artist ID Element: " + artist_id_element );
           //musicAsJEArr.get(0).getAsJsonObject
           //logger.info("Tracklist Element: " + tracklist_element );
@@ -90,6 +115,7 @@ public class Goodmusic {
           GsonBuilder builder = new GsonBuilder();
           Gson gson = builder.create();
           String musicString = gson.toJson(musicJson);
+          logger.info("Final String thusfar: " + musicString);
           return musicString;
     }
 
@@ -120,6 +146,7 @@ public class Goodmusic {
     protected JsonElement renderTracksByAlbum(String trackUrl)
     {
         trackUrl = trackUrl.replaceAll("\"", "");
+        logger.info("TRACK URL: " + trackUrl);
         JsonElement trackData = this.getApiResponse(trackUrl, false);
         return trackData;
     }
@@ -147,6 +174,7 @@ public class Goodmusic {
                 mUrl = mUrl.replaceAll("https://", "");
                 url = new URL(protocol, mUrl, file);
             } else {
+                logger.info("URL: " + mUrl);
                 url = new URL(mUrl);
             }
             logger.info("URL object: " + url);
@@ -187,11 +215,32 @@ public class Goodmusic {
         JsonParser parser = new JsonParser();
         JsonElement o = parser.parse(response.toString());
 
-        logger.info("Music json object: " + o.getAsJsonObject());
+//        logger.info("Music json object: " + o.getAsJsonObject());
 
         // Query URL
         //mNext = "" + o.getAsJsonObject().get("next");
         return o.getAsJsonObject();
+    }
+
+    /**
+     * Cleans URL of special characters
+     * @param url
+     * @return
+     */
+    private String cleanString(String url) {
+        List<String> accents = Arrays.asList("È","É","Ê","Ë","Û","Ù","Ï","Î","À","Â","Ô","è","é","ê","ë","û","ù","ï","î","à","â","ô","Ç","ç","Ã","ã","Õ","õ");
+        List<String> expected = Arrays.asList("E","E","E","E","U","U","I","I","A","A","O","e","e","e","e","u","u","i","i","a","a","o","C","c","A","a","O","o");
+
+        int acount = 0;
+
+        for (String c : accents) {
+            if (url.contains(c)) {
+                url = url.replace(c, expected.get(acount));
+            }
+            acount++;
+        }
+
+        return url;
     }
 
 }
