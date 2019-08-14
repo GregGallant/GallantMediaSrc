@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.google.gson.JsonElement;
 import gallantmedia.services.news.Goodnews;
@@ -35,11 +32,19 @@ public class Goodmusic {
     {
           String artistUrl = "https://api.deezer.com/search/artist/?q="+artist_name+"&index=0&limit=1";
           JsonElement musicJson  = this.getApiResponse(artistUrl, false);
-
           JsonElement musicDataElement = musicJson.getAsJsonObject().get("data");
           //JsonElement artist_id_element = musicDataElement.getAsJsonObject().get("id");
           JsonArray musicAsJEArr = musicDataElement.getAsJsonArray();
           //JsonElement tracklist_element = musicDataElement.getAsJsonObject().get("tracklist");
+
+          //HashMap<String,HashMap<HashMap<String, List<String>>, HashMap<String, List<String>>>> musicSheet = new HashMap<>();
+          HashMap<String, HashMap<String, List<String>>> musicSheet = new HashMap<>();
+          HashMap<String, List<String>> artistSheet = new HashMap<>();
+          HashMap<HashMap<String, List<String>>, HashMap<String, List<String>>> albumsAndTracks = new HashMap<>();
+          HashMap<Integer, List<JsonElement>> eachAlbum = new HashMap<>();
+          HashMap<String, List<String>> eachTrack = new HashMap<>();
+
+          GsonBuilder builder = new GsonBuilder();
 
           List<String> musicArr = new ArrayList<>();
           for (JsonElement e : musicAsJEArr) {
@@ -49,7 +54,11 @@ public class Goodmusic {
               musicArr.add(e.getAsJsonObject().get("picture_big").toString());
           }
 
+          artistSheet.put("artist", musicArr);
+
           String artistName = musicArr.get(1).replaceAll(" ", "%20");
+          String artistId = musicArr.get(0);
+
           if (artistName != null && !artistName.equals("")) {
               artistName = cleanString(artistName);
               JsonElement albumList = renderAlbumsByArtistName(artistName);
@@ -57,66 +66,76 @@ public class Goodmusic {
               JsonElement albumListData = albumList.getAsJsonObject().get("data");
               JsonArray albumAsJEArr = albumListData.getAsJsonArray();
 
+              int gindex = 0;
+              //HashMap<List<String>, List<String>> allTracks = new HashMap<>();
 
-              List<String> albumArr = new ArrayList<>();
               for (JsonElement e : albumAsJEArr) {
-                   albumArr.add(e.getAsJsonObject().get("id").toString());
-                   albumArr.add(e.getAsJsonObject().get("title").toString());
-                   albumArr.add(e.getAsJsonObject().get("cover_medium").toString());
-                   albumArr.add(e.getAsJsonObject().get("cover_big").toString());
-                   albumArr.add(e.getAsJsonObject().get("tracklist").toString());
+
+                  JsonElement artistToMatch = e.getAsJsonObject().get("artist");
+                  String artistIdToMatch = artistToMatch.getAsJsonObject().get("id").toString();
+                   if (!artistId.equals(artistIdToMatch)) {
+                        continue;
+                   }
+
+                   List<JsonElement> albumArr = new ArrayList<>();
+                   albumArr.add(e.getAsJsonObject().get("id"));
+                   albumArr.add(e.getAsJsonObject().get("title"));
+                   albumArr.add(e.getAsJsonObject().get("cover_medium"));
+                   albumArr.add(e.getAsJsonObject().get("cover_big"));
+                   albumArr.add(e.getAsJsonObject().get("nb_tracks"));
+                   albumArr.add(e.getAsJsonObject().get("tracklist"));
+
+                   logger.info("artistID To Match: " + artistIdToMatch);
+
 
                   String tracklistUrl = e.getAsJsonObject().get("tracklist").toString();
                   if (tracklistUrl != null && tracklistUrl.contains("http")) {
                       JsonElement tracklist = renderTracksByAlbum(tracklistUrl);
-
                       JsonElement trackListData = tracklist.getAsJsonObject().get("data");
-                      JsonArray tracksAsJEArr = trackListData.getAsJsonArray();
 
-                      List<String> tracksArr = new ArrayList<>();
+                      Gson gson = builder.create();
+                      String tracklistJSON = gson.toJson(trackListData);
+                      albumArr.add(tracklist);
+
+
+                      /*
+                      JsonArray tracksAsJEArr = trackListData.getAsJsonArray();
                       for (JsonElement t : tracksAsJEArr) {
+                          List<String> tracksArr = new ArrayList<>();
                           tracksArr.add(t.getAsJsonObject().get("id").toString());
                           tracksArr.add(t.getAsJsonObject().get("title").toString());
                           tracksArr.add(t.getAsJsonObject().get("title_short").toString());
                           tracksArr.add(t.getAsJsonObject().get("link").toString());
                           tracksArr.add(t.getAsJsonObject().get("preview").toString());
                           tracksArr.add(t.getAsJsonObject().get("duration").toString());
-                      }
 
-                      logger.info("Track List: " + tracksArr);
+                          eachTrack.put("track_"+albumArr.get(0), tracksArr);
+                      }
+                      */
+                      //albumsAndTracks.put(eachAlbum, eachTrack);
                   }
+                  eachAlbum.put(gindex, albumArr);
+                  gindex++;
               }
+
+              //albumsAndTracks.put(albumArr, tracksArr);
+
           }
 
-          //String tracklistUrl = albumArr.get(4);
-          //logger.info("Tracklist URL: " + tracklistUrl);
-          //logger.info("Album List: " + albumArr);
+          //musicSheet.put("albums", eachAlbum);
 
-
-          // Render Tracks
-
-
-
-          //logger.info("Artist ID Element: " + artist_id_element );
-          //musicAsJEArr.get(0).getAsJsonObject
-          //logger.info("Tracklist Element: " + tracklist_element );
-
-          // For artists like Captain Beefheart / Captain Beefheart & his magic band, need the next
-          // With full album/tracklist
-
-          // Tracklist
-          //JsonElement full_tracklist_by_artist = musicDataElement.getAsJsonObject().get("tracklist");
-          //logger.info("===> MUSICJSON TRACKLIST : " + full_tracklist_by_artist);
-
-          //int artist_id = artist_id_element.getAsInt();
-
-          //JsonElement albumList = this.renderAlbumsByArtistId(artist_id);
-
-          GsonBuilder builder = new GsonBuilder();
           Gson gson = builder.create();
-          String musicString = gson.toJson(musicJson);
-          logger.info("Final String thusfar: " + musicString);
-          return musicString;
+          //logger.info("MusicSheet Artist: ", musicSheet.get("artist"));
+          //logger.info("MusicSheet Album: ", musicSheet.get("albums"));
+
+          String musicSheetJson = gson.toJson(eachAlbum);
+          //musicSheetJson = musicSheetJson.replace("\\\"", "\"");
+          //musicSheetJson = musicSheetJson.replace("\"\"", "\"");
+          //logger.info("MusicSheetJSON: " + musicSheetJson);
+
+          //String musicString = gson.toJson(musicJson);
+          //logger.info("Final String thusfar: " + musicString);
+          return musicSheetJson;
     }
 
 
@@ -129,11 +148,7 @@ public class Goodmusic {
     {
         String getAlbumUrl = "https://api.deezer.com/search/album/?q="+artistName+"&index=0&limit=95";
         JsonElement albumData = this.getApiResponse(getAlbumUrl, false);
-        // Get Tracklist from Artist
-        // This is the most reliable source for album data
-        // Release date is direct album lookup via album id; release as comparable, order filter;
-        // This means hash of album/tracklist each; key=album_id; sort=release_date in a set or linked list
-        // Convert back to Json and return
+        // TODO: Match the artist id
 
         return albumData;
     }
@@ -146,7 +161,7 @@ public class Goodmusic {
     protected JsonElement renderTracksByAlbum(String trackUrl)
     {
         trackUrl = trackUrl.replaceAll("\"", "");
-        logger.info("TRACK URL: " + trackUrl);
+        //logger.info("TRACK URL: " + trackUrl);
         JsonElement trackData = this.getApiResponse(trackUrl, false);
         return trackData;
     }
@@ -174,10 +189,10 @@ public class Goodmusic {
                 mUrl = mUrl.replaceAll("https://", "");
                 url = new URL(protocol, mUrl, file);
             } else {
-                logger.info("URL: " + mUrl);
+               // logger.info("URL: " + mUrl);
                 url = new URL(mUrl);
             }
-            logger.info("URL object: " + url);
+            //logger.info("URL object: " + url);
             connection = (HttpsURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
