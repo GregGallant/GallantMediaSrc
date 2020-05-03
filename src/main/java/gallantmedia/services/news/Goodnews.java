@@ -118,12 +118,12 @@ public class Goodnews
     );
 
     private List<String> bigtimeFilter = Arrays.asList(
-            "Ariana",
-            "Cardi",
+            "Rita Ora",
+            "Weeknd",
             "Lennon",
             "Jagger",
-            "Blackpink",
-            "Taylor Swift"
+            "Rhianna",
+            "Dua Lipa"
     );
 
     private List<String> techFilter = Arrays.asList(
@@ -235,18 +235,18 @@ public class Goodnews
     private List<String> entFilter = Arrays.asList(
             "Mariah Carey",
             "Ariana Grande",
-            "Taylor Swift",
-            "Mark Hollis",
+            "Dua Lipa",
+            "Rita Ora",
             "Vanessa Hudgens",
             "Lizzo",
             "Iggy",
-            "Dua Lipa",
-            "Avril Lavigne",
+            "Weeknd",
+            "Coldplay",
             "Cardi",
-            "Carly Rae Jepsen",
+            "Rhianna",
             "Shatner",
-            "Nimoy",
-            "Ridley",
+            "Benassi",
+            "Taylor Swift",
             "Pharrell",
             "Smashing Pumpkins",
             "Demi Lovato",
@@ -255,7 +255,7 @@ public class Goodnews
             "Wu-Tang",
             "concert",
             "Tonight Show",
-            "Kim Petras",
+            "House Music",
             "pianist",
             "Lady Gaga",
             "Yuja Wang",
@@ -276,6 +276,7 @@ public class Goodnews
     private List<String> artifactsFilter = Arrays.asList(
             "Force Dump",
             "Quiz",
+            "Concierto",
             "(WATCH)",
             "2 of 41 3",
             "Opinion",
@@ -297,6 +298,8 @@ public class Goodnews
             "Netflix",
             "Alexandria",
             "Ocasio-Cortez",
+            "Lady Gaga",
+            "Concierto",
             "shooting",
             "stabbing",
             "Court Hearing",
