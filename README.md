@@ -1,5 +1,5 @@
 <h1>GallantMedia Spring Boot Source 2.1.2</h1>
-<img width="716" height="205" alt="Image" src="https://github.com/user-attachments/assets/96534a0b-b471-4144-922d-4e14e4d43137" />
+<img width="516" height="145" alt="Image" src="https://github.com/user-attachments/assets/96534a0b-b471-4144-922d-4e14e4d43137" />
 <h2>= Java Spring Boot site and news =</h2>
 The first iteration of the news site was built in Java Spring Boot.  In my opinion, Java Spring has the best security framework which made it hard to migrate away from.
 <br/><br/>
