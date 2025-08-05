@@ -5,4 +5,4 @@ The 2018, first iteration of the news site was built in Java Spring Boot and Apa
 <br/>
 <img width="400" height="400" alt="Image" src="https://github.com/user-attachments/assets/2c923254-da66-43bf-90a4-b91ecfeaed2c" />
 <br/>
-The original newsfeed implementation for Java Spring Boot 2.1.2 used vebose gson libraries for the Rest API calls.    Since then, all projects were ported to Go which I personally found much more productive in regards to API design and testing.
+The original newsfeed implementation for Java Spring Boot 2.1.2 used vebose gson libraries for the Rest API calls.    Since then, all projects were ported to Go which I personally found much more productive in regards to API design and testing as seen here: https://www.gallantone.com/news
