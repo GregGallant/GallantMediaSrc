@@ -1,4 +1,4 @@
-<h1>GallantMedia Spring Boot Source 2.1.2</h1>
+<h1>2018 Spring Boot Source 2.1.2</h1>
 <img width="516" height="145" alt="Image" src="https://github.com/user-attachments/assets/96534a0b-b471-4144-922d-4e14e4d43137" />
 <h2>= Java Spring Boot site and news =</h2>
 The 2018, first iteration of the news site was built in Java Spring Boot and Apache Tomcat and a deployment script I wrote in Python.  In my opinion, Java Spring has the best security framework which made it hard to migrate away from.  Much of the work was standard Bcrypt encryption Spring Security using Gradle for builds instead of maven and a vanilla javascript frontend before moving to an older version of React.
